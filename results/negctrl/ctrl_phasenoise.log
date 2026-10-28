@@ -1,0 +1,16 @@
+[inkcheck] analysis grid 768x768 @ 19.200 um, valid overlap 100.0% (2.17 cm2)
+[inkcheck] stats grid 768x768 @ 19.20 um, search +-26 px (0.5 mm)
+[inkcheck] band-pass r=+0.097 at shift (26,-26) stat-px; zero-shift -0.067; raw r -0.028
+[inkcheck] AUC raw 0.610 bp 0.588; breakeven F1 0.134; stroke recall 0.038 (26 strokes), precision 0.094
+[inkcheck]   nulls 25/198 (7s)
+[inkcheck]   nulls 50/198 (11s)
+[inkcheck]   nulls 75/198 (13s)
+[inkcheck]   nulls 100/198 (15s)
+[inkcheck]   nulls 125/198 (17s)
+[inkcheck]   nulls 150/198 (19s)
+[inkcheck]   nulls 175/198 (21s)
+[inkcheck] bootstrap (63 tiles of 2.0 mm): r_bp(aligned) 0.096 [0.027, 0.172]; stroke recall 0.04 [0.00, 0.14]
+[inkcheck] VERDICT FAIL: model sees known ink at 9.6 um: NO (band-pass r=0.10, p=0.192 vs search-matched null)
+[inkcheck] WARNING: reference transformed by rot180 correlates as well or better (r=+0.107) - orientation may be wrong or signal is not spatially specific
+FAIL	model sees known ink at 9.6 um: NO (band-pass r=0.10, p=0.192 vs search-matched null)
+wrote ctrl_phasenoise.json and ctrl_phasenoise.png

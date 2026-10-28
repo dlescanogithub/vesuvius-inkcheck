@@ -1,0 +1,17 @@
+[inkcheck] analysis grid 3620x2500 @ 8.640 um, valid overlap 64.0% (4.32 cm2)
+[inkcheck] stats grid 1810x1250 @ 17.28 um, search +-29 px (0.5 mm)
+[inkcheck] band-pass r=+0.047 at shift (0,9) stat-px; zero-shift +0.041; raw r +0.115
+[inkcheck] AUC raw 0.617 bp 0.520; breakeven F1 0.121; stroke recall 0.041 (148 strokes), precision 0.075
+[inkcheck]   nulls 25/195 (60s)
+[inkcheck]   nulls 50/195 (79s)
+[inkcheck]   nulls 75/195 (87s)
+[inkcheck]   nulls 100/195 (95s)
+[inkcheck]   nulls 125/195 (103s)
+[inkcheck]   nulls 150/195 (113s)
+[inkcheck]   nulls 175/195 (123s)
+[inkcheck] bootstrap (121 tiles of 2.0 mm): r_bp(aligned) 0.048 [0.010, 0.086]; stroke recall 0.04 [0.01, 0.07]
+[inkcheck] VERDICT FAIL: model sees known ink at 8.64 um: NO (band-pass r=0.05, p=0.264 vs search-matched null)
+[inkcheck] WARNING: reference transformed by flipud correlates as well or better (r=+0.049) - orientation may be wrong or signal is not spatially specific
+[inkcheck] tile bootstrap (121 x 2.0 mm tiles, 1000 draws, conditional on the registration): r_bp 95% CI [0.010, 0.086]; stroke recall - chance -0.03 [-0.06, +0.00]
+FAIL	model sees known ink at 8.64 um: NO (band-pass r=0.05, p=0.264 vs search-matched null)
+wrote prize_oct/publish/vesuvius-inkcheck/results/rescore/reader_v2/343P-20250904233748__s42.json and prize_oct/publish/vesuvius-inkcheck/results/rescore/reader_v2/343P-20250904233748__s42.png

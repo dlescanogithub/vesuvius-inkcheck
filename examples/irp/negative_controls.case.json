@@ -1,0 +1,39 @@
+{
+ "name": "Negative controls (Paris 4)",
+ "scroll": "PHercParis4",
+ "segment": "20231005123336",
+ "summary": "Same segment, same model (dense_native 16k) and same reference as the Paris 4 PASS, but with the link between prediction and reference destroyed in four ways: reference from another region of the scroll (wrong region), prediction with Fourier phases randomised (same spectrum, no letters), reference cut into 2 mm tiles and shuffled, and shuffled tiles additionally rotated 90/270° with no tile left in place. Scripts: results/negctrl/make_controls.py, make_controls_b.py, run_controls.sh.",
+ "headline": "No negative control PASSes. Wrong region, phase-randomised and shuffled+rotated tiles FAIL as expected; plain tile shuffle is WEAK (the text-line layout survives a shuffle, so r stays significant) but its stroke recall is at chance, so the letter-level test blocks PASS.",
+ "checks": [
+  {
+   "label": "positive: dense_native vs true reference",
+   "json": "../../results/negctrl/pos_paris4_dn.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  }
+ ],
+ "negative_controls": [
+  {
+   "label": "wrong region",
+   "json": "../../results/negctrl/ctrl_wrongregion.json",
+   "expect": "FAIL"
+  },
+  {
+   "label": "phase-randomised prediction",
+   "json": "../../results/negctrl/ctrl_phasenoise.json",
+   "expect": "FAIL"
+  },
+  {
+   "label": "shuffled 2 mm tiles",
+   "json": "../../results/negctrl/ctrl_tileshuffle.json",
+   "expect": "FAIL",
+   "note": "line layout survives the shuffle (1 tile in place); recall − chance CI includes 0"
+  },
+  {
+   "label": "shuffled + rotated tiles",
+   "json": "../../results/negctrl/ctrl_tileshuffle_rot.json",
+   "expect": "FAIL",
+   "note": "no tile in place, rotated 90/270°"
+  }
+ ]
+}

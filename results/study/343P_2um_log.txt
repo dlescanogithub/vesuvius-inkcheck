@@ -1,0 +1,8 @@
+2026-10-27 20:51:47 dn w5 infer 221s inkcheck 80s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.40, p=0.00518; stroke recall 15% vs 6% chance)
+2026-10-27 20:56:25 kl w5 infer 194s inkcheck 84s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.39, p=0.00518; stroke recall 22% vs 6% chance)
+2026-10-27 21:03:24 s42 w5 infer 326s inkcheck 93s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.19, p=0.00518; stroke recall 7% vs 6% chance)
+2026-10-27 21:09:22 dn w4 infer 276s inkcheck 82s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.40, p=0.00518; stroke recall 25% vs 6% chance)
+2026-10-27 21:16:20 dn w6 infer 259s inkcheck 159s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.40, p=0.00518; stroke recall 15% vs 6% chance)
+2026-10-27 21:22:15 s43 w5 infer 250s inkcheck 105s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.19, p=0.00518; stroke recall 7% vs 6% chance)
+2026-10-27 21:29:48 soup w5 infer 340s inkcheck 113s WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.23, p=0.00518; stroke recall 5% vs 6% chance)
+DONE

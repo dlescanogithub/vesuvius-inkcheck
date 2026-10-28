@@ -1,0 +1,214 @@
+{
+ "source": "hires_test/preds/eval/verdict_*.json (tools/verdict.py)",
+ "zones": [
+  {
+   "zone": "1203c",
+   "model": "hecate-2.4 native",
+   "comps": 24.8,
+   "comps_null": 24.8,
+   "n_components": 6.0,
+   "r_other": 0.212,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_1203c.json"
+  },
+  {
+   "zone": "1203c",
+   "model": "dense_native @2.4 iso",
+   "comps": 132.1,
+   "comps_null": 144.5,
+   "n_components": 32.0,
+   "r_other": 0.21,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_1203c.json"
+  },
+  {
+   "zone": "1203c",
+   "model": "dense_native @9.6 iso",
+   "comps": 0.0,
+   "comps_null": 16.5,
+   "n_components": 0.0,
+   "r_other": 0.212,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_1203c.json"
+  },
+  {
+   "zone": "p0_965",
+   "model": "hecate-2.4 native",
+   "comps": 16.7,
+   "comps_null": 27.8,
+   "n_components": 6.3,
+   "r_other": 0.059,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p0_965.json"
+  },
+  {
+   "zone": "p1_031",
+   "model": "hecate-2.4 native",
+   "comps": 25.0,
+   "comps_null": 27.8,
+   "n_components": 9.5,
+   "r_other": 0.038,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p1_031.json"
+  },
+  {
+   "zone": "p2_537",
+   "model": "hecate-2.4 native",
+   "comps": 13.9,
+   "comps_null": 11.1,
+   "n_components": 5.3,
+   "r_other": 0.159,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p2_537.json"
+  },
+  {
+   "zone": "p3_965",
+   "model": "hecate-2.4 native",
+   "comps": 16.7,
+   "comps_null": 16.7,
+   "n_components": 6.3,
+   "r_other": 0.154,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p3_965.json"
+  },
+  {
+   "zone": "p4_031",
+   "model": "hecate-2.4 native",
+   "comps": 5.6,
+   "comps_null": 8.3,
+   "n_components": 2.1,
+   "r_other": -0.014,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p4_031.json"
+  },
+  {
+   "zone": "p5_031",
+   "model": "hecate-2.4 native",
+   "comps": 8.3,
+   "comps_null": 5.6,
+   "n_components": 3.2,
+   "r_other": -0.034,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p5_031.json"
+  },
+  {
+   "zone": "p6_031",
+   "model": "hecate-2.4 native",
+   "comps": 8.3,
+   "comps_null": 22.2,
+   "n_components": 3.2,
+   "r_other": -0.027,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_p6_031.json"
+  },
+  {
+   "zone": "z031",
+   "model": "hecate-2.4 native",
+   "comps": 16.7,
+   "comps_null": 8.3,
+   "n_components": 6.3,
+   "r_other": 0.134,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z031.json"
+  },
+  {
+   "zone": "z031",
+   "model": "dense_native @2.4 iso",
+   "comps": 89.0,
+   "comps_null": 122.3,
+   "n_components": 33.8,
+   "r_other": 0.068,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z031.json"
+  },
+  {
+   "zone": "z031",
+   "model": "dense_native @9.6 iso",
+   "comps": 19.5,
+   "comps_null": 16.7,
+   "n_components": 7.4,
+   "r_other": 0.134,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z031.json"
+  },
+  {
+   "zone": "z743",
+   "model": "hecate-2.4 native",
+   "comps": 27.8,
+   "comps_null": 41.7,
+   "n_components": 10.6,
+   "r_other": 0.085,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z743.json"
+  },
+  {
+   "zone": "z743",
+   "model": "dense_native @2.4 iso",
+   "comps": 150.1,
+   "comps_null": 141.8,
+   "n_components": 57.0,
+   "r_other": 0.034,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z743.json"
+  },
+  {
+   "zone": "z743",
+   "model": "dense_native @9.6 iso",
+   "comps": 38.9,
+   "comps_null": 22.2,
+   "n_components": 14.8,
+   "r_other": 0.085,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z743.json"
+  },
+  {
+   "zone": "z965",
+   "model": "hecate-2.4 native",
+   "comps": 22.2,
+   "comps_null": 22.2,
+   "n_components": 8.4,
+   "r_other": 0.133,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z965.json"
+  },
+  {
+   "zone": "z965",
+   "model": "dense_native @2.4 iso",
+   "comps": 166.8,
+   "comps_null": 144.5,
+   "n_components": 63.3,
+   "r_other": 0.003,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z965.json"
+  },
+  {
+   "zone": "z965",
+   "model": "dense_native @9.6 iso",
+   "comps": 16.7,
+   "comps_null": 38.9,
+   "n_components": 6.3,
+   "r_other": 0.133,
+   "stroke_width_mm": null,
+   "visual_strokes": false,
+   "source": "preds/eval/verdict_z965.json"
+  }
+ ]
+}

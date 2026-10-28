@@ -1,0 +1,17 @@
+[inkcheck] analysis grid 768x768 @ 19.200 um, valid overlap 100.0% (2.17 cm2)
+[inkcheck] stats grid 768x768 @ 19.20 um, search +-26 px (0.5 mm)
+[inkcheck] band-pass r=+0.048 at shift (-25,11) stat-px; zero-shift +0.000; raw r -0.027
+[inkcheck] AUC raw 0.581 bp 0.577; breakeven F1 0.081; stroke recall 0.098 (51 strokes), precision 0.111
+[inkcheck]   nulls 25/198 (8s)
+[inkcheck]   nulls 50/198 (11s)
+[inkcheck]   nulls 75/198 (13s)
+[inkcheck]   nulls 100/198 (15s)
+[inkcheck]   nulls 125/198 (17s)
+[inkcheck]   nulls 150/198 (20s)
+[inkcheck]   nulls 175/198 (22s)
+[inkcheck] bootstrap (64 tiles of 2.0 mm): r_bp(aligned) 0.048 [0.014, 0.084]; stroke recall 0.10 [0.00, 0.22]
+[inkcheck] VERDICT FAIL: model sees known ink at 9.6 um: NO (band-pass r=0.05, p=0.622 vs search-matched null)
+[inkcheck] WARNING: reference transformed by rot270 correlates as well or better (r=+0.079) - orientation may be wrong or signal is not spatially specific
+[inkcheck] WARNING: reference transformed by transpose correlates as well or better (r=+0.090) - orientation may be wrong or signal is not spatially specific
+FAIL	model sees known ink at 9.6 um: NO (band-pass r=0.05, p=0.622 vs search-matched null)
+wrote ctrl_wrongregion.json and ctrl_wrongregion.png

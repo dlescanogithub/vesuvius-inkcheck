@@ -1,0 +1,8 @@
+.git
+results
+study
+cards
+figures
+**/__pycache__
+*.tif
+*.zarr

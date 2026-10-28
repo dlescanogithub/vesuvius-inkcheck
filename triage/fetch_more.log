@@ -1,0 +1,50 @@
+PHerc0139/segments/20250108000000-w025_2025010863/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr crop origin (384, 2816) shape (28, 2048, 2048) 256 chunks 117 MB new
+/workspace/vesuvius/.venv314/lib/python3.14/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/workspace/vesuvius/.venv314/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+PHerc0139 20250108000000-w025_2025010863 {'hf_ratio': None, 'hf_ratio_relaxed': 0.04164209771278826, 'layer_hp_corr': 0.712094244638597, 'valid_mm2': 367.52412666507604}
+PHerc0139/segments/20260126000000-w045_2026012619/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr crop origin (256, 128) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0139 20260126000000-w045_2026012619 {'hf_ratio': None, 'hf_ratio_relaxed': 0.0286030829058419, 'layer_hp_corr': 0.7219495421621241, 'valid_mm2': 367.31175787746406}
+PHerc0139/segments/20260227000000-w052_2026022705/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr crop origin (256, 3200) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0139 20260227000000-w052_2026022705 {'hf_ratio': None, 'hf_ratio_relaxed': 0.032028606559502466, 'layer_hp_corr': 0.7843037623007197, 'valid_mm2': 367.4733790266}
+PHerc0172/segments/20250917143559-w062_20250917143559205_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr crop origin (384, 1536) shape (33, 2048, 2048) 256 chunks 138 MB new
+PHerc0172 20250917143559-w062_20250917143559205_fl {'hf_ratio': 0.04428606909387479, 'hf_ratio_relaxed': 0.04428606909387479, 'layer_hp_corr': 0.8613058321593222, 'valid_mm2': 262.42963210240003}
+PHerc0172/segments/20251110135803-w067_20251110135803677_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr crop origin (384, 1536) shape (33, 2048, 2048) 256 chunks 138 MB new
+PHerc0172 20251110135803-w067_20251110135803677_fl {'hf_ratio': 0.04870460612591579, 'hf_ratio_relaxed': 0.04870460612591579, 'layer_hp_corr': 0.8669801399387342, 'valid_mm2': 262.42963210240003}
+PHerc0172/segments/20251115002747-auto_grown_20251115002740308_7_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr crop origin (128, 768) shape (33, 2048, 2048) 256 chunks 138 MB new
+PHerc0172 20251115002747-auto_grown_20251115002740 {'hf_ratio': 0.0502480238317391, 'hf_ratio_relaxed': 0.0502480238317391, 'layer_hp_corr': 0.8493045125067803, 'valid_mm2': 262.42963210240003}
+PHerc0343P/segments/20250511003658-tifxyz/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr crop origin (512, 0) shape (31, 2048, 2048) 256 chunks 116 MB new
+PHerc0343P 20250511003658-tifxyz {'hf_ratio': 0.02823690088726421, 'hf_ratio_relaxed': 0.032859881708891064, 'layer_hp_corr': 0.7771203980782505, 'valid_mm2': 257.0042400768}
+PHerc0343P/segments/20250902170441--4_b2/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr crop origin (640, 128) shape (31, 2048, 2048) 256 chunks 127 MB new
+PHerc0343P 20250902170441--4_b2 {'hf_ratio': 0.04425814138377965, 'hf_ratio_relaxed': 0.04121063160373488, 'layer_hp_corr': 0.7790144739336861, 'valid_mm2': 287.79399014399996}
+PHerc0343P/segments/20250902171204--1_b2/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr crop origin (512, 128) shape (31, 2048, 2048) 256 chunks 128 MB new
+PHerc0343P 20250902171204--1_b2 {'hf_ratio': None, 'hf_ratio_relaxed': 0.03745219251703421, 'layer_hp_corr': 0.7788464489131907, 'valid_mm2': 294.2278152192}
+PHerc0500P2/segments/20250609204953-z_dbg_gen_00612/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr crop origin (2176, 768) shape (28, 2048, 2048) 256 chunks 106 MB new
+PHerc0500P2 20250609204953-z_dbg_gen_00612 {'hf_ratio': None, 'hf_ratio_relaxed': 0.05348387219473108, 'layer_hp_corr': 0.7822004374680497, 'valid_mm2': 219.78451635779604}
+PHerc0500P2/segments/20250628074500-500P2_front/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr crop origin (1920, 768) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0500P2 20250628074500-500P2_front {'hf_ratio': None, 'hf_ratio_relaxed': 0.038280529731251955, 'layer_hp_corr': 0.767683423353645, 'valid_mm2': 367.18396848731203}
+PHerc0500P2/segments/20250825181928-2/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr crop origin (2560, 384) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0500P2 20250825181928-2 {'hf_ratio': None, 'hf_ratio_relaxed': 0.053587537500572734, 'layer_hp_corr': 0.7793175444624988, 'valid_mm2': 367.42412138787205}
+PHerc0800/segments/20251028213516-auto_grown_20251028213516907/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr crop origin (0, 128) shape (31, 2048, 2048) 256 chunks 86 MB new
+PHerc0800 20251028213516-auto_grown_20251028213516 {'hf_ratio': 0.05979521081223803, 'hf_ratio_relaxed': 0.050619488515495435, 'layer_hp_corr': 0.8337093522459077, 'valid_mm2': 169.2113836032}
+have PHerc0800 20251028220955
+have PHerc0800 20251028225813
+PHerc0814/segments/20250925161630-auto_grown_20250925161630635/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr crop origin (1152, 13184) shape (28, 2048, 2048) 256 chunks 111 MB new
+PHerc0814 20250925161630-auto_grown_20250925161630 {'hf_ratio': None, 'hf_ratio_relaxed': 0.031506697810946706, 'layer_hp_corr': 0.7524272073855119, 'valid_mm2': 315.08332259308406}
+PHerc0814/segments/20250926165636-auto_trace_20250926165636789/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr crop origin (1664, 13824) shape (28, 2048, 2048) 256 chunks 114 MB new
+PHerc0814 20250926165636-auto_trace_20250926165636 {'hf_ratio': None, 'hf_ratio_relaxed': 0.04090554648578326, 'layer_hp_corr': 0.7940824586932539, 'valid_mm2': 325.31593968599606}
+PHerc0814/segments/20251001060526-auto_grown_20251001060526760/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr crop origin (384, 7552) shape (28, 2048, 2048) 256 chunks 110 MB new
+PHerc0814 20251001060526-auto_grown_20251001060526 {'hf_ratio': None, 'hf_ratio_relaxed': 0.036716876442457046, 'layer_hp_corr': 0.738038977331659, 'valid_mm2': 277.60369363780404}
+have PHerc0841 20260220213127
+PHerc0841/segments/20260220214732-auto_grown_20260220144552896/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr crop origin (768, 1280) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0841 20260220214732-auto_grown_20260220144552 {'hf_ratio': None, 'hf_ratio_relaxed': 0.04157895445259612, 'layer_hp_corr': 0.7466783681364609, 'valid_mm2': 367.46350163989194}
+PHerc0841/segments/20260221022814-auto_grown_20260220174252405/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr crop origin (128, 1408) shape (28, 2048, 2048) 256 chunks 117 MB new
+PHerc0841 20260221022814-auto_grown_20260220174252 {'hf_ratio': None, 'hf_ratio_relaxed': 0.03472640002083358, 'layer_hp_corr': 0.7441177915218846, 'valid_mm2': 367.60297954993194}
+PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr crop origin (256, 1152) shape (31, 2048, 2048) 256 chunks 28 MB new
+PHerc1447 20250502180708-auto_grown_20250502160708 {'hf_ratio': None, 'hf_ratio_relaxed': None, 'layer_hp_corr': 0.8982069207500564, 'valid_mm2': 18.1070816256}
+PHerc1447/segments/20250502183421-auto_grown_20250502161744358/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr crop origin (0, 1408) shape (31, 2048, 2048) 256 chunks 89 MB new
+PHerc1447 20250502183421-auto_grown_20250502161744 {'hf_ratio': None, 'hf_ratio_relaxed': 0.07559825872908772, 'layer_hp_corr': 0.897863814916961, 'valid_mm2': 156.1323257856}
+PHerc1447/segments/20250502205333-auto_grown_20250502181030065/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr crop origin (640, 256) shape (31, 2048, 2048) 256 chunks 116 MB new
+PHerc1447 20250502205333-auto_grown_20250502181030 {'hf_ratio': None, 'hf_ratio_relaxed': 0.08509682552807056, 'layer_hp_corr': 0.9424004413791809, 'valid_mm2': 246.835247616}
+FETCH_MORE_DONE

@@ -1,0 +1,22 @@
+{
+ "name": "PHerc1203 at 2.4 µm (unlabelled)",
+ "scroll": "PHerc1203",
+ "segment": "zones z965, z743, z031, 1203c (+ phase-3 tile p0_965)",
+ "labeled": false,
+ "summary": "No reference read exists, so node A cannot run. Zones rendered from the 2.403 µm scan; models: native 2.4 µm hecate (scrollprize/hecate) and dense_native at 2.4 and 9.6 µm; null = same model on depth-reversed input.",
+ "unlabeled": {
+  "prereg": "../../results/irp/1203_PREREG.md",
+  "prereg_written": "2026-10-27T18:55:00-03:00",
+  "first_result": "2026-10-27T20:04:15-03:00",
+  "rule": {
+   "min_components": 0
+  },
+  "zones_file": "../../results/irp/1203_zones.json",
+  "notes": [
+   "Rule as pre-registered in §0: components ≥ 2× reverse-depth null AND r ≥ 0.3 with a different checkpoint, then visual check (strokes 0.1–0.5 mm). Same-checkpoint agreement (dn@9.6 vs native dn) does not count.",
+   "Visual check (hires_test/fig/*_before_after.png): hecate fires in sparse spots at patch edges, dn@2.4 is uniform speckle; recorded as no stroke-like shapes.",
+   "Phase-3/4 tiles are still running; re-run examples/irp/export_1203.py and this card to include them."
+  ],
+  "compute": "A full 1203 pass (≈ 23 cm², stride 128, both directions, plus the r152 teacher) is ≈ 72 h on this CPU box or an ESTIMATED 4–12 GPU-hours (≈ US$4–24); not justified without a candidate (hires_test/gpu_verdict.json)."
+ }
+}

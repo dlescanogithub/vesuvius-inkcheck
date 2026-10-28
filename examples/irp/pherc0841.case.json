@@ -1,0 +1,68 @@
+{
+ "name": "PHerc0841 (unseen scroll; map + human labels)",
+ "scroll": "PHerc0841",
+ "segment": "20260220213127-w00",
+ "summary": "Native 9.37 µm / 113 keV surface volume; Reader V3, Reader v2 and dense_native 16k (the ink_9um labels contain no PHerc0841). Two references: the team's 2.4 µm ink map (117 strokes, used for node A) and the human ink labels (level 4, 9.6 µm; independent of any model, but they merge into only 7 connected strokes, too few for a letter-level verdict on their own). No PHerc0841 segment is in Reader V3's or Reader v2's training list (checked in the configs embedded in reader-v3.pth and reader-v2-step040000.pth): an unseen scroll.",
+ "checks": [
+  {
+   "label": "Reader V3 vs 2.4 µm map",
+   "json": "../../results/rescore/newcases/0841-w00-map__rv3.json"
+  },
+  {
+   "label": "dense_native 16k vs 2.4 µm map",
+   "json": "../../results/newcases/scores/0841-w00-map__dn.json"
+  },
+  {
+   "label": "Reader v2 vs 2.4 µm map",
+   "json": "../../results/newcases/scores/0841-w00-map__rv2.json"
+  }
+ ],
+ "references": {
+  "references": [
+   {
+    "name": "2.4 µm map",
+    "kind": "team model prediction on a 4× finer scan"
+   },
+   {
+    "name": "human labels",
+    "kind": "hand-drawn ink labels, independent of any model"
+   }
+  ],
+  "same_pred": [
+   {
+    "label": "Reader V3 (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/rescore/newcases/0841-w00-map__rv3.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0841-w00-human__rv3.json"
+    }
+   },
+   {
+    "label": "dense_native 16k (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/newcases/scores/0841-w00-map__dn.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0841-w00-human__dn.json"
+    }
+   },
+   {
+    "label": "Reader v2 (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/newcases/scores/0841-w00-map__rv2.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0841-w00-human__rv2.json"
+    }
+   }
+  ]
+ },
+ "headline": "Reader V3, Reader v2 and dense_native all see 0841 ink (significant against the 2.4 µm map and the human labels) but not at letter level (WEAK: best stroke recall 0.34 vs 0.15 chance), on a scroll none of them trained on."
+}

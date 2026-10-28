@@ -1,0 +1,321 @@
+{
+ "name": "PHerc0343P (no model at letter level)",
+ "scroll": "PHerc0343P",
+ "segment": "20250904233748-0_b2, 20250905172054-1_b2 (Reader v2 held-out), 20250511003658",
+ "summary": "Native 8.64 µm / 116 keV surface volumes; reference = 2.215 µm new_canon map. Reader v2/V3 are scored only on their two held-out segments; d9v4C is shown but excluded (leak). Caveat: the main reference is the canonical 2 µm model's prediction, not ground truth; node R checks it against letters traced on an infrared photograph (an independent, camera-based reference).",
+ "headline": "No held-out model reaches letter level (WEAK; seed42 FAIL), including Reader v2/V3 on their own held-out segments; the scan is inside the tolerated blur/noise range and a 4× finer scan of the same segment does not fix it, so the gap is scroll/ink-specific, not resolution.",
+ "checks": [
+  {
+   "label": "Reader v2 @233748",
+   "json": "../../results/rescore/reader_v2/343P-20250904233748__rv2.json",
+   "published_auc": 0.8058
+  },
+  {
+   "label": "Reader V3 @233748",
+   "json": "../../results/rescore/reader_v2/343P-20250904233748__rv3.json"
+  },
+  {
+   "label": "d9v4C @233748",
+   "json": "../../results/rescore/reader_v2/343P-20250904233748__d9v4C.json",
+   "held_out": false,
+   "note": "segment in d9v4C train.txt"
+  },
+  {
+   "label": "seed42 @233748",
+   "json": "../../results/rescore/reader_v2/343P-20250904233748__s42.json"
+  },
+  {
+   "label": "dense_native @233748",
+   "json": "../../results/rescore/reader_v2/343P-20250904233748__dn.json"
+  },
+  {
+   "label": "Reader v2 @172054",
+   "json": "../../results/rescore/reader_v2/343P-20250905172054__rv2.json",
+   "published_auc": 0.7282
+  },
+  {
+   "label": "Reader V3 @172054",
+   "json": "../../results/rescore/reader_v2/343P-20250905172054__rv3.json"
+  },
+  {
+   "label": "d9v4C @172054",
+   "json": "../../results/rescore/reader_v2/343P-20250905172054__d9v4C.json",
+   "held_out": false,
+   "note": "segment in d9v4C train.txt"
+  },
+  {
+   "label": "seed42 @172054",
+   "json": "../../results/rescore/reader_v2/343P-20250905172054__s42.json"
+  },
+  {
+   "label": "dense_native @172054",
+   "json": "../../results/rescore/reader_v2/343P-20250905172054__dn.json"
+  },
+  {
+   "label": "dense_native @511003658",
+   "json": "../../results/rescore/controls/343P_dn_8.64um.json",
+   "note": "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+  },
+  {
+   "label": "dense9um (Klavis) @511003658",
+   "json": "../../results/rescore/controls/343P_kl_8.64um.json",
+   "note": "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+  },
+  {
+   "label": "seed42 @511003658",
+   "json": "../../results/rescore/controls/343P_s42_8.64um.json",
+   "note": "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+  },
+  {
+   "label": "seed43 @511003658",
+   "json": "../../results/rescore/controls/343P_s43_8.64um.json",
+   "note": "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+  },
+  {
+   "label": "soup @511003658",
+   "json": "../../results/rescore/controls/343P_soup_8.64um.json",
+   "note": "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+  }
+ ],
+ "tolerance": {
+  "source": "Paris 4 dose-response (dense_native, docs/RESOLUTION_STUDY.md; proxies from study/psd_compare.py and study/layer_snr.py)",
+  "curves": [
+   {
+    "proxy": "HF spectral ratio (10–25 / 2–10 cyc/mm)",
+    "higher_is_better": true,
+    "meaning": "sharpness proxy; Paris 4 still PASSes with added blur FWHM ≈ 23 µm (ratio 0.024).",
+    "points": [
+     {
+      "variant": "P4 original",
+      "value": 0.04799,
+      "verdict": "PASS",
+      "control": true
+     },
+     {
+      "variant": "blur σ=1 px (FWHM 22.6 µm)",
+      "value": 0.02404,
+      "verdict": "PASS"
+     },
+     {
+      "variant": "blur σ=2 px",
+      "value": 0.00495,
+      "verdict": "WEAK"
+     },
+     {
+      "variant": "blur σ=3 px",
+      "value": 0.00056,
+      "verdict": "WEAK"
+     }
+    ]
+   },
+   {
+    "proxy": "adjacent-layer high-pass correlation",
+    "higher_is_better": true,
+    "meaning": "noise proxy (it rises with blur, so it is read only against the noise curve); Paris 4 still PASSes with noise σ = 0.5× volume SD (0.32).",
+    "points": [
+     {
+      "variant": "P4 original",
+      "value": 0.5342,
+      "verdict": "PASS",
+      "control": true
+     },
+     {
+      "variant": "noise σ=16",
+      "value": 0.3195,
+      "verdict": "PASS"
+     },
+     {
+      "variant": "noise σ=32",
+      "value": 0.1478,
+      "verdict": "WEAK"
+     },
+     {
+      "variant": "noise σ=48",
+      "value": 0.0777,
+      "verdict": "WEAK"
+     }
+    ]
+   }
+  ],
+  "target": {
+   "HF spectral ratio (10–25 / 2–10 cyc/mm)": 0.03391,
+   "adjacent-layer high-pass correlation": 0.7787
+  },
+  "tolerances_text": [
+   "Stroke size is not the issue either: the median 343P reference stroke (≈ 0.19 mm²) is comparable to the Paris 4 reference strokes (results/study/stroke_geometry.json; Paris 4 values withheld)."
+  ]
+ },
+ "two_scan": {
+  "scan_a": {
+   "name": "native 8.64 µm / 116 keV",
+   "checks": [
+    {
+     "label": "dense_native",
+     "json": "../../results/rescore/controls/343P_dn_8.64um.json"
+    },
+    {
+     "label": "dense9um",
+     "json": "../../results/rescore/controls/343P_kl_8.64um.json"
+    },
+    {
+     "label": "seed42",
+     "json": "../../results/rescore/controls/343P_s42_8.64um.json"
+    },
+    {
+     "label": "seed43",
+     "json": "../../results/rescore/controls/343P_s43_8.64um.json"
+    },
+    {
+     "label": "soup",
+     "json": "../../results/rescore/controls/343P_soup_8.64um.json"
+    }
+   ]
+  },
+  "scan_b": {
+   "name": "2.215 µm / 111 keV pooled to 8.86 µm",
+   "checks": [
+    {
+     "label": "dense_native",
+     "json": "../../results/rescore/study/343P_from2um_dn_w5.json"
+    },
+    {
+     "label": "dense9um",
+     "json": "../../results/rescore/study/343P_from2um_kl_w5.json"
+    },
+    {
+     "label": "seed42",
+     "json": "../../results/rescore/study/343P_from2um_s42_w5.json"
+    },
+    {
+     "label": "seed43",
+     "json": "../../results/rescore/study/343P_from2um_s43_w5.json"
+    },
+    {
+     "label": "soup",
+     "json": "../../results/rescore/study/343P_from2um_soup_w5.json"
+    }
+   ]
+  }
+ },
+ "references": {
+  "references": [
+   {
+    "name": "new_canon 2.2 µm map",
+    "kind": "canonical team model prediction on a 4× finer scan of segment 20250511003658"
+   },
+   {
+    "name": "IR-traced letters",
+    "kind": "letters traced by the Vesuvius Challenge team on an infrared photograph of the fragment, placed on the 8.64 µm scan by D. Russo (DomRusso2/ir-truth-9um); independent of any CT model, but only 8 traced strokes in the overlap"
+   }
+  ],
+  "ref_vs_ref": [
+   {
+    "label": "team 2.2 µm map vs IR letters (AUC)",
+    "metric": "AUC",
+    "value": 0.909,
+    "null_mean": 0.5813,
+    "null_max": 0.7065,
+    "p": 0.0005,
+    "source": "ir-truth-9um scorer, null = 2000 random placements of the letter mask (results/irtruth/ir_scores.json)"
+   },
+   {
+    "label": "team 2.2 µm map vs IR letters (inkcheck)",
+    "metric": "band-pass r",
+    "value": 0.431,
+    "null_mean": 0.051,
+    "null_max": 0.137,
+    "p": 0.0052,
+    "source": "inkcheck PASS against the IR letters (results/irtruth/inkcheck/team2.2um_vs_IR.json): the IR reference can return PASS when letters are present"
+   }
+  ],
+  "same_pred": [
+   {
+    "label": "dense_native @511003658",
+    "a": {
+     "label": "new_canon",
+     "json": "../../results/rescore/controls/343P_dn_8.64um.json"
+    },
+    "b": {
+     "label": "IR",
+     "json": "../../results/irtruth/inkcheck/dn_vs_IR.json"
+    }
+   },
+   {
+    "label": "dense9um (Klavis) @511003658",
+    "a": {
+     "label": "new_canon",
+     "json": "../../results/rescore/controls/343P_kl_8.64um.json"
+    },
+    "b": {
+     "label": "IR",
+     "json": "../../results/irtruth/inkcheck/kl_vs_IR.json"
+    }
+   },
+   {
+    "label": "seed42 @511003658",
+    "a": {
+     "label": "new_canon",
+     "json": "../../results/rescore/controls/343P_s42_8.64um.json"
+    },
+    "b": {
+     "label": "IR",
+     "json": "../../results/irtruth/inkcheck/s42_vs_IR.json"
+    }
+   },
+   {
+    "label": "seed43 @511003658",
+    "a": {
+     "label": "new_canon",
+     "json": "../../results/rescore/controls/343P_s43_8.64um.json"
+    },
+    "b": {
+     "label": "IR",
+     "json": "../../results/irtruth/inkcheck/s43_vs_IR.json"
+    }
+   },
+   {
+    "label": "soup @511003658",
+    "a": {
+     "label": "new_canon",
+     "json": "../../results/rescore/controls/343P_soup_8.64um.json"
+    },
+    "b": {
+     "label": "IR",
+     "json": "../../results/irtruth/inkcheck/soup_vs_IR.json"
+    }
+   }
+  ],
+  "ranking": {
+   "metric_a": "inkcheck AUC vs new_canon",
+   "metric_b": "AUC vs IR letters (ir-truth scorer)",
+   "models": [
+    {
+     "label": "dense_native",
+     "a": 0.7702,
+     "b": 0.7405
+    },
+    {
+     "label": "dense9um (Klavis)",
+     "a": 0.7529,
+     "b": 0.6947
+    },
+    {
+     "label": "seed42",
+     "a": 0.6316,
+     "b": 0.6007
+    },
+    {
+     "label": "seed43",
+     "a": 0.6515,
+     "b": 0.6742
+    },
+    {
+     "label": "soup",
+     "a": 0.6621,
+     "b": 0.6181
+    }
+   ],
+   "note": "Metric fixed before the IR runs. With band-pass r instead of AUC the rank correlation is 0.7 (not significant with 5 models). The IR set is small (its README: too small to rank models that score close together), so read the ranking as supporting evidence only. Reader V2/V3 are not ranked here: both were trained on 20250511003658."
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "note": "Paris 4 dense_native verdicts per input degradation; scores withheld (PHercParis4 reservation until 2027-06-25)",
+ "verdicts": {
+  "original": "PASS",
+  "blur0.5": "PASS",
+  "blur1": "PASS",
+  "blur1.5": "WEAK",
+  "blur2": "WEAK",
+  "blur3": "WEAK",
+  "blur4": "FAIL",
+  "bin2": "WEAK",
+  "bin3": "WEAK",
+  "bin4": "WEAK",
+  "noise_sd8": "PASS",
+  "noise_sd16": "PASS",
+  "noise_sd32": "WEAK",
+  "noise_sd48": "WEAK",
+  "noise_sd64": "WEAK"
+ }
+}

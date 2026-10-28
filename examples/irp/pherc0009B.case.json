@@ -1,0 +1,68 @@
+{
+ "name": "PHerc0009B (two references)",
+ "scroll": "PHerc0009B",
+ "segment": "20250919125754 (labelled crop)",
+ "summary": "Native 8.64 µm / 116 keV surface volume; Reader V3, Reader v2 and Erwin Nieuwlaar's dense_native 16k (trained on the ink_9um labels: PHerc0139, 1667, Paris 4, 0814, so no 0009B). Two references: the team's 2.4 µm ink map and the human ink labels (level 4, 9.6 µm, labelled area only). Segment 20250919125754 is not in Reader V3's training list (checked in the configs embedded in reader-v3.pth and reader-v2-step040000.pth); other 0009B segments are, so this is a held-out segment of a seen scroll.",
+ "checks": [
+  {
+   "label": "Reader V3 vs 2.4 µm map",
+   "json": "../../results/newcases/scores/0009B-125754-map__rv3.json"
+  },
+  {
+   "label": "dense_native 16k vs 2.4 µm map",
+   "json": "../../results/newcases/scores/0009B-125754-map__dn.json"
+  },
+  {
+   "label": "Reader v2 vs 2.4 µm map",
+   "json": "../../results/newcases/scores/0009B-125754-map__rv2.json"
+  }
+ ],
+ "references": {
+  "references": [
+   {
+    "name": "2.4 µm map",
+    "kind": "team model prediction on a 4× finer scan"
+   },
+   {
+    "name": "human labels",
+    "kind": "hand-drawn ink labels, independent of any model"
+   }
+  ],
+  "same_pred": [
+   {
+    "label": "Reader V3 (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/newcases/scores/0009B-125754-map__rv3.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0009B-125754-human__rv3.json"
+    }
+   },
+   {
+    "label": "dense_native 16k (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/newcases/scores/0009B-125754-map__dn.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0009B-125754-human__dn.json"
+    }
+   },
+   {
+    "label": "Reader v2 (same prediction)",
+    "a": {
+     "label": "map",
+     "json": "../../results/newcases/scores/0009B-125754-map__rv2.json"
+    },
+    "b": {
+     "label": "human",
+     "json": "../../results/newcases/scores/0009B-125754-human__rv2.json"
+    }
+   }
+  ]
+ },
+ "headline": "Three held-out checkpoints read letters on a 0009B segment: Reader V3 (r 0.79, stroke recall 0.59 vs 0.17 chance), Reader v2 (r 0.75, 0.59) and dense_native (r 0.67, 0.54), and the independent human labels agree for all three (r 0.69 / 0.65 / 0.58, 10 of 10 strokes): PASS on two references."
+}

@@ -1,0 +1,18 @@
+PHercParis4 20231005123336 (control crop) {'hf_ratio': 0.047987717829644866, 'hf_tiles': 25, 'layer_hp_corr': 0.5341591000683414, 'valid_mm2': 217.43271935999996}
+PHerc0343P 20250904233748-0_b2 {'hf_ratio': 0.03254350063273942, 'hf_tiles': 10, 'layer_hp_corr': 0.7763145437268264, 'valid_mm2': 431.69953259519997}
+PHerc0343P 20250905172054-1_b2 {'hf_ratio': 0.03154754616513216, 'hf_tiles': 5, 'layer_hp_corr': 0.7687818340277334, 'valid_mm2': 324.4900912128}
+/workspace/vesuvius/.venv314/lib/python3.14/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/workspace/vesuvius/.venv314/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+PHerc0009B 20250919125754 (labelled crop) {'hf_ratio': None, 'hf_tiles': 0, 'layer_hp_corr': 0.8067376298392216, 'valid_mm2': 373.6823860224}
+PHerc0841 20260220213127-w00 {'hf_ratio': None, 'hf_tiles': 0, 'layer_hp_corr': 0.7459683289953315, 'valid_mm2': 574.4553870079079}
+PHerc0172 20250926122938-w082 {'hf_ratio': 0.05472154238349672, 'hf_tiles': 121, 'layer_hp_corr': 0.8529160805799547, 'valid_mm2': 590.4666722304}
+PHerc0172 20250926132117-w083 {'hf_ratio': 0.050648714954362364, 'hf_tiles': 121, 'layer_hp_corr': 0.8545097797191028, 'valid_mm2': 590.4666722304}
+PHerc0500P2 20250716055229 (gen_00371) {'hf_ratio': None, 'hf_tiles': 0, 'layer_hp_corr': 0.7551704184584523, 'valid_mm2': 461.22977258157607}
+PHerc0500P2 20250716055230 (gen_00377) {'hf_ratio': None, 'hf_tiles': 0, 'layer_hp_corr': 0.7798091334511402, 'valid_mm2': 856.7552892167281}
+PHerc0800 20251028220042 {'hf_ratio': 0.033662661459789744, 'hf_tiles': 1, 'layer_hp_corr': 0.8251641223337621, 'valid_mm2': 157.5963537408}
+PHerc0800 20251028220955 {'hf_ratio': 0.035532143526667635, 'hf_tiles': 5, 'layer_hp_corr': 0.8163667136037686, 'valid_mm2': 152.64297953279998}
+PHerc0800 20251028222030 {'hf_ratio': 0.059863144111322986, 'hf_tiles': 11, 'layer_hp_corr': 0.8392018512155636, 'valid_mm2': 233.7184171008}
+PHerc0800 20251028225813 {'hf_ratio': 0.050171854797654354, 'hf_tiles': 7, 'layer_hp_corr': 0.838141484372585, 'valid_mm2': 183.1963143168}
+PHerc0800 20251029010146 {'hf_ratio': None, 'hf_tiles': 0, 'layer_hp_corr': 0.8415522626793646, 'valid_mm2': 35.6151002112}

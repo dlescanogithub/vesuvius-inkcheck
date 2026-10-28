@@ -1,0 +1,170 @@
+[
+ {
+  "scroll": "PHerc0139",
+  "segment": "20250108000000-w025_2025010863",
+  "volume": "PHerc0139/segments/20250108000000-w025_2025010863/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0139",
+  "segment": "20260126000000-w045_2026012619",
+  "volume": "PHerc0139/segments/20260126000000-w045_2026012619/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0139",
+  "segment": "20260227000000-w052_2026022705",
+  "volume": "PHerc0139/segments/20260227000000-w052_2026022705/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0172",
+  "segment": "20250917143559-w062_20250917143559205_flatboi",
+  "volume": "PHerc0172/segments/20250917143559-w062_20250917143559205_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr",
+  "um": 7.91,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0172",
+  "segment": "20251110135803-w067_20251110135803677_flatboi",
+  "volume": "PHerc0172/segments/20251110135803-w067_20251110135803677_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr",
+  "um": 7.91,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0172",
+  "segment": "20251115002747-auto_grown_20251115002740308_7_flatboi",
+  "volume": "PHerc0172/segments/20251115002747-auto_grown_20251115002740308_7_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr",
+  "um": 7.91,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0343P",
+  "segment": "20250511003658-tifxyz",
+  "volume": "PHerc0343P/segments/20250511003658-tifxyz/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr",
+  "um": 8.64,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0343P",
+  "segment": "20250902170441--4_b2",
+  "volume": "PHerc0343P/segments/20250902170441--4_b2/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr",
+  "um": 8.64,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0343P",
+  "segment": "20250902171204--1_b2",
+  "volume": "PHerc0343P/segments/20250902171204--1_b2/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr",
+  "um": 8.64,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0500P2",
+  "segment": "20250609204953-z_dbg_gen_00612",
+  "volume": "PHerc0500P2/segments/20250609204953-z_dbg_gen_00612/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0500P2",
+  "segment": "20250628074500-500P2_front",
+  "volume": "PHerc0500P2/segments/20250628074500-500P2_front/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0500P2",
+  "segment": "20250825181928-2",
+  "volume": "PHerc0500P2/segments/20250825181928-2/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0800",
+  "segment": "20251028213516-auto_grown_20251028213516907",
+  "volume": "PHerc0800/segments/20251028213516-auto_grown_20251028213516907/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ },
+ {
+  "scroll": "PHerc0800",
+  "segment": "20251028220955-auto_grown_20251028220955262",
+  "volume": "PHerc0800/segments/20251028220955-auto_grown_20251028220955262/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ },
+ {
+  "scroll": "PHerc0800",
+  "segment": "20251028225813-auto_grown_20251028225813045",
+  "volume": "PHerc0800/segments/20251028225813-auto_grown_20251028225813045/surface-volumes/8.64um-1.2m-116keV-volume-20250521135224.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ },
+ {
+  "scroll": "PHerc0814",
+  "segment": "20250925161630-auto_grown_20250925161630635",
+  "volume": "PHerc0814/segments/20250925161630-auto_grown_20250925161630635/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0814",
+  "segment": "20250926165636-auto_trace_20250926165636789",
+  "volume": "PHerc0814/segments/20250926165636-auto_trace_20250926165636789/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0814",
+  "segment": "20251001060526-auto_grown_20251001060526760",
+  "volume": "PHerc0814/segments/20251001060526-auto_grown_20251001060526760/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr",
+  "um": 9.362,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0841",
+  "segment": "20260220213127-w00",
+  "volume": "PHerc0841/segments/20260220213127-w00/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr",
+  "um": 9.366,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0841",
+  "segment": "20260220214732-auto_grown_20260220144552896",
+  "volume": "PHerc0841/segments/20260220214732-auto_grown_20260220144552896/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr",
+  "um": 9.366,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc0841",
+  "segment": "20260221022814-auto_grown_20260220174252405",
+  "volume": "PHerc0841/segments/20260221022814-auto_grown_20260220174252405/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr",
+  "um": 9.366,
+  "has_ink_map": true
+ },
+ {
+  "scroll": "PHerc1447",
+  "segment": "20250502180708-auto_grown_20250502160708188",
+  "volume": "PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ },
+ {
+  "scroll": "PHerc1447",
+  "segment": "20250502183421-auto_grown_20250502161744358",
+  "volume": "PHerc1447/segments/20250502183421-auto_grown_20250502161744358/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ },
+ {
+  "scroll": "PHerc1447",
+  "segment": "20250502205333-auto_grown_20250502181030065",
+  "volume": "PHerc1447/segments/20250502205333-auto_grown_20250502181030065/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr",
+  "um": 8.64,
+  "has_ink_map": false
+ }
+]

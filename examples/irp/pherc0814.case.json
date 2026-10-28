@@ -1,0 +1,36 @@
+{
+ "name": "PHerc0814 control (reproduces official AUC)",
+ "scroll": "PHerc0814",
+ "segment": "46527 (ink_9um validation mask)",
+ "summary": "Same crop and held-out pixels as the official ink_9um validation mask (bench/fetch_ink9um_val.py), villa inference on CPU. Published AUCs from the checkpoints' own evaluations.",
+ "checks": [
+  {
+   "label": "Erwin dense_native 16k",
+   "json": "../../results/valmask/pherc0814-46527__dn.json"
+  },
+  {
+   "label": "dense9um all7",
+   "json": "../../results/valmask/pherc0814-46527__kl-all7.json",
+   "published_auc": 0.935
+  },
+  {
+   "label": "dense9um w016-excluded",
+   "json": "../../results/valmask/pherc0814-46527__kl-w016ex.json",
+   "published_auc": 0.93
+  },
+  {
+   "label": "ink_9um seed42 75k",
+   "json": "../../results/valmask/pherc0814-46527__s42.json",
+   "published_auc": 0.874
+  },
+  {
+   "label": "ink_9um seed43 75k",
+   "json": "../../results/valmask/pherc0814-46527__s43.json"
+  },
+  {
+   "label": "Erwin soup42_last4",
+   "json": "../../results/valmask/pherc0814-46527__soup.json",
+   "published_auc": 0.881
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+[inkcheck] analysis grid 3440x2060 @ 8.640 um, valid overlap 54.3% (2.87 cm2)
+[inkcheck] stats grid 1720x1030 @ 17.28 um, search +-29 px (0.5 mm)
+[inkcheck] band-pass r=+0.174 at shift (-6,1) stat-px; zero-shift +0.163; raw r +0.238
+[inkcheck] AUC raw 0.732 bp 0.626; breakeven F1 0.247; stroke recall 0.000 (8 strokes), precision 0.173
+[inkcheck]   nulls 25/195 (38s)
+[inkcheck]   nulls 50/195 (54s)
+[inkcheck]   nulls 75/195 (62s)
+[inkcheck]   nulls 100/195 (72s)
+[inkcheck]   nulls 125/195 (80s)
+[inkcheck]   nulls 150/195 (92s)
+[inkcheck]   nulls 175/195 (106s)
+[inkcheck] bootstrap (89 tiles of 2.0 mm): r_bp(aligned) 0.173 [0.102, 0.228]; stroke recall 0.00 [0.00, 0.00]
+[inkcheck] VERDICT FAIL: model sees known ink at 8.64 um: NO (band-pass r=0.17, p=0.0104 vs search-matched null)
+[inkcheck] tile bootstrap (89 x 2.0 mm tiles, 1000 draws, conditional on the registration): r_bp 95% CI [0.102, 0.228]; stroke recall - chance -0.00 [-0.00, -0.00]
+FAIL	model sees known ink at 8.64 um: NO (band-pass r=0.17, p=0.0104 vs search-matched null)
+wrote prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/dn_vs_IR.json and prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/dn_vs_IR.png

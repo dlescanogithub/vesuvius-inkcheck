@@ -1,0 +1,14 @@
+[inkcheck] analysis grid 2560x2560 @ 9.366 um, valid overlap 100.0% (5.75 cm2)
+[inkcheck] stats grid 1280x1280 @ 18.73 um, search +-27 px (0.5 mm)
+[inkcheck] band-pass r=+0.547 at shift (3,3) stat-px; zero-shift +0.527; raw r +0.658
+[inkcheck] AUC raw 0.855 bp 0.755; breakeven F1 0.570; stroke recall 0.342 (117 strokes), precision 0.289
+[inkcheck]   nulls 25/198 (60s)
+[inkcheck]   nulls 50/198 (93s)
+[inkcheck]   nulls 75/198 (102s)
+[inkcheck]   nulls 100/198 (110s)
+[inkcheck]   nulls 125/198 (117s)
+[inkcheck]   nulls 150/198 (124s)
+[inkcheck]   nulls 175/198 (131s)
+[inkcheck] bootstrap (144 tiles of 2.0 mm): r_bp(aligned) 0.547 [0.495, 0.594]; stroke recall 0.34 [0.25, 0.44]
+[inkcheck] VERDICT WEAK: model sees known ink at 9.366 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.55, p=0.00518; stroke recall 34% vs 15% chance)
+0841-w00-map	rv3	WEAK	model sees known ink at 9.366 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.55, p=0.00518; stroke recall 34% vs 15% chance)

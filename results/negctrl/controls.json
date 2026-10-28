@@ -1,0 +1,22 @@
+{
+ "true_origin": [
+  512,
+  1536
+ ],
+ "true_ink_frac": null,
+ "wrongregion_origin": [
+  2944,
+  896
+ ],
+ "wrongregion_ink_frac": null,
+ "wrongregion_distance_mm": 48.284178934305174,
+ "tile_ref_px": 104,
+ "n_tiles": 49,
+ "tileshuffle_origin": [
+  512,
+  1536
+ ],
+ "tileshuffle_fixed_points": 1,
+ "tileshuffle_rot_seed": 1,
+ "note": "Paris 4 reference ink fractions withheld (PHercParis4 publication reservation until 2027-06-25)"
+}

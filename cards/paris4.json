@@ -1,0 +1,81 @@
+{
+ "name": "Paris 4 (control, PASS)",
+ "segment": "20231005123336",
+ "scroll": "PHercParis4",
+ "summary": "Held-out Paris 4 segment, 9.6 \u00b5m input pooled from the 2.4 \u00b5m scan, reference new_canon at 19.2 \u00b5m. Five public ~9 \u00b5m checkpoints, including Reader v2 and V3.",
+ "path": [
+  "A"
+ ],
+ "nodes": [
+  {
+   "node": "A",
+   "question": "Does the model see known ink on this labelled segment?",
+   "verdict": "PASS",
+   "answer": "YES: 5 of 5 held-out checkpoints recover letters (PASS).",
+   "evidence": [
+    "Numbers withheld for 5 of 5 checkpoint(s); verdicts only: PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team",
+    "Held-out checkpoints: 5 PASS, 0 WEAK, 0 FAIL (numbers withheld)."
+   ],
+   "next_step": "Ink is recoverable at this resolution with these models. Stop here, or move to unlabelled segments of the same scroll (node D).",
+   "table": [
+    [
+     "checkpoint",
+     "verdict",
+     "r_bp [95% CI] (z)",
+     "AUC (published)",
+     "stroke recall [95% CI] (chance)",
+     "strokes",
+     "note"
+    ],
+    [
+     "Reader v2",
+     "PASS",
+     "withheld",
+     "withheld",
+     "withheld",
+     "withheld",
+     ""
+    ],
+    [
+     "Reader V3",
+     "PASS",
+     "withheld",
+     "withheld",
+     "withheld",
+     "withheld",
+     ""
+    ],
+    [
+     "d9v4C",
+     "PASS",
+     "withheld",
+     "withheld",
+     "withheld",
+     "withheld",
+     ""
+    ],
+    [
+     "ink_9um seed42",
+     "PASS",
+     "withheld",
+     "withheld",
+     "withheld",
+     "withheld",
+     ""
+    ],
+    [
+     "dense_native 16k",
+     "PASS",
+     "withheld",
+     "withheld",
+     "withheld",
+     "withheld",
+     ""
+    ]
+   ],
+   "automated": "automatic"
+  }
+ ],
+ "recommendation": "Ink is recoverable at this resolution with these models. Stop here, or move to unlabelled segments of the same scroll (node D).",
+ "headline": "YES: 5 of 5 held-out checkpoints recover letters (PASS)."
+}

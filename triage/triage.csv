@@ -1,0 +1,36 @@
+scroll,segment,um,valid_mm2,hf_ratio,hf_note,layer_hp_corr,inside_tolerance,node_a,node_a_evidence,in_reader_v3_training,team_ink_map,tier
+PHerc0009B,20250919125754 (labelled crop),8.64,374,0.0549,relaxed,0.807,True,PASS (this segment),"Reader V3, Reader v2, dense_native PASS vs 2.4 µm map and vs human labels (cards/pherc0009B)",False,yes,1 read
+PHercParis4,20231005123336 (control crop),9.6,217,0.048,,0.534,True,PASS (this segment),5/5 held-out 9 µm checkpoints PASS (cards/paris4),False,yes,1 read
+PHerc0800,20251028213516-auto_grown_20251028213516,8.64,169,0.0598,,0.834,True,none,,False,no,2 test
+PHerc0800,20251028220042,8.64,158,0.0337,,0.825,True,none,,False,no,2 test
+PHerc0800,20251028220955,8.64,153,0.0355,,0.816,True,none,,False,no,2 test
+PHerc0800,20251028222030,8.64,234,0.0599,,0.839,True,none,,False,no,2 test
+PHerc0800,20251028225813,8.64,183,0.0502,,0.838,True,none,,False,no,2 test
+PHerc0800,20251029010146,8.64,36,0.0393,relaxed,0.842,True,none,,False,no,2 test
+PHerc0814,20251001060526-auto_grown_20251001060526,9.362,278,0.0367,relaxed,0.738,True,LOW_POWER (same scroll),official 46527 validation mask: AUC reproduced but only 2 strokes (cards/pherc0814),False,yes,2 test
+PHerc1447,20250502183421-auto_grown_20250502161744,8.64,156,0.0756,relaxed,0.898,True,none,,False,no,2 test
+PHerc1447,20250502205333-auto_grown_20250502181030,8.64,247,0.0851,relaxed,0.942,True,none,,False,no,2 test
+PHerc0139,20250108000000-w025_2025010863,9.362,368,0.0416,relaxed,0.712,True,none,,True,yes,2 test
+PHerc0139,20260126000000-w045_2026012619,9.362,367,0.0286,relaxed,0.722,True,none,,True,yes,2 test
+PHerc0139,20260227000000-w052_2026022705,9.362,367,0.032,relaxed,0.784,True,none,,True,yes,2 test
+PHerc0814,20250925161630-auto_grown_20250925161630,9.362,315,0.0315,relaxed,0.752,True,LOW_POWER (same scroll),official 46527 validation mask: AUC reproduced but only 2 strokes (cards/pherc0814),True,yes,2 test
+PHerc0814,20250926165636-auto_trace_20250926165636,9.362,325,0.0409,relaxed,0.794,True,LOW_POWER (same scroll),official 46527 validation mask: AUC reproduced but only 2 strokes (cards/pherc0814),True,yes,2 test
+PHerc0172,20250926122938-w082,7.91,590,0.0547,,0.853,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",False,yes,3 transfer-limited
+PHerc0172,20250926132117-w083,7.91,590,0.0506,,0.855,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",False,yes,3 transfer-limited
+PHerc0172,20251110135803-w067_20251110135803677_fl,7.91,262,0.0487,,0.867,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",False,yes,3 transfer-limited
+PHerc0172,20251115002747-auto_grown_20251115002740,7.91,262,0.0502,,0.849,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",False,yes,3 transfer-limited
+PHerc0343P,20250904233748-0_b2,8.64,432,0.0325,,0.776,True,WEAK (this segment),no held-out model at letter level; IR camera letters agree (cards/343P),False,yes,3 transfer-limited
+PHerc0343P,20250905172054-1_b2,8.64,324,0.0315,,0.769,True,WEAK (this segment),no held-out model at letter level; IR camera letters agree (cards/343P),False,yes,3 transfer-limited
+PHerc0500P2,20250716055229 (gen_00371),9.362,461,0.0313,relaxed,0.755,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
+PHerc0500P2,20250716055230 (gen_00377),9.362,857,0.0381,relaxed,0.78,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
+PHerc0500P2,20250825181928-2,9.362,367,0.0536,relaxed,0.779,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
+PHerc0841,20260220213127-w00,9.366,574,0.0393,relaxed,0.746,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
+PHerc0841,20260220214732-auto_grown_20260220144552,9.366,367,0.0416,relaxed,0.747,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
+PHerc0841,20260221022814-auto_grown_20260220174252,9.366,368,0.0347,relaxed,0.744,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
+PHerc0172,20250917143559-w062_20250917143559205_fl,7.91,262,0.0443,,0.861,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",True,yes,3 transfer-limited
+PHerc0343P,20250511003658-tifxyz,8.64,257,0.0282,,0.777,True,WEAK (this segment),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
+PHerc0343P,20250902170441--4_b2,8.64,288,0.0443,,0.779,True,WEAK (same scroll),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
+PHerc0343P,20250902171204--1_b2,8.64,294,0.0375,relaxed,0.779,True,WEAK (same scroll),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
+PHerc0500P2,20250609204953-z_dbg_gen_00612,9.362,220,0.0535,relaxed,0.782,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
+PHerc0500P2,20250628074500-500P2_front,9.362,367,0.0383,relaxed,0.768,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
+PHerc1447,20250502180708-auto_grown_20250502160708,8.64,18,,,0.898,False,none,,False,no,5 not measured

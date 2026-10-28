@@ -1,0 +1,16 @@
+[inkcheck] analysis grid 3355x2005 @ 8.860 um, valid overlap 71.6% (3.78 cm2)
+[inkcheck] stats grid 1678x1002 @ 17.72 um, search +-28 px (0.5 mm)
+[inkcheck] band-pass r=+0.400 at shift (0,1) stat-px; zero-shift +0.399; raw r +0.437
+[inkcheck] AUC raw 0.804 bp 0.747; breakeven F1 0.380; stroke recall 0.250 (60 strokes), precision 0.302
+[inkcheck]   nulls 25/195 (46s)
+[inkcheck]   nulls 50/195 (64s)
+[inkcheck]   nulls 75/195 (70s)
+[inkcheck]   nulls 100/195 (77s)
+[inkcheck]   nulls 125/195 (83s)
+[inkcheck]   nulls 150/195 (90s)
+[inkcheck]   nulls 175/195 (97s)
+[inkcheck] bootstrap (118 tiles of 2.0 mm): r_bp(aligned) 0.399 [0.320, 0.464]; stroke recall 0.25 [0.14, 0.36]
+[inkcheck] VERDICT WEAK: model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.40, p=0.00518; stroke recall 25% vs 6% chance)
+[inkcheck] tile bootstrap (118 x 2.0 mm tiles, 1000 draws, conditional on the registration): r_bp 95% CI [0.320, 0.464]; stroke recall - chance +0.19 [+0.08, +0.30]
+WEAK	model sees known ink at 8.86 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.40, p=0.00518; stroke recall 25% vs 6% chance)
+wrote prize_oct/publish/vesuvius-inkcheck/results/rescore/study/343P_from2um_dn_w4.json and prize_oct/publish/vesuvius-inkcheck/results/rescore/study/343P_from2um_dn_w4.png

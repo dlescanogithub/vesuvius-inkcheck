@@ -1,0 +1,9 @@
+ink px 227278, no-ink px 1827547, random placements 2000
+{"map": "team-2.2um-model-map.png", "auc": 0.909, "random_mean": 0.5813, "random_max": 0.7065, "p": 0.0004997501249375312, "z": 5.65}
+{"map": "dn_w7_forward.tif", "auc": 0.7405, "random_mean": 0.5428, "random_max": 0.6915, "p": 0.0004997501249375312, "z": 2.99}
+{"map": "kl_w7_forward.tif", "auc": 0.6947, "random_mean": 0.5191, "random_max": 0.6605, "p": 0.0004997501249375312, "z": 3.02}
+{"map": "s42_w7_forward.tif", "auc": 0.6007, "random_mean": 0.4895, "random_max": 0.6141, "p": 0.0079960019990005, "z": 2.03}
+{"map": "s43_w7_forward.tif", "auc": 0.6742, "random_mean": 0.5343, "random_max": 0.6645, "p": 0.0004997501249375312, "z": 2.72}
+{"map": "soup_w7_forward.tif", "auc": 0.6181, "random_mean": 0.4992, "random_max": 0.6267, "p": 0.0024987506246876563, "z": 2.31}
+{"map": "reader-v2.png", "auc": 0.8339, "random_mean": 0.5548, "random_max": 0.7018, "p": 0.0004997501249375312, "z": 4.77}
+{"map": "reader-v3.png", "auc": 0.7739, "random_mean": 0.4936, "random_max": 0.6456, "p": 0.0004997501249375312, "z": 4.49}

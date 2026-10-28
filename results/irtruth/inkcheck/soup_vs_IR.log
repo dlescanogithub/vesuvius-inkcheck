@@ -1,0 +1,16 @@
+[inkcheck] analysis grid 3440x2060 @ 8.640 um, valid overlap 54.3% (2.87 cm2)
+[inkcheck] stats grid 1720x1030 @ 17.28 um, search +-29 px (0.5 mm)
+[inkcheck] band-pass r=+0.098 at shift (-14,0) stat-px; zero-shift +0.068; raw r +0.115
+[inkcheck] AUC raw 0.629 bp 0.529; breakeven F1 0.168; stroke recall 0.000 (8 strokes), precision 0.105
+[inkcheck]   nulls 25/195 (37s)
+[inkcheck]   nulls 50/195 (52s)
+[inkcheck]   nulls 75/195 (59s)
+[inkcheck]   nulls 100/195 (67s)
+[inkcheck]   nulls 125/195 (74s)
+[inkcheck]   nulls 150/195 (81s)
+[inkcheck]   nulls 175/195 (89s)
+[inkcheck] bootstrap (87 tiles of 2.0 mm): r_bp(aligned) 0.097 [0.025, 0.162]; stroke recall 0.00 [0.00, 0.00]
+[inkcheck] VERDICT FAIL: model sees known ink at 8.64 um: NO (band-pass r=0.10, p=0.0466 vs search-matched null)
+[inkcheck] tile bootstrap (87 x 2.0 mm tiles, 1000 draws, conditional on the registration): r_bp 95% CI [0.025, 0.162]; stroke recall - chance -0.01 [-0.01, -0.01]
+FAIL	model sees known ink at 8.64 um: NO (band-pass r=0.10, p=0.0466 vs search-matched null)
+wrote prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/soup_vs_IR.json and prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/soup_vs_IR.png

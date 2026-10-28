@@ -1,0 +1,16 @@
+[inkcheck] analysis grid 3440x2060 @ 8.640 um, valid overlap 54.2% (2.87 cm2)
+[inkcheck] stats grid 1720x1030 @ 17.28 um, search +-29 px (0.5 mm)
+[inkcheck] band-pass r=+0.477 at shift (-9,-2) stat-px; zero-shift +0.399; raw r +0.479
+[inkcheck] AUC raw 0.792 bp 0.730; breakeven F1 0.568; stroke recall 0.750 (8 strokes), precision 0.500
+[inkcheck]   nulls 25/195 (32s)
+[inkcheck]   nulls 50/195 (44s)
+[inkcheck]   nulls 75/195 (49s)
+[inkcheck]   nulls 100/195 (53s)
+[inkcheck]   nulls 125/195 (58s)
+[inkcheck]   nulls 150/195 (63s)
+[inkcheck]   nulls 175/195 (68s)
+[inkcheck] bootstrap (88 tiles of 2.0 mm): r_bp(aligned) 0.472 [0.374, 0.565]; stroke recall 0.75 [0.43, 1.00]
+[inkcheck] VERDICT PASS: model sees known ink at 8.64 um: YES (band-pass r=0.48, p=0.00518; 75% of reference strokes recovered vs 3% by chance)
+[inkcheck] tile bootstrap (88 x 2.0 mm tiles, 1000 draws, conditional on the registration): r_bp 95% CI [0.374, 0.565]; stroke recall - chance +0.72 [+0.40, +0.97]
+PASS	model sees known ink at 8.64 um: YES (band-pass r=0.48, p=0.00518; 75% of reference strokes recovered vs 3% by chance)
+wrote prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/rv3_vs_IR.json and prize_oct/publish/vesuvius-inkcheck/results/irtruth/inkcheck/rv3_vs_IR.png

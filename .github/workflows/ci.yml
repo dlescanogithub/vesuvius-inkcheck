@@ -1,0 +1,28 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.12"]
+    env:
+      OMP_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e ".[test]"
+      - name: unit tests
+        run: cd tests && python -m pytest -q
+      - name: synthetic quickstart must PASS (exit 0) and its negative must FAIL (exit 2)
+        run: |
+          python examples/make_synthetic_example.py
+          inkcheck examples/data/synthetic_pred_9.6um.png examples/data/synthetic_ref_19.2um.png \
+            --pred-um 9.6 --ref-um 19.2 --ref-origin 128,128 --workers 2 --out out/synthetic
+          set +e; inkcheck examples/data/synthetic_negative_pred_9.6um.png examples/data/synthetic_ref_19.2um.png \
+            --pred-um 9.6 --ref-um 19.2 --ref-origin 128,128 --workers 2 --out out/synthetic_neg; rc=$?; set -e
+          test "$rc" -eq 2
+      - name: IRP cards build from the shipped case files
+        run: inkcheck report examples/irp/*.case.json --out out/cards

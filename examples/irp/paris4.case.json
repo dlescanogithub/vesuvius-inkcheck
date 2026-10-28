@@ -1,0 +1,38 @@
+{
+ "name": "Paris 4 (control, PASS)",
+ "scroll": "PHercParis4",
+ "segment": "20231005123336",
+ "summary": "Held-out Paris 4 segment, 9.6 µm input pooled from the 2.4 µm scan, reference new_canon at 19.2 µm. Five public ~9 µm checkpoints, including Reader v2 and V3.",
+ "checks": [
+  {
+   "label": "Reader v2",
+   "json": "../../results/rescore/reader_v2/paris4-20231005123336__rv2.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  },
+  {
+   "label": "Reader V3",
+   "json": "../../results/rescore/reader_v2/paris4-20231005123336__rv3.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  },
+  {
+   "label": "d9v4C",
+   "json": "../../results/rescore/reader_v2/paris4-20231005123336__d9v4C.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  },
+  {
+   "label": "ink_9um seed42",
+   "json": "../../results/rescore/reader_v2/paris4-20231005123336__s42.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  },
+  {
+   "label": "dense_native 16k",
+   "json": "../../results/rescore/reader_v2/paris4-20231005123336__dn.json",
+   "verdict": "PASS",
+   "withhold": "PHercParis4 publication reservation until 2027-06-25 (scrollprize.org/data_browser/PHercParis4); the numbers are shared only privately with the Vesuvius Challenge team"
+  }
+ ]
+}

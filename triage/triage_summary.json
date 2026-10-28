@@ -1,0 +1,25 @@
+{
+ "headline": "**34 of 34 measurable public segments (10 scrolls) are inside the scan tolerance where a 9 \u00b5m model still reads Paris 4 letters.** Tiers: 2 read, 14 test, 18 transfer-limited, 0 scan-limited; 1 more had too little valid surface to measure. On every scroll with a WEAK verdict the scan is inside the tolerance, so the gap is model transfer, not scan quality.",
+ "counts": {
+  "1 read": 2,
+  "2 test": 14,
+  "3 transfer-limited": 18,
+  "4 scan-limited": 0,
+  "5 not measured": 1
+ },
+ "n": 34,
+ "n_inside": 34,
+ "n_not_measured": 1,
+ "scrolls": [
+  "PHerc0009B",
+  "PHerc0139",
+  "PHerc0172",
+  "PHerc0343P",
+  "PHerc0500P2",
+  "PHerc0800",
+  "PHerc0814",
+  "PHerc0841",
+  "PHerc1447",
+  "PHercParis4"
+ ]
+}

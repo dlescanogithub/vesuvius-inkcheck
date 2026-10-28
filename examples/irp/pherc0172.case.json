@@ -1,0 +1,33 @@
+{
+ "name": "PHerc0172 w082 + w083 (held-out segments)",
+ "scroll": "PHerc0172",
+ "segment": "20250926122938-w082 and 20250926132117-w083 (3072² crops)",
+ "summary": "Native 7.91 µm / 53 keV surface volumes; Reader V3, Reader v2 and dense_native 16k. Reference: the team's ink-detection map published with each segment on the open-data bucket (a model prediction on the same scan, not ground truth). Segments w082 and w083 are not in Reader V3's or Reader v2's training list; four other 0172 segments are (checked in the configs embedded in reader-v3.pth and reader-v2-step040000.pth). dense_native 16k is also held out here (the ink_9um labels contain no PHerc0172).",
+ "headline": "Three held-out checkpoints see 0172 ink but not letters on two segments: Reader V3 (r 0.45 / 0.51, stroke recall 0.35 / 0.36 vs 0.20 / 0.19 chance), Reader v2 (r 0.47 / 0.50, 0.37 / 0.35) and dense_native (r 0.34 / 0.26, 0.23 / 0.21): WEAK.",
+ "checks": [
+  {
+   "label": "Reader V3 vs team map, w082",
+   "json": "../../results/newcases/scores/0172-w082-teamTS__rv3.json"
+  },
+  {
+   "label": "Reader v2 vs team map, w082",
+   "json": "../../results/newcases/scores/0172-w082-teamTS__rv2.json"
+  },
+  {
+   "label": "dense_native 16k vs team map, w082",
+   "json": "../../results/newcases/scores/0172-w082-teamTS__dn.json"
+  },
+  {
+   "label": "Reader V3 vs team map, w083",
+   "json": "../../results/newcases/scores/0172-w083-teamTS__rv3.json"
+  },
+  {
+   "label": "Reader v2 vs team map, w083",
+   "json": "../../results/newcases/scores/0172-w083-teamTS__rv2.json"
+  },
+  {
+   "label": "dense_native 16k vs team map, w083",
+   "json": "../../results/newcases/scores/0172-w083-teamTS__dn.json"
+  }
+ ]
+}

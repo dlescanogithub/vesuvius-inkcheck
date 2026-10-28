@@ -1,0 +1,15 @@
+[inkcheck] analysis grid 768x768 @ 19.200 um, valid overlap 100.0% (2.17 cm2)
+[inkcheck] stats grid 768x768 @ 19.20 um, search +-26 px (0.5 mm)
+[inkcheck] band-pass r=+0.152 at shift (6,2) stat-px; zero-shift +0.137; raw r +0.116
+[inkcheck] AUC raw 0.559 bp 0.595; breakeven F1 0.202; stroke recall 0.167 (42 strokes), precision 0.250
+[inkcheck]   nulls 25/198 (7s)
+[inkcheck]   nulls 50/198 (11s)
+[inkcheck]   nulls 75/198 (13s)
+[inkcheck]   nulls 100/198 (15s)
+[inkcheck]   nulls 125/198 (17s)
+[inkcheck]   nulls 150/198 (19s)
+[inkcheck]   nulls 175/198 (21s)
+[inkcheck] bootstrap (64 tiles of 2.0 mm): r_bp(aligned) 0.152 [0.063, 0.249]; stroke recall 0.17 [0.05, 0.30]
+[inkcheck] VERDICT WEAK: model sees known ink at 9.6 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.15, p=0.00518; stroke recall 17% vs 8% chance)
+WEAK	model sees known ink at 9.6 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.15, p=0.00518; stroke recall 17% vs 8% chance)
+wrote ctrl_tileshuffle.json and ctrl_tileshuffle.png

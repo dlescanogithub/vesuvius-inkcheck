@@ -1,0 +1,338 @@
+{
+ "name": "PHerc0343P (no model at letter level)",
+ "segment": "20250904233748-0_b2, 20250905172054-1_b2 (Reader v2 held-out), 20250511003658",
+ "scroll": "PHerc0343P",
+ "summary": "Native 8.64 \u00b5m / 116 keV surface volumes; reference = 2.215 \u00b5m new_canon map. Reader v2/V3 are scored only on their two held-out segments; d9v4C is shown but excluded (leak). Caveat: the main reference is the canonical 2 \u00b5m model's prediction, not ground truth; node R checks it against letters traced on an infrared photograph (an independent, camera-based reference).",
+ "path": [
+  "A",
+  "R",
+  "B",
+  "C"
+ ],
+ "nodes": [
+  {
+   "node": "A",
+   "question": "Does the model see known ink on this labelled segment?",
+   "verdict": "WEAK",
+   "answer": "PARTLY: significant agreement but not letter-level for every held-out checkpoint (WEAK).",
+   "evidence": [
+    "Brackets: 95% CIs from a 2 mm tile bootstrap that keeps the registration fixed. They give precision, not significance; significance is the shift-null p-value.",
+    "Held-out checkpoints: 0 PASS, 11 WEAK, 2 FAIL (best: dense_native @511003658, r_bp 0.28, stroke recall 0.16 vs chance 0.06; recall \u2212 chance +0.10, 95% CI [+0.00, +0.20]).",
+    "Excluded from the verdict (segment in their training data): d9v4C @233748, d9v4C @172054."
+   ],
+   "next_step": "Ask whether the scan explains the loss (node B), then whether it is the scan or the scroll (node C).",
+   "table": [
+    [
+     "checkpoint",
+     "verdict",
+     "r_bp [95% CI] (z)",
+     "AUC (published)",
+     "stroke recall [95% CI] (chance)",
+     "strokes",
+     "note"
+    ],
+    [
+     "Reader v2 @233748",
+     "WEAK",
+     "0.183 [0.13, 0.23] (8.4)",
+     "0.759 (0.806)",
+     "0.12 [0.07, 0.17] (0.07)",
+     "148",
+     ""
+    ],
+    [
+     "Reader V3 @233748",
+     "WEAK",
+     "0.219 [0.17, 0.27] (9.5)",
+     "0.776",
+     "0.17 [0.11, 0.23] (0.08)",
+     "148",
+     ""
+    ],
+    [
+     "d9v4C @233748",
+     "WEAK",
+     "0.214 [0.18, 0.25] (12.4)",
+     "0.748",
+     "0.11 [0.07, 0.17] (0.06)",
+     "148",
+     "NOT held out; segment in d9v4C train.txt"
+    ],
+    [
+     "seed42 @233748",
+     "FAIL",
+     "0.047 [0.01, 0.09] (0.6)",
+     "0.617",
+     "0.04 [0.01, 0.07] (0.07)",
+     "148",
+     ""
+    ],
+    [
+     "dense_native @233748",
+     "WEAK",
+     "0.092 [0.05, 0.13] (3.6)",
+     "0.708",
+     "0.09 [0.05, 0.15] (0.08)",
+     "148",
+     ""
+    ],
+    [
+     "Reader v2 @172054",
+     "WEAK",
+     "0.196 [0.14, 0.25] (7.6)",
+     "0.692 (0.728)",
+     "0.18 [0.11, 0.25] (0.07)",
+     "108",
+     ""
+    ],
+    [
+     "Reader V3 @172054",
+     "WEAK",
+     "0.193 [0.14, 0.25] (6.3)",
+     "0.690",
+     "0.16 [0.09, 0.22] (0.06)",
+     "108",
+     ""
+    ],
+    [
+     "d9v4C @172054",
+     "WEAK",
+     "0.219 [0.17, 0.26] (10.1)",
+     "0.714",
+     "0.12 [0.06, 0.19] (0.06)",
+     "108",
+     "NOT held out; segment in d9v4C train.txt"
+    ],
+    [
+     "seed42 @172054",
+     "FAIL",
+     "0.059 [0.02, 0.10] (0.5)",
+     "0.545",
+     "0.07 [0.03, 0.13] (0.06)",
+     "108",
+     ""
+    ],
+    [
+     "dense_native @172054",
+     "WEAK",
+     "0.121 [0.07, 0.17] (4.0)",
+     "0.639",
+     "0.11 [0.05, 0.18] (0.06)",
+     "107",
+     ""
+    ],
+    [
+     "dense_native @511003658",
+     "WEAK",
+     "0.277 [0.21, 0.34] (10.0)",
+     "0.770",
+     "0.16 [0.06, 0.26] (0.06)",
+     "57",
+     "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+    ],
+    [
+     "dense9um (Klavis) @511003658",
+     "WEAK",
+     "0.257 [0.19, 0.32] (9.8)",
+     "0.753",
+     "0.18 [0.07, 0.28] (0.06)",
+     "57",
+     "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+    ],
+    [
+     "seed42 @511003658",
+     "WEAK",
+     "0.152 [0.08, 0.22] (6.2)",
+     "0.632",
+     "0.19 [0.10, 0.30] (0.09)",
+     "57",
+     "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+    ],
+    [
+     "seed43 @511003658",
+     "WEAK",
+     "0.162 [0.10, 0.23] (6.4)",
+     "0.651",
+     "0.12 [0.04, 0.22] (0.07)",
+     "56",
+     "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+    ],
+    [
+     "soup @511003658",
+     "WEAK",
+     "0.178 [0.10, 0.25] (7.3)",
+     "0.662",
+     "0.14 [0.05, 0.23] (0.08)",
+     "57",
+     "older checkpoints; segment is in Reader v2/V3 training, not scored with them here"
+    ]
+   ],
+   "automated": "automatic"
+  },
+  {
+   "node": "R",
+   "question": "Do independent references agree with each other and on the model verdicts?",
+   "verdict": "REFS_AGREE",
+   "answer": "YES: all 8 agreement tests pass, so the verdict does not hinge on one reference.",
+   "evidence": [
+    "References: **new_canon 2.2 \u00b5m map** (canonical team model prediction on a 4\u00d7 finer scan of segment 20250511003658); **IR-traced letters** (letters traced by the Vesuvius Challenge team on an infrared photograph of the fragment, placed on the 8.64 \u00b5m scan by D. Russo (DomRusso2/ir-truth-9um); independent of any CT model, but only 8 traced strokes in the overlap).",
+    "team 2.2 \u00b5m map vs IR letters (AUC): ir-truth-9um scorer, null = 2000 random placements of the letter mask (results/irtruth/ir_scores.json).",
+    "team 2.2 \u00b5m map vs IR letters (inkcheck): inkcheck PASS against the IR letters (results/irtruth/inkcheck/team2.2um_vs_IR.json): the IR reference can return PASS when letters are present.",
+    "Ranking: dense_native 0.770/0.741, dense9um (Klavis) 0.753/0.695, seed42 0.632/0.601, seed43 0.651/0.674, soup 0.662/0.618. Metric fixed before the IR runs. With band-pass r instead of AUC the rank correlation is 0.7 (not significant with 5 models). The IR set is small (its README: too small to rank models that score close together), so read the ranking as supporting evidence only. Reader V2/V3 are not ranked here: both were trained on 20250511003658.",
+    "Same prediction scored against each reference; 'same decision' = both PASS or both not PASS."
+   ],
+   "next_step": "Read node A together with this agreement.",
+   "table": [
+    [
+     "comparison",
+     "reference A",
+     "reference B",
+     "agreement"
+    ],
+    [
+     "team 2.2 \u00b5m map vs IR letters (AUC)",
+     "new_canon 2.2 \u00b5m map",
+     "IR-traced letters",
+     "AUC 0.909, null mean 0.581, null max 0.707, p 0.0005 \u2192 agree"
+    ],
+    [
+     "team 2.2 \u00b5m map vs IR letters (inkcheck)",
+     "new_canon 2.2 \u00b5m map",
+     "IR-traced letters",
+     "band-pass r 0.431, null mean 0.051, null max 0.137, p 0.0052 \u2192 agree"
+    ],
+    [
+     "dense_native @511003658",
+     "WEAK (r 0.28, recall 0.16, 57 strokes)",
+     "FAIL (r 0.17, recall 0.00, 8 strokes)",
+     "same decision (PASS vs not-PASS agree; WEAK/FAIL differ)"
+    ],
+    [
+     "dense9um (Klavis) @511003658",
+     "WEAK (r 0.26, recall 0.18, 57 strokes)",
+     "FAIL (r 0.14, recall 0.00, 8 strokes)",
+     "same decision (PASS vs not-PASS agree; WEAK/FAIL differ)"
+    ],
+    [
+     "seed42 @511003658",
+     "WEAK (r 0.15, recall 0.19, 57 strokes)",
+     "FAIL (r 0.10, recall 0.00, 8 strokes)",
+     "same decision (PASS vs not-PASS agree; WEAK/FAIL differ)"
+    ],
+    [
+     "seed43 @511003658",
+     "WEAK (r 0.16, recall 0.12, 56 strokes)",
+     "FAIL (r 0.12, recall 0.00, 8 strokes)",
+     "same decision (PASS vs not-PASS agree; WEAK/FAIL differ)"
+    ],
+    [
+     "soup @511003658",
+     "WEAK (r 0.18, recall 0.14, 57 strokes)",
+     "FAIL (r 0.10, recall 0.00, 8 strokes)",
+     "same decision (PASS vs not-PASS agree; WEAK/FAIL differ)"
+    ],
+    [
+     "model ranking (5 models)",
+     "inkcheck AUC vs new_canon",
+     "AUC vs IR letters (ir-truth scorer)",
+     "Spearman \u03c1 0.90, exact p 0.042 \u2192 agree"
+    ]
+   ],
+   "automated": "automatic"
+  },
+  {
+   "node": "B",
+   "question": "Do this scan's quality proxies fall outside what a ~9 \u00b5m model tolerates?",
+   "verdict": "SCAN_OK",
+   "answer": "NO: every proxy is inside the tolerated range, so scan blur/noise alone does not explain the loss.",
+   "evidence": [
+    "Tolerance curve: Paris 4 dose-response (dense_native, docs/RESOLUTION_STUDY.md; proxies from study/psd_compare.py and study/layer_snr.py).",
+    "HF spectral ratio (10\u201325 / 2\u201310 cyc/mm): sharpness proxy; Paris 4 still PASSes with added blur FWHM \u2248 23 \u00b5m (ratio 0.024).",
+    "adjacent-layer high-pass correlation: noise proxy (it rises with blur, so it is read only against the noise curve); Paris 4 still PASSes with noise \u03c3 = 0.5\u00d7 volume SD (0.32).",
+    "Stroke size is not the issue either: the median 343P reference stroke (\u2248 0.19 mm\u00b2) is comparable to the Paris 4 reference strokes (results/study/stroke_geometry.json; Paris 4 values withheld)."
+   ],
+   "next_step": "Test scan vs scroll directly (node C): same segment, second scan.",
+   "table": [
+    [
+     "proxy",
+     "this scan",
+     "tolerance edge (worst PASS)",
+     "control (undegraded)",
+     "inside tolerance?"
+    ],
+    [
+     "HF spectral ratio (10\u201325 / 2\u201310 cyc/mm) (higher = better)",
+     "0.034",
+     "0.024",
+     "0.048",
+     "yes"
+    ],
+    [
+     "adjacent-layer high-pass correlation (higher = better)",
+     "0.779",
+     "0.320",
+     "0.534",
+     "yes"
+    ]
+   ],
+   "automated": "automatic"
+  },
+  {
+   "node": "C",
+   "question": "Same segment, two scans: is it the scan or the scroll?",
+   "verdict": "SCROLL_SPECIFIC",
+   "answer": "SCROLL/INK: no checkpoint reaches letter level on either scan, so the gap is not voxel size or scan protocol.",
+   "evidence": [
+    "5 checkpoints scored on both scans; median \u0394 r_bp +0.05, median \u0394 stroke recall -0.06."
+   ],
+   "next_step": "Change the model or the labels, not the scan: a finer or cleaner scan of this scroll is not the bottleneck. Re-test any new model on held-out segments with node A.",
+   "table": [
+    [
+     "checkpoint",
+     "native 8.64 \u00b5m / 116 keV: verdict, r_bp, strokes",
+     "2.215 \u00b5m / 111 keV pooled to 8.86 \u00b5m: verdict, r_bp, strokes",
+     "\u0394 r_bp",
+     "\u0394 strokes"
+    ],
+    [
+     "dense_native",
+     "WEAK, 0.28, 0.16",
+     "WEAK, 0.40, 0.15",
+     "+0.12",
+     "-0.01"
+    ],
+    [
+     "dense9um",
+     "WEAK, 0.26, 0.18",
+     "WEAK, 0.39, 0.22",
+     "+0.13",
+     "+0.04"
+    ],
+    [
+     "seed42",
+     "WEAK, 0.15, 0.19",
+     "WEAK, 0.19, 0.07",
+     "+0.03",
+     "-0.13"
+    ],
+    [
+     "seed43",
+     "WEAK, 0.16, 0.12",
+     "WEAK, 0.19, 0.07",
+     "+0.03",
+     "-0.06"
+    ],
+    [
+     "soup",
+     "WEAK, 0.18, 0.14",
+     "WEAK, 0.23, 0.05",
+     "+0.05",
+     "-0.09"
+    ]
+   ],
+   "automated": "automatic"
+  }
+ ],
+ "recommendation": "Change the model or the labels, not the scan: a finer or cleaner scan of this scroll is not the bottleneck. Re-test any new model on held-out segments with node A.",
+ "headline": "No held-out model reaches letter level (WEAK; seed42 FAIL), including Reader v2/V3 on their own held-out segments; the scan is inside the tolerated blur/noise range and a 4\u00d7 finer scan of the same segment does not fix it, so the gap is scroll/ink-specific, not resolution."
+}
