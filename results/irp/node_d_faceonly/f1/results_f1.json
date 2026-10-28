@@ -1,0 +1,657 @@
+{
+ "rule": {
+  "top_q": 0.03,
+  "min_iou": 0.1,
+  "min_face_asym": 2.0,
+  "min_valid_frac": 0.8,
+  "n_shift_nulls": 192,
+  "min_shift_px": 150,
+  "seed": 0
+ },
+ "regions": {
+  "PHerc0009B__20250510172639|pos0": {
+   "outcome": "FLAG",
+   "why": [
+    "one-faced agreement: IoU 0.538 on fwd, face asymmetry 14.03"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.53797,
+    "iou_other": 0.03836,
+    "s1_face_asym": 14.02573,
+    "valid_frac": 0.90614,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0009B__20250510172639",
+   "kind": "positive",
+   "row": 5,
+   "col": 6,
+   "um": 8.64
+  },
+  "PHerc0009B__20250510172639|pos1": {
+   "outcome": "FLAG",
+   "why": [
+    "one-faced agreement: IoU 0.308 on fwd, face asymmetry 307.77"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.30777,
+    "iou_other": 5e-05,
+    "s1_face_asym": 307.7688,
+    "valid_frac": 0.99993,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0009B__20250510172639",
+   "kind": "positive",
+   "row": 7,
+   "col": 5,
+   "um": 8.64
+  },
+  "PHerc0139__20260206000001|pos0": {
+   "outcome": "FLAG",
+   "why": [
+    "one-faced agreement: IoU 0.415 on fwd, face asymmetry 10.23"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.41532,
+    "iou_other": 0.04058,
+    "s1_face_asym": 10.23474,
+    "valid_frac": 0.99814,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0139__20260206000001",
+   "kind": "positive",
+   "row": 2,
+   "col": 5,
+   "um": 9.362
+  },
+  "PHerc0139__20260206000001|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.26 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.57905,
+    "iou_other": 0.4586,
+    "s1_face_asym": 1.26265,
+    "valid_frac": 0.99985,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0139__20260206000001",
+   "kind": "positive",
+   "row": 3,
+   "col": 4,
+   "um": 9.362
+  },
+  "PHerc0139__20260206000001|bla0": {
+   "outcome": "FLAG",
+   "why": [
+    "one-faced agreement: IoU 0.428 on fwd, face asymmetry 3.67"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.42776,
+    "iou_other": 0.11647,
+    "s1_face_asym": 3.67265,
+    "valid_frac": 0.99999,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0139__20260206000001",
+   "kind": "blank",
+   "row": 9,
+   "col": 14,
+   "um": 9.362
+  },
+  "PHerc0139__20260206000001|bla1": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.68 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.58954,
+    "iou_other": 0.35041,
+    "s1_face_asym": 1.68245,
+    "valid_frac": 1.0,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0139__20260206000001",
+   "kind": "blank",
+   "row": 9,
+   "col": 1,
+   "um": 9.362
+  },
+  "PHerc0172__20250926145427|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.005 < 0.1",
+    "face asymmetry 1.72 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00509,
+    "iou_other": 0.00296,
+    "s1_face_asym": 1.71717,
+    "valid_frac": 1.0,
+    "p_best": 0.52332
+   },
+   "seg": "PHerc0172__20250926145427",
+   "kind": "positive",
+   "row": 10,
+   "col": 12,
+   "um": 7.91
+  },
+  "PHerc0172__20250926145427|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.010 < 0.1",
+    "face asymmetry 1.34 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.01045,
+    "iou_other": 0.0078,
+    "s1_face_asym": 1.33957,
+    "valid_frac": 1.0,
+    "p_best": 0.36269
+   },
+   "seg": "PHerc0172__20250926145427",
+   "kind": "positive",
+   "row": 1,
+   "col": 2,
+   "um": 7.91
+  },
+  "PHerc0500P2__20250716055231|pos0": {
+   "outcome": "NOT_EVALUABLE",
+   "why": [
+    "valid fraction 0.74 < 0.8"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.23473,
+    "iou_other": 0.20232,
+    "s1_face_asym": 1.1602,
+    "valid_frac": 0.73529,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0500P2__20250716055231",
+   "kind": "positive",
+   "row": 9,
+   "col": 5,
+   "um": 9.362
+  },
+  "PHerc0500P2__20250716055231|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.30 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.32162,
+    "iou_other": 0.24715,
+    "s1_face_asym": 1.30134,
+    "valid_frac": 0.92873,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0500P2__20250716055231",
+   "kind": "positive",
+   "row": 8,
+   "col": 4,
+   "um": 9.362
+  },
+  "PHerc0814__20250928235953|pos0": {
+   "outcome": "FLAG",
+   "why": [
+    "one-faced agreement: IoU 0.306 on fwd, face asymmetry 2.95"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.30622,
+    "iou_other": 0.10382,
+    "s1_face_asym": 2.94945,
+    "valid_frac": 0.98988,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0814__20250928235953",
+   "kind": "positive",
+   "row": 1,
+   "col": 68,
+   "um": 9.362
+  },
+  "PHerc0814__20250928235953|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.06 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.22103,
+    "iou_other": 0.20777,
+    "s1_face_asym": 1.06382,
+    "valid_frac": 0.89701,
+    "p_best": 0.01036
+   },
+   "seg": "PHerc0814__20250928235953",
+   "kind": "positive",
+   "row": 3,
+   "col": 58,
+   "um": 9.362
+  },
+  "PHerc0841__20260220214732|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.61 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.3938,
+    "iou_other": 0.24419,
+    "s1_face_asym": 1.6127,
+    "valid_frac": 0.99428,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0841__20260220214732",
+   "kind": "positive",
+   "row": 1,
+   "col": 5,
+   "um": 9.366
+  },
+  "PHerc0841__20260220214732|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "face asymmetry 1.92 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.33305,
+    "iou_other": 0.17382,
+    "s1_face_asym": 1.91606,
+    "valid_frac": 0.99982,
+    "p_best": 0.00518
+   },
+   "seg": "PHerc0841__20260220214732",
+   "kind": "positive",
+   "row": 5,
+   "col": 3,
+   "um": 9.366
+  }
+ },
+ "controls": {
+  "PHerc0009B__20250510172639|pos0|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.006 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00571,
+    "iou_other": 0.0,
+    "s1_face_asym": 5.70571,
+    "valid_frac": 0.99367,
+    "p_best": 0.50777
+   },
+   "block_px": 58
+  },
+  "PHerc0009B__20250510172639|pos0|b_A_with_B_of_PHerc0009B__20250510172639|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.063 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.06327,
+    "iou_other": 0.0,
+    "s1_face_asym": 63.26809,
+    "valid_frac": 0.90606,
+    "p_best": 0.05181
+   }
+  },
+  "PHerc0009B__20250510172639|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.041 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.04118,
+    "iou_other": 0.00945,
+    "s1_face_asym": 4.35504,
+    "valid_frac": 0.99995,
+    "p_best": 0.12435
+   },
+   "block_px": 58
+  },
+  "PHerc0009B__20250510172639|pos1|b_A_with_B_of_PHerc0139__20260206000001|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.000 < 0.1",
+    "face asymmetry 0.33 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.00033,
+    "iou_other": 0.0,
+    "s1_face_asym": 0.32985,
+    "valid_frac": 0.99809,
+    "p_best": 0.4456
+   }
+  },
+  "PHerc0139__20260206000001|pos0|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.013 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.01251,
+    "iou_other": 0.0,
+    "s1_face_asym": 12.50768,
+    "valid_frac": 0.99813,
+    "p_best": 0.43523
+   },
+   "block_px": 53
+  },
+  "PHerc0139__20260206000001|pos0|b_A_with_B_of_PHerc0139__20260206000001|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.008 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00775,
+    "iou_other": 0.0,
+    "s1_face_asym": 7.74893,
+    "valid_frac": 0.99799,
+    "p_best": 0.2228
+   }
+  },
+  "PHerc0139__20260206000001|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.039 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.03905,
+    "iou_other": 0.01505,
+    "s1_face_asym": 2.59578,
+    "valid_frac": 0.99987,
+    "p_best": 0.11399
+   },
+   "block_px": 53
+  },
+  "PHerc0139__20260206000001|pos1|b_A_with_B_of_PHerc0172__20250926145427|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.048 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.04803,
+    "iou_other": 0.0,
+    "s1_face_asym": 48.02561,
+    "valid_frac": 0.99985,
+    "p_best": 0.12435
+   }
+  },
+  "PHerc0172__20250926145427|pos0|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.043 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.04285,
+    "iou_other": 0.01304,
+    "s1_face_asym": 3.28586,
+    "valid_frac": 1.0,
+    "p_best": 0.09845
+   },
+   "block_px": 63
+  },
+  "PHerc0172__20250926145427|pos0|b_A_with_B_of_PHerc0172__20250926145427|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.011 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.01114,
+    "iou_other": 0.00258,
+    "s1_face_asym": 4.31137,
+    "valid_frac": 1.0,
+    "p_best": 0.57513
+   }
+  },
+  "PHerc0172__20250926145427|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.017 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.01664,
+    "iou_other": 0.00157,
+    "s1_face_asym": 10.57536,
+    "valid_frac": 1.0,
+    "p_best": 0.40933
+   },
+   "block_px": 63
+  },
+  "PHerc0172__20250926145427|pos1|b_A_with_B_of_PHerc0500P2__20250716055231|pos0": {
+   "outcome": "NOT_EVALUABLE",
+   "why": [
+    "valid fraction 0.74 < 0.8"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.01593,
+    "iou_other": 0.0,
+    "s1_face_asym": 15.92832,
+    "valid_frac": 0.73529,
+    "p_best": 0.21762
+   }
+  },
+  "PHerc0500P2__20250716055231|pos0|a_block_shuffle": {
+   "outcome": "NOT_EVALUABLE",
+   "why": [
+    "valid fraction 0.74 < 0.8"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.0018,
+    "iou_other": 0.0003,
+    "s1_face_asym": 1.80392,
+    "valid_frac": 0.74064,
+    "p_best": 0.50259
+   },
+   "block_px": 53
+  },
+  "PHerc0500P2__20250716055231|pos0|b_A_with_B_of_PHerc0500P2__20250716055231|pos1": {
+   "outcome": "NOT_EVALUABLE",
+   "why": [
+    "valid fraction 0.68 < 0.8"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.0,
+    "iou_other": 0.0,
+    "s1_face_asym": 0.0,
+    "valid_frac": 0.68242,
+    "p_best": 1.0
+   }
+  },
+  "PHerc0500P2__20250716055231|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.006 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00553,
+    "iou_other": 0.0,
+    "s1_face_asym": 5.52802,
+    "valid_frac": 0.92765,
+    "p_best": 0.32642
+   },
+   "block_px": 53
+  },
+  "PHerc0500P2__20250716055231|pos1|b_A_with_B_of_PHerc0814__20250928235953|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.000 < 0.1",
+    "face asymmetry 0.00 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.0,
+    "iou_other": 0.0,
+    "s1_face_asym": 0.0,
+    "valid_frac": 0.91863,
+    "p_best": 1.0
+   }
+  },
+  "PHerc0814__20250928235953|pos0|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.043 < 0.1",
+    "face asymmetry 1.84 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.04339,
+    "iou_other": 0.02354,
+    "s1_face_asym": 1.84359,
+    "valid_frac": 0.99053,
+    "p_best": 0.11917
+   },
+   "block_px": 53
+  },
+  "PHerc0814__20250928235953|pos0|b_A_with_B_of_PHerc0814__20250928235953|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.033 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.03318,
+    "iou_other": 0.0,
+    "s1_face_asym": 33.17505,
+    "valid_frac": 0.89686,
+    "p_best": 0.14508
+   }
+  },
+  "PHerc0814__20250928235953|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.001 < 0.1",
+    "face asymmetry 1.46 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00146,
+    "iou_other": 0.00071,
+    "s1_face_asym": 1.45699,
+    "valid_frac": 0.89928,
+    "p_best": 0.55959
+   },
+   "block_px": 53
+  },
+  "PHerc0814__20250928235953|pos1|b_A_with_B_of_PHerc0841__20260220214732|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.000 < 0.1",
+    "face asymmetry 0.00 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.0,
+    "iou_other": 0.0,
+    "s1_face_asym": 0.0,
+    "valid_frac": 0.89584,
+    "p_best": 1.0
+   }
+  },
+  "PHerc0841__20260220214732|pos0|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.056 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.05612,
+    "iou_other": 0.00016,
+    "s1_face_asym": 56.12214,
+    "valid_frac": 0.99443,
+    "p_best": 0.06736
+   },
+   "block_px": 53
+  },
+  "PHerc0841__20260220214732|pos0|b_A_with_B_of_PHerc0841__20260220214732|pos1": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.027 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "fwd",
+    "iou_best": 0.02654,
+    "iou_other": 0.0,
+    "s1_face_asym": 26.54287,
+    "valid_frac": 0.99411,
+    "p_best": 0.18653
+   }
+  },
+  "PHerc0841__20260220214732|pos1|a_block_shuffle": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.005 < 0.1",
+    "face asymmetry 1.09 < 2.0 (texture-like or two-faced)"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00463,
+    "iou_other": 0.00426,
+    "s1_face_asym": 1.08807,
+    "valid_frac": 0.99982,
+    "p_best": 0.75648
+   },
+   "block_px": 53
+  },
+  "PHerc0841__20260220214732|pos1|b_A_with_B_of_PHerc0009B__20250510172639|pos0": {
+   "outcome": "NOTHING",
+   "why": [
+    "two-model agreement IoU 0.009 < 0.1"
+   ],
+   "numbers": {
+    "best_face": "rev",
+    "iou_best": 0.00882,
+    "iou_other": 0.0,
+    "s1_face_asym": 8.82249,
+    "valid_frac": 0.98033,
+    "p_best": 0.36788
+   }
+  }
+ },
+ "summary": {
+  "N_pos": 12,
+  "N_segments": 6,
+  "N_blank": 2,
+  "pos_flagged": 4,
+  "pos_needed": 8,
+  "segments_flagged": 3,
+  "segments_needed": 4,
+  "pos_not_evaluable": 1,
+  "blank_evaluable": 2,
+  "blank_flagged": 1,
+  "controls_a_flagged": 0,
+  "controls_a": 12,
+  "controls_b_flagged": 0,
+  "controls_b": 12,
+  "criterion1_sensitivity": false,
+  "criterion2_specificity": "UNTESTED",
+  "criterion3_controls": true,
+  "verdict": "REJECTED"
+ }
+}
