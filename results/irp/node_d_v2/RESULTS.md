@@ -59,3 +59,10 @@ summary counts it with `is True`, so the committed summary reports face-only as 
 (saved as 1.0 / 0.0 in `results_v2.json`) is correct, and the table above counts that field: 9 positives, 0 blanks.
 The v2 outcome, the three criteria and the verdict use string and integer comparisons and are not affected. The scorer is left unchanged
 so that the committed code is what produced `results_v2.json`.
+
+**D5 update (2026-10-28, after scoring).** The scorer is now fixed (`face_only_flag` / `count_flagged` in
+`src/inkcheck/node_d_v2.py`, regression test `tests/test_node_d_scorer_bool.py`). `results_v2.json` is kept as the
+output of the committed-at-the-time code; the fixed scorer re-run on the same pod outputs is in `results_v2_rescored.json`.
+It confirms face-only 9 / 12 positives and 0 / 4 blanks, and adds one number the old summary never reported:
+face-only flags **2 of 24 synthetic controls** (both mismatched-region pairs (b) on PHerc0500P2, p = 0.0052 each).
+v2, v1 and the verdict (REJECTED) are unchanged; every other field matches `results_v2.json`.

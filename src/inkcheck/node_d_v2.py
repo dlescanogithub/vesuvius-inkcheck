@@ -136,3 +136,64 @@ def candidate_rule_v2(fwd: dict, rev: dict, rule=None) -> tuple[str, list[str], 
 def v1_rule_numbers(comps_reading: float, comps_reversed: float, min_ratio: float = 2.0) -> bool:
     """Node D v1 core test (component density vs reversed-depth null), kept for side-by-side reporting."""
     return (comps_reading / comps_reversed if comps_reversed else float("inf")) >= min_ratio
+
+
+def face_only_flag(iou_best: float, s1_face_asym: float, valid_px: int, rule=None) -> bool:
+    """Face-only statistic (PR #2318 face asymmetry with v2's IoU floor): best-face I >= min_iou and S1 >= min_face_asym,
+    on a region with valid pixels. Always returns a plain Python bool (never numpy.bool_), so `is True` / JSON are safe."""
+    r = dict(RULE_V2, **(rule or {}))
+    return bool(float(iou_best) >= r["min_iou"] and float(s1_face_asym) >= r["min_face_asym"] and int(valid_px) > 0)
+
+
+def count_flagged(regions: dict, kind: str, key: str = "outcome") -> list[str]:
+    """Names of regions of `kind` that are flagged: outcome == "CANDIDATE" for key="outcome", otherwise the truthiness
+    of a boolean field (numpy bools, 1.0/0.0 from JSON and Python bools all count correctly)."""
+    out = []
+    for n, s in regions.items():
+        if s["kind"] != kind:
+            continue
+        v = s[key]
+        if (v == "CANDIDATE") if key == "outcome" else bool(v):
+            out.append(n)
+    return out
+
+
+# ------------------------------------------------------------------ node D "face-only" (PR #2318 statistic, fixed rule)
+# Pre-registered in results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md. Thresholds are those of the v2 prereg's
+# descriptive face-only column (fixed before the v2 data were scored); nothing tuned. Statistic credit: ScrollPrize/villa
+# PR #2318 (`face_check`, ketchupbyheinz).
+RULE_FACE_ONLY = dict(top_q=0.03, min_iou=0.10, min_face_asym=2.0, min_valid_frac=0.80, n_shift_nulls=192,
+                      min_shift_px=150, seed=0)
+
+
+def face_only_rule(iou_fwd: float, iou_rev: float, valid_frac: float = 1.0, p_best: float | None = None,
+                   rule=None) -> tuple[str, list[str], dict]:
+    """Face-only decision for one region. Returns (outcome, reasons, numbers); outcome FLAG, NOTHING or NOT_EVALUABLE.
+    p_best (spatial null) is reported only; it is not part of the decision."""
+    r = dict(RULE_FACE_ONLY, **(rule or {}))
+    iou_fwd, iou_rev = float(iou_fwd), float(iou_rev)
+    best = "fwd" if iou_fwd >= iou_rev else "rev"
+    ib, io = (iou_fwd, iou_rev) if best == "fwd" else (iou_rev, iou_fwd)
+    s1 = ib / max(io, 1e-3)
+    nums = dict(best_face=best, iou_best=ib, iou_other=io, s1_face_asym=s1, valid_frac=float(valid_frac), p_best=p_best)
+    if float(valid_frac) < r["min_valid_frac"]:
+        return "NOT_EVALUABLE", [f"valid fraction {float(valid_frac):.2f} < {r['min_valid_frac']}"], nums
+    why = []
+    if ib < r["min_iou"]:
+        why.append(f"two-model agreement IoU {ib:.3f} < {r['min_iou']}")
+    if s1 < r["min_face_asym"]:
+        why.append(f"face asymmetry {s1:.2f} < {r['min_face_asym']} (texture-like or two-faced)")
+    if why:
+        return "NOTHING", why, nums
+    return "FLAG", [f"one-faced agreement: IoU {ib:.3f} on {best}, face asymmetry {s1:.2f}"], nums
+
+
+def face_only_from_maps(A: dict, B: dict, valid, rule=None) -> tuple[str, list[str], dict]:
+    """A, B: {'fwd': map, 'rev': map} of the two checkpoints on one region; valid: boolean mask (region pixels)."""
+    r = dict(RULE_FACE_ONLY, **(rule or {}))
+    valid = np.asarray(valid, bool)
+    ious = {f: top_iou(A[f], B[f], valid, r["top_q"]) for f in ("fwd", "rev")}
+    best = "fwd" if ious["fwd"] >= ious["rev"] else "rev"
+    _, p, _ = shift_null_p(A[best], B[best], valid, r["top_q"], r["n_shift_nulls"], r["min_shift_px"], r["seed"]) \
+        if valid.any() else (0.0, 1.0, None)
+    return face_only_rule(ious["fwd"], ious["rev"], float(valid.mean()) if valid.size else 0.0, p, rule)

@@ -3,7 +3,7 @@ Usage: score_node_d_v2.py <pod noded/out dir> <regions_render.json> <align_pitch
 A = Reader V3 (rv3), B = dense_native (dn). Rule = inkcheck.node_d_v2 (committed, unchanged)."""
 import sys, json, math, numpy as np
 sys.path.insert(0, '/workspace/vesuvius/prize_oct/publish/vesuvius-inkcheck/src'); sys.path.insert(0, '/workspace/vesuvius/hires_test/tools')
-from inkcheck.node_d_v2 import face_stats, candidate_rule_v2, RULE_V2
+from inkcheck.node_d_v2 import face_stats, candidate_rule_v2, RULE_V2, face_only_flag, count_flagged
 from score import metrics, stroke_width
 OUTD, RR, AP, OJ = sys.argv[1:5]
 regs = json.load(open(RR)); ap = json.load(open(AP)); meta = json.load(open(f"{OUTD}/job3_meta.json"))
@@ -21,7 +21,7 @@ def score(dA, dB, valid, evaluable):
     if not evaluable: out, why = "NOT_EVALUABLE", ["no winding pitch in 6-60 voxels (counted as not-CANDIDATE)"] + why
     if valid.sum() == 0: out, why = "NOT_EVALUABLE", ["no valid CT pixels on the card window"]
     best = nums["best_face"]
-    face_only = bool(nums["iou_best"] >= RULE_V2["min_iou"] and nums["s1_face_asym"] >= RULE_V2["min_face_asym"]) and valid.sum() > 0
+    face_only = face_only_flag(nums["iou_best"], nums["s1_face_asym"], int(valid.sum()))  # plain bool (D5 fix)
     return dict(outcome=out, why=why, numbers={k: (round(v, 4) if isinstance(v, float) else v) for k, v in nums.items()},
                 faces={f: dict(iou=round(s["iou"], 4), p=round(s["p"], 4), null_mean=s["null_mean"] and round(s["null_mean"], 4),
                                iou_off=[round(x, 4) for x in s["iou_offwinding"]], s2=s["s2"] and round(s["s2"], 3)) for f, s in st.items()},
@@ -55,14 +55,14 @@ for i, g in enumerate(pos):
         t = a[:H, :W].reshape(H // b, b, W // b, b).swapaxes(1, 2).reshape(-1, b, b)[perm]
         return t.reshape(H // b, W // b, b, b).swapaxes(1, 2).reshape(H, W)
     dB = {k: (shuf(v) if k.startswith("dn_") else v[:H, :W]) for k, v in d.items()}
-    sa = score(dB, dB, valid[:H, :W], P is not None); R["controls"][f"{n}|a_block_shuffle"] = dict(outcome=sa["outcome"], numbers=sa["numbers"], block_px=b)
+    sa = score(dB, dB, valid[:H, :W], P is not None); R["controls"][f"{n}|a_block_shuffle"] = dict(outcome=sa["outcome"], numbers=sa["numbers"], block_px=b, face_only=sa["face_only"])
     m = pos[(i + 1) % len(pos)]; d2 = data[m["name"]]; h = min(valid.shape[0], d2["valid_d0"].shape[0]); w = min(valid.shape[1], d2["valid_d0"].shape[1])
     cA = {k: v[:h, :w] for k, v in d.items()}; cB = {k: v[:h, :w] for k, v in d2.items()}; vv = valid[:h, :w] & d2["valid_d0"][:h, :w].astype(bool)
     sb = score(cA, cB, vv, P is not None and ap[m["name"]]["pitch"] is not None)
-    R["controls"][f"{n}|b_A_with_B_of_{m['name']}"] = dict(outcome=sb["outcome"], numbers=sb["numbers"])
+    R["controls"][f"{n}|b_A_with_B_of_{m['name']}"] = dict(outcome=sb["outcome"], numbers=sb["numbers"], face_only=sb["face_only"])
 for k, c in R["controls"].items(): print("ctrl", k, c["outcome"], c["numbers"]["iou_best"])
 NP, NB = len(pos), sum(g["kind"] == "blank" for g in regs)
-cand = lambda kind, key="outcome": [n for n, s in R["regions"].items() if s["kind"] == kind and (s[key] == "CANDIDATE" if key == "outcome" else s[key] is True)]
+cand = lambda kind, key="outcome": count_flagged(R["regions"], kind, key)  # D5 fix: was `s[key] is True` (False for numpy.bool_)
 pc = cand("positive"); bc = cand("blank"); segs = sorted({R["regions"][n]["seg"] for n in pc}); cc = [k for k, c in R["controls"].items() if c["outcome"] == "CANDIDATE"]
 need = math.ceil(2 / 3 * NP); allow = max(1, math.floor(0.10 * NB))
 c1 = len(pc) >= need and len(segs) >= 4; c2 = len(bc) <= allow; c3 = len(cc) == 0
@@ -71,7 +71,8 @@ R["verdict"] = dict(N_pos=NP, N_blank=NB, N_blank_evaluable=sum(1 for s in R["re
                     control_candidates=cc, n_controls=len(R["controls"]), controls=c3, VERDICT="ACCEPTED" if c1 and c2 and c3 else "REJECTED",
                     side_by_side={"v2": [len(pc), len(bc)], "face_only": [len(cand("positive", "face_only")), len(cand("blank", "face_only"))],
                                   "v1": [sum(1 for s in R["regions"].values() if s["kind"] == "positive" and s["v1"]["outcome"] == "CANDIDATE"),
-                                         sum(1 for s in R["regions"].values() if s["kind"] == "blank" and s["v1"]["outcome"] == "CANDIDATE")]})
+                                         sum(1 for s in R["regions"].values() if s["kind"] == "blank" and s["v1"]["outcome"] == "CANDIDATE")],
+                                  "face_only_controls": [sum(bool(c["face_only"]) for c in R["controls"].values()), len(R["controls"])]})
 # PHerc0343 (Erwin) under v2: diagnosis only (design data, not validation)
 if "erwin343" in meta["items"] and __import__("os").path.exists(f"{OUTD}/preds_erwin343.npz"):
     d = load("erwin343"); P = meta["items"]["erwin343"]["pitch"]; valid = d["valid_d0"].astype(bool)

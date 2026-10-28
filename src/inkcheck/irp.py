@@ -310,9 +310,34 @@ def prereg_check(spec: dict, base: Path) -> tuple[bool, list[str]]:
     return ok, ev
 
 
+def _node_d_face_only(spec: dict, zones: list[dict]):
+    """Node D option "face_only" (PR #2318 two-model face asymmetry, fixed rule in
+    results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md). Zones carry iou_fwd, iou_rev, valid_frac (opt.), p (opt.)."""
+    from .node_d_v2 import face_only_rule
+    rows = [["zone", "IoU fwd", "IoU rev", "face asym", "valid", "p (shift null, info)", "outcome", "why"]]
+    cands, n = [], 0
+    for z in zones:
+        out, why, nums = face_only_rule(z["iou_fwd"], z["iou_rev"], z.get("valid_frac", 1.0), z.get("p"), spec.get("rule"))
+        n += 1
+        rows.append([z["zone"], _f(z["iou_fwd"], 3), _f(z["iou_rev"], 3), _f(nums["s1_face_asym"]), _f(nums["valid_frac"]),
+                     _f(z.get("p"), 3), "CANDIDATE" if out == "FLAG" else out.lower().replace("_", " "), "; ".join(why)])
+        if out == "FLAG":
+            cands.append(z["zone"])
+    return rows, cands, [], n
+
+
 def node_d(spec: dict, base: Path) -> NodeResult:
     q = "Unlabelled segment: does any zone meet the pre-registered candidate rule?"
     pre_ok, ev = prereg_check(spec, base)
+    if spec.get("rule_type", "v1") == "face_only":
+        zones = list(spec.get("zones", []))
+        if spec.get("zones_file"):
+            zones += _load_json(_resolve(base, spec["zones_file"]))["zones"]
+        rows, cands, pending, n = _node_d_face_only(spec, zones)
+        ev.append("Rule: face-only (two-model face asymmetry, statistic from ScrollPrize/villa PR #2318 by ketchupbyheinz): "
+                  "IoU of top-3 % pixels >= 0.10 on the best face and face asymmetry >= 2.0. Not yet validated on fresh data "
+                  "(see results/irp/node_d_faceonly/); node D v2 (off-winding control) was a pre-registered negative.")
+        return _node_d_verdict(spec, pre_ok, ev, rows, cands, pending, n)
     rows = [["zone", "model", "comps/cm² (null)", "n comps", "r vs other ckpt", "width mm", "outcome", "why"]]
     cands, pending, n = [], [], 0
     zones = list(spec.get("zones", []))
@@ -325,6 +350,11 @@ def node_d(spec: dict, base: Path) -> NodeResult:
         rows.append([z["zone"], z["model"], f"{_f(z.get('comps'), 1)} ({_f(z.get('comps_null'), 1)})",
                      _f(z.get("n_components"), 0), _f(z.get("r_other")), _f(z.get("stroke_width_mm")), out, "; ".join(why)])
         (cands if ok else pending if ok is None else []).append(f"{z['zone']}/{z['model']}")
+    return _node_d_verdict(spec, pre_ok, ev, rows, cands, pending, n)
+
+
+def _node_d_verdict(spec, pre_ok, ev, rows, cands, pending, n) -> NodeResult:
+    q = "Unlabelled segment: does any zone meet the pre-registered candidate rule?"
     for t in spec.get("notes", []):
         ev.append(t)
     gpu = spec.get("compute")
@@ -338,7 +368,7 @@ def node_d(spec: dict, base: Path) -> NodeResult:
         verdict, ans = "VISUAL_PENDING", f"Numeric rule met by {', '.join(pending)}; visual check outstanding."
         nxt = "Do the visual check (strokes 0.1–0.5 mm) and record it in the case file."
     else:
-        verdict, ans = "NO_CANDIDATE", f"No candidate in {n} zone/model pairs under the pre-registered rule."
+        verdict, ans = "NO_CANDIDATE", f"No candidate in {n} {'zones' if spec.get('rule_type') == 'face_only' else 'zone/model pairs'} under the pre-registered rule."
         nxt = "Extra compute (e.g. GPU) is not justified by this evidence; only an exhaustive pass would change it."
     if gpu:
         ev.append(f"Compute: {gpu}")

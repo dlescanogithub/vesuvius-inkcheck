@@ -250,6 +250,12 @@ We re-rendered his region on CPU and ran the node D rule unchanged, written down
 - **Secondary, circular (labelled so in the prereg):** inside his letter boxes vs outside, AUC on the reading side is 0.62–0.65 per model and 0.67 for the 3-model z-score average (2000 random box translations, p ≤ 0.001); on the blind side it is 0.46–0.50. CONSISTENT with his read, but the boxes were placed by looking at this kind of map, so this is not independent confirmation.
 - Deviations: no tile-phase averaging (his `pad_render` trick); dense_native weights are tensor-identical to the public safetensors. Numbers only: `results/irp/pherc343_erwin/RESULTS_villa3.json`; no renders or maps are published (CC BY-NC data).
 
+### Node D v2 (off-winding control): a pre-registered negative, and the face-only option
+
+Node D v2 (`results/irp/node_d_v2/`, prereg sha256 `1bc3423e…`) added a spatial null and an off-winding control (surface moved ±P/2) on 12 known-ink and 4 blank regions from 6 held-out open-data segments. **It was REJECTED: 1 of 12 positives.** The ±P/2 surface is not ink-free on these segments (two-model agreement there is about as high as on the surface). The face-asymmetry statistic from [villa #2318](https://github.com/ScrollPrize/villa/pull/2318) (`face_check`, ketchupbyheinz), tracked as a descriptive column, flagged 9 of 12 positives in 5 of 6 segments and 0 of 4 blanks (only one blank had CT data), but also 2 of 24 synthetic controls (`results_v2_rescored.json`).
+
+Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the default). Its rule is pre-registered in `results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md` (sha256 `740a3571…`, credit #2318). **It is not validated:** the v2 regions are design data for it, and no unused local data exists; the prereg names the fresh open-data segments it must be run on, and the default changes only if that run is ACCEPTED.
+
 `docs/CPU_INFERENCE.md` gives about 35 measured CPU timings (≈ 40–75 s per cm² per checkpoint on a shared 8-vCPU box) and the OMP oversubscription trap.
 
 ## What it does
