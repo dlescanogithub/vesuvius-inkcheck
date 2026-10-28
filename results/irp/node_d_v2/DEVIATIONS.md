@@ -22,3 +22,19 @@ reference resampled to the segment canvas with a box filter; Otsu on valid pixel
 components inside the tile; "distance from any reference ink" measured on a /8 max-pooled grid; validity from the
 mesh (x > 0). Selection found 12 positive regions (6/6 segments) but only 4 blank regions (w082: 1, w083: 0,
 371: 0, 377: 1, 0841: 0, 0009B: 2), so N_blank = 4 and the blank allowance is max(1, floor(0.4)) = 1.
+
+**D4. Pitch, alignment and window details, fixed after rendering and before any model inference**
+(`check_align_pitch.py`, `align_pitch.json`):
+- The CT profile for P averages the core-tile pixels that are valid on the depth-0 card window (the scoring pixels), over
+  all 129 samples (±64). Samples outside the masked volume count as 0. P with the stricter "valid on all 129 samples"
+  pixel set is recorded as `pitch_allvalid`; it differs in 2 of 16 regions (0841-w00_pos1: 11.6 vs none; 371_pos1:
+  15.7 vs 17.3).
+- Alignment: the depth-0 render matches the official surface volume at a constant layer shift of 48-51 per segment
+  (correlation 0.91-0.98 at the window centre, 13/16 regions). The card window is mapped through that shift.
+- Three blank regions (377_bla0, 0009B_bla0, 0009B_bla1) have **no valid CT pixels** on the card window: they lie
+  outside the masked scan volume. They are NOT EVALUABLE, so they cannot be false-flagged. The specificity test
+  therefore rests on one effective blank (0172-w082_bla0), which is reported as a limitation.
+- Regions with no pitch peak in 6-60 voxels are NOT EVALUABLE under §3 (3 of 12 positives: 0172-w083_pos0,
+  0500P2-371_pos0; and 0172-w082_bla0 among blanks). The v1 and face-only columns still score them.
+- One mosaic per depth slot (all regions side by side, each padded by 384 px, so no patch that touches a core
+  pixel crosses into another region) replaces per-region runs. Model calls are villa defaults plus `--direction both`.
