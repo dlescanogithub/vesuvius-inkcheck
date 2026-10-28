@@ -51,7 +51,7 @@ Once the inkcheck JSONs exist, each card takes < 1 s. All verdict thresholds are
 | [PHerc0172 w082 + w083](cards/pherc0172.md) | A | **WEAK** | Two held-out segments (w082 / w083). Reader V3: r 0.45 / 0.51, stroke recall 0.35 / 0.36 vs 0.20 / 0.19 chance; Reader v2: r 0.47 / 0.50, 0.37 / 0.35; dense_native: r 0.34 / 0.26, 0.23 / 0.21 |
 | [PHerc0500P2 gen_00371 + gen_00377](cards/pherc0500P2.md) | A | **WEAK** | Two held-out segments (371 / 377). Reader V3: r 0.44 / 0.33, stroke recall 0.32 / 0.17 vs 0.07 / 0.06 chance; Reader v2: r 0.42 / 0.30, 0.27 / 0.16; dense_native: r 0.30 / 0.21, 0.16 / 0.10 |
 | [ScrollGT flagship label (Paris 4)](cards/scrollgt_flagship.md) | A | **NO_HELD_OUT** | Reader V3 and seed42 PASS against ScrollGT's human label, but the segment is in their training data, so IRP excludes both (scores withheld: Paris 4 segment). See [ScrollGT](#scrollgt-adapter-ap-prevalence-lift) |
-| [PHerc1203 at 2.4 µm](cards/pherc1203.md) (unlabelled) | D | **NO_CANDIDATE** | 0 of 19 zone/model pairs meet the pre-registered rule, so this evidence does not justify a GPU pass |
+| [PHerc1203 at 2.4 µm](cards/pherc1203.md) (unlabelled) | D | **NO_CANDIDATE** | 0 of 19 zone/model pairs meet the pre-registered rule, so this evidence does not justify a GPU pass. Caveat: the same rule also returns NOTHING on the PHerc. 343 region where letters were read (see below), so NO_CANDIDATE is weak evidence of absence |
 
 ```bash
 inkcheck report examples/irp/*.case.json --out cards     # regenerates all ten cards (paths in the case files are relative)
@@ -236,6 +236,17 @@ Three PHerc1203 zones are rendered from the 2.403 µm scan and compared with the
 <!-- HIRES_1203_RESULTS: filled by study/fill_hires.py from the hires run's summary.json -->
 **Result (IRP node D, [card](cards/pherc1203.md)): NO_CANDIDATE.** None of the 19 zone/model pairs (13 from the first three zones: hecate at native 2.4 µm, dense_native at 2.4 and 9.6 µm; 6 from the phase-3 tiles, hecate only) has components ≥ 2× its reverse-depth null together with r ≥ 0.3 against a different checkpoint. The rule file (`results/irp/1203_PREREG.md`) was written before the first output. The phase-4 run (48 more tiles) started Oct 28, 00:21 ART and was still running when this was committed; its tiles will be added the same way.
 <!-- /HIRES_1203_RESULTS -->
+
+### PHerc. 343 (rolled), the First Letters region: does IRP node D find what was read? (pre-registered)
+
+E. Nieuwlaar won the First Letters Prize (Oct 2026) on the still-rolled PHerc. 343 (scan 20250509220833, 8.64 µm; windings w047/w048 joined; z 9500–11000) with an average of four public 9 µm models (ink_9um seed42/43, dense_native, hecate), none trained on 343 ([repo](https://github.com/Nieuwlaar/pherc343-first-letters)). This is a different object, scan and region from our PHerc0343P fragment segments; nothing overlaps.
+
+We re-rendered his region on CPU and ran the node D rule unchanged, written down before the first render (`results/irp/pherc343_erwin/PREREG.md`, sha256 `4a1ba702…`, 2026-10-28 10:22 ART; render finished 10:24 ART). There is no independent reference (his letter boxes were drawn while looking at the ensemble), so node A cannot run.
+
+- **Node D: NOTHING (0 of 3 checkpoints pass).** The three villa checkpoints agree with each other (pairwise r 0.60–0.62 on the reading side), have plausible stroke widths (median 230–330 µm) and enough components (56–87 over 4.3 cm²), but stroke-sized components on the reading side are only 0.99–1.26× the depth-reversed null, below the 2× threshold. Hecate was still running when this was written; it cannot change the verdict, because criterion (i) fails for all three villa models on its own.
+- **So node D has a false negative on a region with letters a human expert read.** In a tightly rolled scroll the depth-reversed side faces the neighbouring winding, which can carry ink too, so the ratio test is conservative. Read the PHerc1203 NO_CANDIDATE above with that in mind.
+- **Secondary, circular (labelled so in the prereg):** inside his letter boxes vs outside, AUC on the reading side is 0.62–0.65 per model and 0.67 for the 3-model z-score average (2000 random box translations, p ≤ 0.001); on the blind side it is 0.46–0.50. CONSISTENT with his read, but the boxes were placed by looking at this kind of map, so this is not independent confirmation.
+- Deviations: no tile-phase averaging (his `pad_render` trick); dense_native weights are tensor-identical to the public safetensors. Numbers only: `results/irp/pherc343_erwin/RESULTS_villa3.json`; no renders or maps are published (CC BY-NC data).
 
 `docs/CPU_INFERENCE.md` gives about 35 measured CPU timings (≈ 40–75 s per cm² per checkpoint on a shared 8-vCPU box) and the OMP oversubscription trap.
 

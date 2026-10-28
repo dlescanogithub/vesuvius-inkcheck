@@ -5,7 +5,7 @@
 **Bottom line:** No candidate in 19 zone/model pairs under the pre-registered rule.  
 **Recommended next step:** Extra compute (e.g. GPU) is not justified by this evidence; only an exhaustive pass would change it.
 
-No reference read exists, so node A cannot run. Zones rendered from the 2.403 µm scan; models: native 2.4 µm hecate (scrollprize/hecate) and dense_native at 2.4 and 9.6 µm; null = same model on depth-reversed input.
+No reference read exists, so node A cannot run. Zones rendered from the 2.403 µm scan; models: native 2.4 µm hecate (scrollprize/hecate) and dense_native at 2.4 and 9.6 µm; null = same model on depth-reversed input. Caveat: the same pre-registered rule returns NOTHING on the PHerc. 343 region where letters were read (Nieuwlaar, Oct 2026; components 0.99-1.26x the depth-reversed null), so NO_CANDIDATE here is weak evidence of absence, not evidence of no ink.
 
 ![decision tree](pherc1203.png)
 

@@ -2,7 +2,7 @@
  "name": "PHerc1203 at 2.4 \u00b5m (unlabelled)",
  "segment": "zones z965, z743, z031, 1203c (+ phase-3 tile p0_965)",
  "scroll": "PHerc1203",
- "summary": "No reference read exists, so node A cannot run. Zones rendered from the 2.403 \u00b5m scan; models: native 2.4 \u00b5m hecate (scrollprize/hecate) and dense_native at 2.4 and 9.6 \u00b5m; null = same model on depth-reversed input.",
+ "summary": "No reference read exists, so node A cannot run. Zones rendered from the 2.403 \u00b5m scan; models: native 2.4 \u00b5m hecate (scrollprize/hecate) and dense_native at 2.4 and 9.6 \u00b5m; null = same model on depth-reversed input. Caveat: the same pre-registered rule returns NOTHING on the PHerc. 343 region where letters were read (Nieuwlaar, Oct 2026; components 0.99-1.26x the depth-reversed null), so NO_CANDIDATE here is weak evidence of absence, not evidence of no ink.",
  "path": [
   "D"
  ],

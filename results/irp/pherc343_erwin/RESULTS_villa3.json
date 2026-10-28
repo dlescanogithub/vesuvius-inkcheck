@@ -1,0 +1,159 @@
+{
+ "grid_um": 9.612,
+ "valid_cm2": 4.324,
+ "shape": [
+  1348,
+  4404
+ ],
+ "models": {
+  "dnative": {
+   "reading": {
+    "frac_hi": 0.1614,
+    "comps_per_cm2": 13.0,
+    "pitch_R": 0.299,
+    "pitch_p": 0.99,
+    "mean_p": 0.3935,
+    "std_p": 0.1161
+   },
+   "null": {
+    "frac_hi": 0.0536,
+    "comps_per_cm2": 11.3,
+    "pitch_R": 0.325,
+    "pitch_p": 0.96,
+    "mean_p": 0.361,
+    "std_p": 0.0713
+   },
+   "ratio": 1.15,
+   "n_comps": 56,
+   "stroke_width": {
+    "median_um": 326.8,
+    "p25": 129.0,
+    "p75": 603.6
+   },
+   "max_r_other": 0.62,
+   "criteria": {
+    "i_ratio": false,
+    "ii_min5": true,
+    "iii_r": true,
+    "iv_width": true
+   },
+   "passes": false
+  },
+  "s42": {
+   "reading": {
+    "frac_hi": 0.0883,
+    "comps_per_cm2": 20.1,
+    "pitch_R": 0.228,
+    "pitch_p": 0.995,
+    "mean_p": 0.3251,
+    "std_p": 0.1111
+   },
+   "null": {
+    "frac_hi": 0.0362,
+    "comps_per_cm2": 16.0,
+    "pitch_R": 0.265,
+    "pitch_p": 0.99,
+    "mean_p": 0.3035,
+    "std_p": 0.0774
+   },
+   "ratio": 1.26,
+   "n_comps": 87,
+   "stroke_width": {
+    "median_um": 230.7,
+    "p25": 98.0,
+    "p75": 405.5
+   },
+   "max_r_other": 0.615,
+   "criteria": {
+    "i_ratio": false,
+    "ii_min5": true,
+    "iii_r": true,
+    "iv_width": true
+   },
+   "passes": false
+  },
+  "s43": {
+   "reading": {
+    "frac_hi": 0.0787,
+    "comps_per_cm2": 16.0,
+    "pitch_R": 0.266,
+    "pitch_p": 0.99,
+    "mean_p": 0.3134,
+    "std_p": 0.1076
+   },
+   "null": {
+    "frac_hi": 0.0341,
+    "comps_per_cm2": 16.2,
+    "pitch_R": 0.34,
+    "pitch_p": 0.189,
+    "mean_p": 0.2975,
+    "std_p": 0.0751
+   },
+   "ratio": 0.99,
+   "n_comps": 69,
+   "stroke_width": {
+    "median_um": 288.4,
+    "p25": 150.1,
+    "p75": 438.8
+   },
+   "max_r_other": 0.62,
+   "criteria": {
+    "i_ratio": false,
+    "ii_min5": true,
+    "iii_r": true,
+    "iv_width": true
+   },
+   "passes": false
+  }
+ },
+ "pairwise_r_reading": {
+  "dnative~s42": 0.615,
+  "dnative~s43": 0.62,
+  "s42~s43": 0.597
+ },
+ "node_D_verdict": "NOTHING",
+ "n_checkpoints_passing": 0,
+ "secondary_letterbox_circular": {
+  "dnative": {
+   "auc_reading": 0.6542,
+   "p_shift": 0.001,
+   "null95": 0.6005,
+   "auc_blind": 0.4576,
+   "label": "CONSISTENT"
+  },
+  "s42": {
+   "auc_reading": 0.6283,
+   "p_shift": 0.0005,
+   "null95": 0.579,
+   "auc_blind": 0.494,
+   "label": "CONSISTENT"
+  },
+  "s43": {
+   "auc_reading": 0.6208,
+   "p_shift": 0.001,
+   "null95": 0.5786,
+   "auc_blind": 0.5016,
+   "label": "CONSISTENT"
+  },
+  "ensemble": {
+   "auc_reading": 0.6659,
+   "p_shift": 0.0005,
+   "null95": 0.6007,
+   "auc_blind": 0.4787,
+   "label": "CONSISTENT"
+  }
+ },
+ "box_px_frac": 0.3329,
+ "models_scored": [
+  "dnative",
+  "s42",
+  "s43"
+ ],
+ "note": "Numbers only (no images; CC BY-NC data). PHerc. 343 scan 20250509220833, w047/w048 joined, z 9500-11000, 8.64 um native, scored on a 9.612 um grid. Rule and secondary test fixed in PREREG.md (sha256 4a1ba702..., 2026-10-28T13:22:06Z, before the render at 13:24:35Z). hecate still running at commit time; its absence cannot change the node D verdict because all three villa checkpoints fail criterion (i), which does not depend on other models.",
+ "prereg_sha256": "4a1ba70222a331e3835bc552f7b8da628c81def61111b083246ffcac92ae9fc3",
+ "checkpoints": {
+  "dnative": "dense_native_016000 (tensor-identical to public safetensors d3d95dc4...)",
+  "s42": "e635558a...",
+  "s43": "2aeaa85a..."
+ }
+}
