@@ -122,7 +122,12 @@ for ck, path in CK.items():
         if r.returncode == 0:
             preds[(ck, s, "fwd")] = tifffile.imread(f"{td}/out.tif"); preds[(ck, s, "rev")] = tifffile.imread(f"{td}/out_reverse.tif")
         save()
-# 5) crop back (core tile for the 16 regions, full region for 343)
+# 5) crop back (core tile for the 16 regions, full region for 343); predictions not at mosaic size are resized (logged)
+for k in list(preds):
+    if preds[k].shape[:2] != valid0.shape:
+        from scipy import ndimage as _ndi
+        a = preds[k]; meta.setdefault("resized", {})["_".join(k)] = [list(a.shape), list(valid0.shape)]
+        preds[k] = _ndi.zoom(a.astype(np.float32), (valid0.shape[0] / a.shape[0], valid0.shape[1] / a.shape[1]), order=1)[:valid0.shape[0], :valid0.shape[1]].clip(0, 255).astype(np.uint8)
 for it in items:
     y, x, h, w = place[it["name"]]; cy, cx, T = it["core"] if it["core"] else (0, 0, None)
     ys, xs = (slice(y+cy, y+cy+T), slice(x+cx, x+cx+T)) if T else (slice(y, y+h), slice(x, x+w))

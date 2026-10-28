@@ -32,8 +32,10 @@ mesh (x > 0). Selection found 12 positive regions (6/6 segments) but only 4 blan
 - Alignment: the depth-0 render matches the official surface volume at a constant layer shift of 48-51 per segment
   (correlation 0.91-0.98 at the window centre, 13/16 regions). The card window is mapped through that shift.
 - Three blank regions (377_bla0, 0009B_bla0, 0009B_bla1) have **no valid CT pixels** on the card window: they lie
-  outside the masked scan volume. They are NOT EVALUABLE, so they cannot be false-flagged. The specificity test
-  therefore rests on one effective blank (0172-w082_bla0), which is reported as a limitation.
+  outside the masked scan volume. They are NOT EVALUABLE, so they cannot be false-flagged. The fourth blank
+  (0172-w082_bla0) has valid pixels but no pitch peak (below), so it is NOT EVALUABLE too. **No blank region is
+  evaluable**: criterion 2 (specificity) holds trivially and tests nothing. That is reported as a limitation, and
+  the specificity evidence comes only from the synthetic controls (criterion 3).
 - Regions with no pitch peak in 6-60 voxels are NOT EVALUABLE under §3 (3 of 12 positives: 0172-w083_pos0,
   0500P2-371_pos0; and 0172-w082_bla0 among blanks). The v1 and face-only columns still score them.
 - One mosaic per depth slot (all regions side by side, each padded by 384 px, so no patch that touches a core
