@@ -80,6 +80,8 @@ The side-by-side panels (prediction, registered reference, overlay, null histogr
 
 ## Quickstart (5 minutes, CPU): see [QUICKSTART.md](QUICKSTART.md)
 
+One command, real data fetched at run time (about 2 minutes on 2 CPU threads): `pip install -e . && inkcheck quick` prints PASS / WEAK / FAIL for a public PHerc0343P segment against infrared-traced letters, with the numbers, a wrong-place control and a plain-English explanation.
+
 ```bash
 pip install -e .
 python examples/make_synthetic_example.py          # data-free stroke maps (seconds)

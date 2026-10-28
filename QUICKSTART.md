@@ -1,5 +1,64 @@
 # Quickstart (5 minutes, CPU)
 
+## Try it in 5 minutes: one command on a real segment
+
+```bash
+git clone https://github.com/dlescanogithub/vesuvius-inkcheck && cd vesuvius-inkcheck
+python -m venv .venv && . .venv/bin/activate && pip install -e .
+inkcheck quick                 # same as: python -m inkcheck.quick
+```
+
+What it does: downloads about 1.2 MB (PHerc0343P segment 20250511003658 on its 8.64 µm canvas: the team's canonical
+2.2 µm ink map as the "model", the letters the Vesuvius Challenge team traced on an **infrared photograph** of the
+fragment as the reference, and the valid-area mask), checks each file's sha256, then runs
+
+* **node A**: does the prediction agree with the known ink better than at 192 random wrong placements, and at letter level?
+* **node N**: a built-in negative control, the same prediction moved to the wrong place, which must FAIL.
+
+Measured on 2026-10-28 (ART) on a shared 8-vCPU Linux box, Python 3.13, `--workers 2`, cold cache: **108 s** in total
+(download 1 s). Output:
+
+```text
+PASS  Team 2.2 um model map vs infrared-traced letters (PHerc0343P)
+  node A (known ink?)      PASS: r_bp 0.431 (null mean 0.051, max 0.137), p 0.00518, stroke recall 0.50 vs 0.00 chance, 8 strokes, AUC 0.897
+  node N (control fails?)  NO_CONTROL_PASSES: wrong-place control FAIL (r_bp 0.034)
+
+  - Agreement: after removing slow brightness trends, the prediction correlates with the reference at r = 0.43. Moving the
+    reference to 192 random wrong places gives r = 0.05 on average (at most 0.14), so the chance of r this high by luck is p = 0.00518.
+  - Letters: 8 reference strokes; the prediction covers 50% of them, against 0.0% expected by chance.
+  - Verdict PASS: the model sees the known ink at letter level here (significant AND large: r >= 0.20 and >= 50% of strokes, both beating the null).
+  - Note: fewer than 10 reference strokes, so the stroke test has little power; PASS is hard to reach.
+  - Control: the same prediction moved to the wrong place gives FAIL (r = 0.03), as it must, so the check is not fooled by texture alone.
+  ...
+```
+
+Exit code 0 = PASS, 1 = WEAK, 2 = FAIL (3 = INVALID: the control passed). `out/quick.json`, `out/quick.png` and
+`out/quick.summary.json` are written locally.
+
+Other uses:
+
+```bash
+inkcheck quick --list                      # built-in examples (343p-ir, 343p-ir-v3)
+inkcheck quick 343p-ir-v3                  # Reader V3 on the same segment (trained on it: a pipeline check, not generalisation)
+inkcheck quick PRED REF --pred-um 8.64 --ref-um 8.64 --mask MASK   # your own maps: local paths or http(s)/s3:// URLs
+inkcheck quick --no-control                # skip the control (about half the time)
+```
+
+To test **your own model** on this segment, run it on the official 8.64 µm surface volume
+(`s3://vesuvius-challenge-open-data/PHerc0343P/segments/20250511003658-tifxyz/surface-volumes/8.64um-1.2m-116keV-volume-20250521134555.zarr`),
+save the flat map on that canvas, and pass it as PRED with the reference URL from `inkcheck quick --list`'s example
+(see `src/inkcheck/quick.py`, `EXAMPLES`).
+
+Data and licence. No scroll data is in this repo. The example files are downloaded at run time from
+[DomRusso2/ir-truth-9um](https://github.com/DomRusso2/ir-truth-9um) at a pinned commit (7e96b96): that repo publishes the
+infrared-traced letters registered onto the 8.64 µm canvas; it is a third-party host, not the official server. The data
+derive from Vesuvius Challenge data (CC BY-NC 4.0 plus the Challenge's data terms): use them for research, do not commit
+or redistribute them. The official open-data bucket carries one ink map per segment and no infrared reference, which is
+why the example uses this source. Caveats: 8 reference strokes is a small sample; "PASS" means "agrees with this
+reference", not ground truth.
+
+## More: synthetic pair, cards and the full check
+
 Verified on 2026-10-27 (ART) from a fresh `git clone` into /tmp, new Python 3.13.5 venv, 2 threads, at low priority on a
 shared 8-vCPU box: `pip install -e .` took 9 s (wheels cached); generating the synthetic pair, the PASS check (exit 0), the
 negative check (FAIL, exit 2), regenerating all ten shipped cards (`inkcheck report examples/irp/*.case.json`) and

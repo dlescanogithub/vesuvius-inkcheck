@@ -3,6 +3,7 @@
   inkcheck PRED REF --pred-um .. --ref-um .. [options]   one falsification check (node A of the protocol)
   inkcheck report CASE.json [CASE2.json ...] --out DIR    Ink Recoverability Protocol readability card(s)
   inkcheck inkbench RESULTS [--benchmark B] [--case-out CASE.json ...]   read inkbench outputs (ranking table / IRP case)
+  inkcheck quick [EXAMPLE | PRED REF ...]                 5-minute quickstart: fetch, check, control, plain-English verdict
 """
 from __future__ import annotations
 
@@ -128,6 +129,9 @@ def main(argv=None):
         return report_main(argv[1:])
     if argv and argv[0] == "inkbench":
         return inkbench_main(argv[1:])
+    if argv and argv[0] == "quick":
+        from .quick import run as quick_main
+        return quick_main(argv[1:])
     a = build_parser().parse_args(argv)
     pred = load_map(a.pred)
     ref = load_map(a.ref)
