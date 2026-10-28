@@ -46,7 +46,7 @@ Once the inkcheck JSONs exist, each card takes < 1 s. All verdict thresholds are
 | [Negative controls](cards/negative_controls.md) | A → N | **NO_CONTROL_PASSES** | wrong region, phase-randomised and shuffled+rotated tiles FAIL; a plain tile shuffle is WEAK (text-line layout survives, r 0.15) but its stroke recall is at chance, so no control PASSes |
 | [PHerc0009B](cards/pherc0009B.md) | A → R | **REFS_AGREE** (A: PASS) | Reader V3 (r 0.79, stroke recall 0.59 vs 0.17 chance), Reader v2 (r 0.75, 0.59) and dense_native (r 0.67, 0.54) PASS against the team 2.4 µm map, and the independent human labels agree (r 0.69 / 0.65 / 0.58, 10 of 10 strokes) |
 | [PHerc0814 validation mask](cards/pherc0814.md) | A | **CONTROL_REPRODUCED** | inkcheck's AUC matches the published AUC within 0.02 for 4 of 4 checkpoints, so the scoring agrees with the official evaluation |
-| [PHerc0343P](cards/343P.md) | A → R → B → C | **SCROLL_SPECIFIC** | No held-out checkpoint reaches letter level (WEAK; seed42 FAIL), and that includes Reader v2/V3 on their own held-out segments. The scan is inside the tolerated blur/noise range, and the 4× finer 2.2 µm scan of the same segment does not fix it |
+| [PHerc0343P](cards/343P.md) (fragment, 3 segments) | A → R → B → C | **SCROLL_SPECIFIC** (these segments) | On these 3 fragment segments no held-out checkpoint reaches letter level (WEAK; seed42 FAIL), and that includes Reader v2/V3 on their own held-out segments. The scan is inside the tolerated blur/noise range, and the 4× finer 2.2 µm scan of the same segment does not fix it. Not a verdict on the rolled PHerc. 343, where the same public models read letters ([Nieuwlaar, Oct 2026](https://github.com/Nieuwlaar/pherc343-first-letters)) |
 | [PHerc0841 (unseen scroll)](cards/pherc0841.md) | A → R | **REFS_AGREE** (A: WEAK) | Reader V3 / Reader v2 / dense_native are significant against the 2.4 µm map (best r 0.55, stroke recall 0.34 vs 0.15 chance) but below letter level; against the 7-stroke human labels r is significant (0.30 / 0.23 / 0.18) with 0, 1 and 0 of 7 strokes, so both references say WEAK |
 | [PHerc0172 w082 + w083](cards/pherc0172.md) | A | **WEAK** | Two held-out segments (w082 / w083). Reader V3: r 0.45 / 0.51, stroke recall 0.35 / 0.36 vs 0.20 / 0.19 chance; Reader v2: r 0.47 / 0.50, 0.37 / 0.35; dense_native: r 0.34 / 0.26, 0.23 / 0.21 |
 | [PHerc0500P2 gen_00371 + gen_00377](cards/pherc0500P2.md) | A | **WEAK** | Two held-out segments (371 / 377). Reader V3: r 0.44 / 0.33, stroke recall 0.32 / 0.17 vs 0.07 / 0.06 chance; Reader v2: r 0.42 / 0.30, 0.27 / 0.16; dense_native: r 0.30 / 0.21, 0.16 / 0.10 |
@@ -117,13 +117,13 @@ Threshold sensitivity: moving the r threshold anywhere in 0.10–0.30 changes no
 
 ## Triage: where is GPU time worth it? (`triage/`)
 
-**34 of 34 measurable public segments (10 scrolls) are inside the scan tolerance of a ~9 µm model. Where models are WEAK, model transfer is the bottleneck, not the scan.** Tiers: 2 read, 14 test, 18 transfer-limited, 0 scan-limited, 1 not measured (too little valid surface). Tolerance (node B, Paris 4 dense_native verdicts per degradation level, `figures/tolerance_curve.png`): voxel ≤ 9.6 µm, HF spectral ratio ≥ 0.024, adjacent-layer high-pass correlation ≥ 0.32. Rules, per-segment table and caveats: [`triage/TRIAGE.md`](triage/TRIAGE.md).
+**34 of 34 measurable public segments (10 scrolls) are inside the scan tolerance of a ~9 µm model. On the segments where models are WEAK, model transfer is the bottleneck, not the scan.** A WEAK verdict is per segment, not per scroll (see the PHerc. 343 note below). Tiers: 2 read, 14 test, 18 transfer-limited, 0 scan-limited, 1 not measured (too little valid surface). Tolerance (node B, Paris 4 dense_native verdicts per degradation level, `figures/tolerance_curve.png`): voxel ≤ 9.6 µm, HF spectral ratio ≥ 0.024, adjacent-layer high-pass correlation ≥ 0.32. Rules, per-segment table and caveats: [`triage/TRIAGE.md`](triage/TRIAGE.md).
 
 ![triage](figures/triage.png)
 
 ## ScrollGT adapter: AP-prevalence-lift (`examples/scrollgt/`)
 
-[ScrollGT](https://github.com/jonmarrs/scrollgt) (v0.9.1, MIT) provides registered human ink labels and reports AP-prevalence-lift (AP / positive rate; 1 = all-positive, 1/prevalence = oracle). `inkcheck.scrollgt` computes the same metric; `tests/test_scrollgt.py` checks it against scikit-learn. On a 2048² sub-crop of ScrollGT's flagship region (Paris 4 segment 20231210121321, 2.4 µm scan pooled ×4), Reader V3 and ink_9um seed42 both PASS against ScrollGT's label, and both find the same registration offset between the label and the segment, consistent with the ~0.31 mm placement uncertainty ScrollGT states for this target (so scores against ScrollGT as placed are lower bounds). The scores (r_bp, stroke recall, AP-lift) are withheld because this is a PHercParis4 segment (publication reservation until 2027-06-25).
+[ScrollGT](https://github.com/jonmarrs/scrollgt) (v0.9.1, MIT; README as of ad8a972, 2026-10-27) provides registered human ink labels and reports AP-prevalence-lift (AP / positive rate; 1 = all-positive, 1/prevalence = oracle). `inkcheck.scrollgt` computes the same metric; `tests/test_scrollgt.py` checks it against scikit-learn. On a 2048² sub-crop of ScrollGT's flagship region (Paris 4 segment 20231210121321, 2.4 µm scan pooled ×4), Reader V3 and ink_9um seed42 both PASS against ScrollGT's label, and both find the same registration offset between the label and the segment, consistent with the ~0.31 mm placement uncertainty ScrollGT states for this target (so scores against ScrollGT as placed are lower bounds). The scores (r_bp, stroke recall, AP-lift) are withheld because this is a PHercParis4 segment (publication reservation until 2027-06-25).
 
 | checkpoint | IRP verdict |
 |---|---|
@@ -133,7 +133,8 @@ Threshold sensitivity: moving the r threshold anywhere in 0.10–0.30 changes no
 What this does and does not show:
 - 20231210121321 is `ink_9um` phercparis4-w06, in the training configs of Reader V3, seed42 and dense_native, so IRP correctly returns **NO_HELD_OUT**: this is a demonstration of the leakage guard, not held-out validation. ScrollGT's other public target (20230702185753, w01) is also train-exposed and is non-scoring in ScrollGT.
 - Our sub-crop scores (withheld) are not comparable with ScrollGT's `BASELINES.md` (different crop, subsampled pixels).
-- ScrollGT's earlier near-chance held-out numbers were retracted by ScrollGT itself (revision of 2026-08-07, a LEVEL0_SHAPE bug; credited to erdpx, villa #1280); its corrected flagship ROC-AUCs are 0.731–0.753 (AP-lift 2.15–2.44). We quote ScrollGT's numbers from its README and did not re-run its pipeline.
+- ScrollGT's earlier near-chance flagship numbers (ROC-AUC ≈ 0.55–0.56) were retracted by ScrollGT itself (revision of 2026-08-07, a LEVEL0_SHAPE registration bug; credited to erdpx, villa #1280). ScrollGT v0.9.1 (0f3fa90, 2026-10-27; wording clarified in 32deb61) states that the held-out claim refers to its own distilled students: arm B and arm C never trained on the flagship segment and read it at ROC-AUC 0.731 / 0.746 (AP-lift 2.34 / 2.44); the released canon teacher scores 0.753 (AP-lift 2.15). We quote ScrollGT's numbers from its README and did not re-run its pipeline.
+- This is consistent with our NO_HELD_OUT card: "held out" in ScrollGT means held out from ScrollGT's students. The train-exposed checkpoints are ours (Reader V3, ink_9um seed42; dense_native too), whose public training configs include this segment as phercparis4-w06. ScrollGT's leaderboard line "no public model we know of trained here" does not cover these public 9 µm checkpoints.
 
 Reproduce: `examples/scrollgt/fetch_flagship.py` (downloads the crop), `examples/scrollgt/run_flagship.sh`, `examples/scrollgt/ap_lift.py` → `results/scrollgt/ap_lift.json` (written locally; not shipped).
 
@@ -223,8 +224,9 @@ Published AUCs used other z-window choices, so differences of about ±0.01–0.0
 - **343P's native scan is not blurrier or noisier than the Paris 4 input** by spectral and inter-layer proxies.
 - **Stroke size is similar** in both references (343P median ≈ 0.19 mm²; Paris 4 value withheld).
 - **Same segment, other scan:** the 2.215 µm / 111 keV surface volume pooled to 8.86 µm gives 7 of 7 runs WEAK.
-  - So the gap is mostly **scroll- or ink-specific**, not voxel size.
-  - Validate every scroll on a labelled segment before trusting ~9 µm maps.
+  - So on these fragment segments the gap is **segment- or ink-specific**, not voxel size.
+  - It does not generalize to the whole object: on the rolled PHerc. 343 (scan 20250509220833, windings w047/w048, z 9500–11000; no overlap with our fragment scans) an average of the same public 9 µm models reads letters (E. Nieuwlaar, $50K First Letters Prize, Oct 2026, [repo](https://github.com/Nieuwlaar/pherc343-first-letters)).
+  - Validate each region on a labelled segment (node A) before trusting ~9 µm maps; one WEAK region says little about another.
 - **Unlabelled PHerc0800/1203:** depth-order nulls keep most of the map texture, so we claim no ink there.
 
 ### PHerc1203 at 2.4 µm: does 4× finer voxels change anything on an unread scroll? (pre-registered)

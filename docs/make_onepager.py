@@ -38,7 +38,7 @@ ROWS = [
     ("pherc0009B", "PHerc0009B, held-out segment", "Reader V3, v2 and dense_native PASS vs team 2.4 µm map (r 0.79 / 0.75 / 0.67) and vs human labels (10/10 strokes)"),
     ("negative_controls", "Negative controls", "wrong region, phase-randomised, shuffled tiles: 0/4 PASS (3 FAIL, 1 WEAK with recall at chance)"),
     ("pherc0814", "PHerc0814 validation mask", "AUC matches the official evaluation within 0.02 for 4/4 checkpoints"),
-    ("343P", "PHerc0343P, held-out segments", "Reader v2/V3 WEAK (r 0.18-0.22); 2 refs agree (IR camera letters, ρ 0.90); scan in tolerance; 2.2 µm scan no better"),
+    ("343P", "PHerc0343P fragment, 3 held-out segs", "Reader v2/V3 WEAK (r 0.18-0.22); 2 refs agree (IR camera letters, ρ 0.90); scan in tolerance; 2.2 µm scan no better. Not the rolled PHerc. 343 (read, Nieuwlaar Oct 2026)"),
     ("pherc0841", "PHerc0841, unseen scroll", "Reader V3 / v2 / dense_native WEAK: best r 0.55, recall 0.34 vs 0.15 chance; human labels: r ≤ 0.30, ≤ 1 of 7 strokes"),
     ("pherc0172", "PHerc0172 w082 + w083, held out", "Reader V3 / v2 / dense_native WEAK on both: r 0.26-0.51, stroke recall 0.21-0.37 vs 0.16-0.20 chance"),
     ("pherc0500P2", "PHerc0500P2 gen_00371 + 00377, held out", "Reader V3 / v2 / dense_native WEAK on both: r 0.21-0.44, stroke recall 0.10-0.32 vs 0.05-0.07 chance"),
@@ -50,7 +50,7 @@ POSITION = ("Related work: inkbench (inksweep/inkbench) and ScrollGT (jonmarrs/s
             "segment (is the scan, the model or the scroll the bottleneck?) and adds pre-registration. villa #2210 (held-out "
             "evaluation) and #2318 (face check: writing vs texture) are complementary checks inside villa.")
 HEAD = (f"{tri['n_inside']} of {tri['n']} measurable public segments ({len(tri['scrolls'])} scrolls) are inside the scan tolerance where a ~9 µm model "
-        f"still reads Paris 4. Where models are WEAK, the scan is not the bottleneck: model transfer is.")
+        f"still reads Paris 4. On the segments where models are WEAK, the scan is not the bottleneck: model transfer is (per segment, not per scroll).")
 TIERS = "   ".join(f"{k.split(' ', 1)[1]}: {v}" for k, v in tri["counts"].items() if v)
 
 
@@ -126,7 +126,7 @@ def headline(path):
     img = mpimg.imread(os.path.join(ROOT, "figures", "triage.png"))
     ax = fig.add_axes([.47, .12, .51, .75]); ax.imshow(img); ax.axis("off")
     HL = (f"{tri['n_inside']} of {tri['n']} measurable public segments ({len(tri['scrolls'])} scrolls) are inside the scan tolerance "
-          f"of a ~9 µm model. Where models are WEAK, model transfer is the bottleneck, not the scan.")
+          f"of a ~9 µm model. On WEAK segments, model transfer is the bottleneck, not the scan.")
     for i, s in enumerate(textwrap.wrap(HL, 95)):
         t(.03, .075 - i * .042, s, fontsize=17, weight="bold")
     fig.savefig(path); plt.close(fig)

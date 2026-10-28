@@ -253,8 +253,8 @@ def node_c(scan_a: dict, scan_b: dict) -> NodeResult:
     anypass = any(by_a[k]["verdict"] == "PASS" for k in common)
     if anypass:
         return NodeResult("C", q, "BOTH_PASS", "Neither: letters are recovered from both scans.", ev, "No scan-driven loss to explain.", rows)
-    return NodeResult("C", q, "SCROLL_SPECIFIC", "SCROLL/INK: no checkpoint reaches letter level on either scan, so the gap is not voxel size or scan protocol.",
-                      ev, "Change the model or the labels, not the scan: a finer or cleaner scan of this scroll is not the bottleneck. Re-test any new model on held-out segments with node A.", rows)
+    return NodeResult("C", q, "SCROLL_SPECIFIC", "SCROLL/INK (scored segments only): no checkpoint reaches letter level on either scan, so on these segments the gap is not voxel size or scan protocol.",
+                      ev, "Change the model or the labels, not the scan: on these segments a finer or cleaner scan is not the bottleneck. This covers only the segments scored; other regions of the same scroll can behave differently, so test them with node A.", rows)
 
 
 # ----------------------------------------------------------------------------------------------- node D

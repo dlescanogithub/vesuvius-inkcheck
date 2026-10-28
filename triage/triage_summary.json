@@ -1,5 +1,5 @@
 {
- "headline": "**34 of 34 measurable public segments (10 scrolls) are inside the scan tolerance where a 9 \u00b5m model still reads Paris 4 letters.** Tiers: 2 read, 14 test, 18 transfer-limited, 0 scan-limited; 1 more had too little valid surface to measure. On every scroll with a WEAK verdict the scan is inside the tolerance, so the gap is model transfer, not scan quality.",
+ "headline": "**34 of 34 measurable public segments (10 scrolls) are inside the scan tolerance where a 9 \u00b5m model still reads Paris 4 letters.** Tiers: 2 read, 14 test, 18 transfer-limited, 0 scan-limited; 1 more had too little valid surface to measure. Wherever a segment got a WEAK verdict the scan is inside the tolerance, so on those segments the gap is model transfer, not scan quality. A WEAK verdict covers the segments measured, not the whole scroll or object: PHerc0343P is a detached fragment, and on the rolled PHerc. 343 the same public 9 \u00b5m models read letters (E. Nieuwlaar, First Letters Prize, Oct 2026).",
  "counts": {
   "1 read": 2,
   "2 test": 14,

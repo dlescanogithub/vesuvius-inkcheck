@@ -1,9 +1,9 @@
 {
- "name": "PHerc0343P (no model at letter level)",
+ "name": "PHerc0343P fragment, 3 segments (no model at letter level here)",
  "scroll": "PHerc0343P",
  "segment": "20250904233748-0_b2, 20250905172054-1_b2 (Reader v2 held-out), 20250511003658",
- "summary": "Native 8.64 µm / 116 keV surface volumes; reference = 2.215 µm new_canon map. Reader v2/V3 are scored only on their two held-out segments; d9v4C is shown but excluded (leak). Caveat: the main reference is the canonical 2 µm model's prediction, not ground truth; node R checks it against letters traced on an infrared photograph (an independent, camera-based reference).",
- "headline": "No held-out model reaches letter level (WEAK; seed42 FAIL), including Reader v2/V3 on their own held-out segments; the scan is inside the tolerated blur/noise range and a 4× finer scan of the same segment does not fix it, so the gap is scroll/ink-specific, not resolution.",
+ "summary": "Native 8.64 µm / 116 keV surface volumes; reference = 2.215 µm new_canon map. Reader v2/V3 are scored only on their two held-out segments; d9v4C is shown but excluded (leak). Caveat: the main reference is the canonical 2 µm model's prediction, not ground truth; node R checks it against letters traced on an infrared photograph (an independent, camera-based reference). Scope: PHerc0343P is a fragment that detached from PHerc. 343 during mechanical unwrapping; it has its own scans (8.64 µm 20250510090703, 2.215 µm 20250512023932). None of the 3 segments overlaps Nieuwlaar's PHerc. 343 region (scan 20250509220833, windings w047/w048, z 9500-11000).",
+ "headline": "On these 3 segments of the detached fragment PHerc0343P, no held-out model reaches letter level (WEAK; seed42 FAIL), including Reader v2/V3 on their own held-out segments; the scan is inside the tolerated blur/noise range and a 4× finer scan of the same segment does not fix it, so the gap here is segment/ink-specific, not resolution. This does not extend to the rolled scroll PHerc. 343: the same public 9 µm models read letters there (E. Nieuwlaar, First Letters prize, Oct 2026; different object, scan and region).",
  "checks": [
   {
    "label": "Reader v2 @233748",

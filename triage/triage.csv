@@ -23,14 +23,14 @@ PHerc0343P,20250904233748-0_b2,8.64,432,0.0325,,0.776,True,WEAK (this segment),n
 PHerc0343P,20250905172054-1_b2,8.64,324,0.0315,,0.769,True,WEAK (this segment),no held-out model at letter level; IR camera letters agree (cards/343P),False,yes,3 transfer-limited
 PHerc0500P2,20250716055229 (gen_00371),9.362,461,0.0313,relaxed,0.755,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
 PHerc0500P2,20250716055230 (gen_00377),9.362,857,0.0381,relaxed,0.78,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
-PHerc0500P2,20250825181928-2,9.362,367,0.0536,relaxed,0.779,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
+PHerc0500P2,20250825181928-2,9.362,367,0.0536,relaxed,0.779,True,WEAK (same fragment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",False,yes,3 transfer-limited
 PHerc0841,20260220213127-w00,9.366,574,0.0393,relaxed,0.746,True,WEAK (this segment),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
 PHerc0841,20260220214732-auto_grown_20260220144552,9.366,367,0.0416,relaxed,0.747,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
 PHerc0841,20260221022814-auto_grown_20260220174252,9.366,368,0.0347,relaxed,0.744,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs human labels and vs 2.4 µm map (cards/pherc0841)",False,yes,3 transfer-limited
 PHerc0172,20250917143559-w062_20250917143559205_fl,7.91,262,0.0443,,0.861,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs team map on w082 and w083 (cards/pherc0172)",True,yes,3 transfer-limited
 PHerc0343P,20250511003658-tifxyz,8.64,257,0.0282,,0.777,True,WEAK (this segment),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
-PHerc0343P,20250902170441--4_b2,8.64,288,0.0443,,0.779,True,WEAK (same scroll),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
-PHerc0343P,20250902171204--1_b2,8.64,294,0.0375,relaxed,0.779,True,WEAK (same scroll),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
-PHerc0500P2,20250609204953-z_dbg_gen_00612,9.362,220,0.0535,relaxed,0.782,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
-PHerc0500P2,20250628074500-500P2_front,9.362,367,0.0383,relaxed,0.768,True,WEAK (same scroll),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
+PHerc0343P,20250902170441--4_b2,8.64,288,0.0443,,0.779,True,WEAK (same fragment),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
+PHerc0343P,20250902171204--1_b2,8.64,294,0.0375,relaxed,0.779,True,WEAK (same fragment),no held-out model at letter level; IR camera letters agree (cards/343P),True,yes,3 transfer-limited
+PHerc0500P2,20250609204953-z_dbg_gen_00612,9.362,220,0.0535,relaxed,0.782,True,WEAK (same fragment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
+PHerc0500P2,20250628074500-500P2_front,9.362,367,0.0383,relaxed,0.768,True,WEAK (same fragment),"Reader V3, Reader v2, dense_native WEAK vs 2.2 µm map on gen_00371 and gen_00377 (cards/pherc0500P2)",True,yes,3 transfer-limited
 PHerc1447,20250502180708-auto_grown_20250502160708,8.64,18,,,0.898,False,none,,False,no,5 not measured

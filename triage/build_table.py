@@ -57,7 +57,7 @@ for name, r in P.items():
     tr = in_train(scroll, seg)
     rows.append(dict(scroll=scroll, segment=seg, um=r["um"], valid_mm2=round(r["valid_mm2"]), hf_ratio=None if hf is None else round(hf, 4),
                      hf_note=hf_note, layer_hp_corr=round(r["layer_hp_corr"], 3), inside_tolerance=inside,
-                     node_a=(a[0] + (" (this segment)" if measured else " (same scroll)")) if a else "none",
+                     node_a=(a[0] + (" (this segment)" if measured else (" (same fragment)" if scroll.endswith("P") or scroll.endswith("P2") else " (same scroll)"))) if a else "none",
                      node_a_evidence=a[1] if a else "", in_reader_v3_training=tr, team_ink_map=("yes" if r.get("has_ink_map", scroll not in ("PHerc0800", "PHerc1447")) else "no"), tier=tier))
 rows.sort(key=lambda d: (d["tier"], d["in_reader_v3_training"], d["scroll"], d["segment"]))
 with open(os.path.join(HERE, "triage.csv"), "w", newline="") as f:
@@ -68,7 +68,7 @@ cnt = {t: sum(d["tier"] == t for d in rows) for t in ("1 read", "2 test", "3 tra
 head = (f"**{n_in} of {n} measurable public segments ({len(scrolls)} scrolls) are inside the scan tolerance where a 9 µm model still reads Paris 4 letters.** "
         f"Tiers: {cnt['1 read']} read, {cnt['2 test']} test, {cnt['3 transfer-limited']} transfer-limited, {cnt['4 scan-limited']} scan-limited"
         + (f"; {n_unm} more had too little valid surface to measure. " if n_unm else ". ") +
-        "On every scroll with a WEAK verdict the scan is inside the tolerance, so the gap is model transfer, not scan quality.")
+        "Wherever a segment got a WEAK verdict the scan is inside the tolerance, so on those segments the gap is model transfer, not scan quality. A WEAK verdict covers the segments measured, not the whole scroll or object: PHerc0343P is a detached fragment, and on the rolled PHerc. 343 the same public 9 µm models read letters (E. Nieuwlaar, First Letters Prize, Oct 2026).")
 md = ["# Recoverability triage (CPU only, no GPU)", "", head, "",
       f"Tolerance (node B, Paris 4 dense_native curve): voxel ≤ {UM_EDGE:g} µm (PASS at 9.6, WEAK at 19.2; nothing tested in between), HF spectral ratio ≥ {HF_EDGE}, adjacent-layer high-pass correlation ≥ {CORR_EDGE}. "
       "Applying a Paris 4 tolerance to other scrolls assumes the proxies mean the same thing across scrolls and beam energies; this is not validated.", "",
@@ -109,5 +109,5 @@ if "--fig" in sys.argv:
             ax.annotate(d["scroll"].replace("PHerc", ""), (d["hf_ratio"], d["layer_hp_corr"]), xytext=(6, -10), textcoords="offset points", fontsize=8)
     ax.set_xscale("symlog", linthresh=0.01); ax.set_xlim(-0.0005, 0.25); ax.set_ylim(0, 1)
     ax.set_xlabel("HF spectral ratio (10–25 / 2–10 cycles/mm), sharpness"); ax.set_ylabel("adjacent-layer high-pass correlation, signal vs noise")
-    ax.set_title(f"{n_in} of {n} measurable public segments are inside the scan tolerance (upper right)\nWEAK scrolls are model-transfer-limited, not scan-limited", fontsize=11)
+    ax.set_title(f"{n_in} of {n} measurable public segments are inside the scan tolerance (upper right)\nWEAK segments are model-transfer-limited, not scan-limited", fontsize=11)
     ax.legend(fontsize=8, loc="upper left", bbox_to_anchor=(0.0, 0.92), framealpha=.95); fig.tight_layout(); fig.savefig(os.path.join(ROOT, "figures", "triage.png"), dpi=150)
