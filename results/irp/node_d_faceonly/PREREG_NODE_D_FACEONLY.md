@@ -61,7 +61,7 @@ A FLAG is a pointer for compute and a human look, never "ink".
   segments), not 9/12: `0500P2-371_pos1` has 29 % valid CT on the window and becomes NOT EVALUABLE. Blanks: 0
   flagged, 1 evaluable (`0172-w082_bla0`: I 0.038, S1 35, NOTHING), 3 not evaluable.
 * PHerc.343, Erwin's First Letters region: FLAG (I 0.434, S1 2.33). PR #2318 reports 3.23 on its own crop.
-* PHerc1203 and every private dataset: excluded from both design and evaluation.
+* Private scouting targets and every private dataset: excluded from both design and evaluation.
 
 ## 5. Evaluation sets (unused at hashing time)
 
@@ -71,7 +71,7 @@ v2 set or design data (section 4). So the targets below are fixed now and must b
 
 **Set F1 (primary, independent segments).** Open-data segments with a team ink map in the public bucket that are
 not among: PHerc0172 w082 / w083, PHerc0500P2 00371 / 00377, PHerc0841 w00, PHerc0009B 20250919125754, PHerc0814
-46527, any PHerc.343 segment, any PHerc1203 segment, and any segment the model cards in `cards/` list as training
+46527, any PHerc.343 segment, any private scouting target, and any segment the model cards in `cards/` list as training
 data of A or B. Mechanical choice: list the bucket on the evaluation day, sort by (scroll, segment ID), take the
 first segment per scroll and then the second, up to 6 segments, at most 2 per scroll. The listing and the choice are
 committed before any inference. If fewer than 4 segments qualify, F1 is **NOT RUN** and that is reported.

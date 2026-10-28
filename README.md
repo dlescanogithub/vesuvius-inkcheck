@@ -254,7 +254,7 @@ We re-rendered his region on CPU and ran the node D rule unchanged, written down
 
 Node D v2 (`results/irp/node_d_v2/`, prereg sha256 `1bc3423e…`) added a spatial null and an off-winding control (surface moved ±P/2) on 12 known-ink and 4 blank regions from 6 held-out open-data segments. **It was REJECTED: 1 of 12 positives.** The ±P/2 surface is not ink-free on these segments (two-model agreement there is about as high as on the surface). The face-asymmetry statistic from [villa #2318](https://github.com/ScrollPrize/villa/pull/2318) (`face_check`, ketchupbyheinz), tracked as a descriptive column, flagged 9 of 12 positives in 5 of 6 segments and 0 of 4 blanks (only one blank had CT data), but also 2 of 24 synthetic controls (`results_v2_rescored.json`).
 
-Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the default). Its rule is pre-registered in `results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md` (sha256 `740a3571…`, credit #2318). **It is not validated:** the v2 regions are design data for it, and no unused local data exists; the prereg names the fresh open-data segments it must be run on, and the default changes only if that run is ACCEPTED.
+Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the default). Its rule is pre-registered in `results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md` (sha256 `ba553d03…`, credit #2318). **It is not validated:** the v2 regions are design data for it, and no unused local data exists; the prereg names the fresh open-data segments it must be run on, and the default changes only if that run is ACCEPTED.
 
 `docs/CPU_INFERENCE.md` gives about 35 measured CPU timings (≈ 40–75 s per cm² per checkpoint on a shared 8-vCPU box) and the OMP oversubscription trap.
 
