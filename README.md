@@ -2,6 +2,8 @@
 
 [![tests](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23769415.svg)](https://doi.org/10.5281/zenodo.23769415)
+[![PyPI](https://img.shields.io/pypi/v/vesuvius-inkcheck.svg)](https://pypi.org/project/vesuvius-inkcheck/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dlescanogithub/vesuvius-inkcheck/blob/main/notebooks/quickstart_colab.ipynb)
 
 **IRP is a CPU-only, pre-registered decision tree for Herculaneum ink maps, built on `inkcheck`. For any segment it answers three things: does a model read the ink? If not, is the scan to blame, the scroll, or is there simply nothing to find? And what should be done next?**
 
@@ -12,7 +14,7 @@ The [2026 open problems](https://scrollprize.org/2026_open_problems) ask for bet
 ## Install and first run
 
 ```bash
-pip install git+https://github.com/dlescanogithub/vesuvius-inkcheck     # Python >= 3.10, CPU only; add "[zarr]" for compressed surface volumes
+pip install vesuvius-inkcheck          # Python >= 3.10, CPU only; add "[zarr]" for compressed surface volumes
 inkcheck --help
 inkcheck quick                      # ~2 min: public PHerc0343P map vs infrared-traced letters -> PASS, wrong-place control -> FAIL
 ```
@@ -21,10 +23,13 @@ inkcheck quick                      # ~2 min: public PHerc0343P map vs infrared-
 **official open-data ink map** (read directly from the Vesuvius Challenge bucket with `inkcheck.opendata`: ds8 `.jpg/.png` previews,
 full `.tif` maps, `layers-zarr` surface volumes) to a verdict, with one PASS-like case and one saturation WARN. Changes: [CHANGELOG.md](CHANGELOG.md).
 
-The distribution name is **`vesuvius-inkcheck`** (the import and the command stay `inkcheck`). It is not on PyPI yet; once it is,
-`pip install "vesuvius-inkcheck[zarr]"` replaces the git URL above.
+**No install needed:** [notebooks/quickstart_colab.ipynb](notebooks/quickstart_colab.ipynb) runs `pip install vesuvius-inkcheck`, the PASS
+check with its wrong-place control and the saturation warning in about 5 minutes on Colab's free CPU ([open in Colab](https://colab.research.google.com/github/dlescanogithub/vesuvius-inkcheck/blob/main/notebooks/quickstart_colab.ipynb)).
 
-### New in 0.3.0 (unreleased)
+The distribution name is **`vesuvius-inkcheck`** on [PyPI](https://pypi.org/project/vesuvius-inkcheck/) (the import and the command stay `inkcheck`);
+`pip install git+https://github.com/dlescanogithub/vesuvius-inkcheck` installs the development version.
+
+### New in 0.3.0
 
 * **Ink card** ([docs/schema.md](docs/schema.md)): every `inkcheck PRED REF` run also writes `<out>.card.json` / `.card.md`, a versioned
   (`ink-card/v1`, JSON Schema in `src/inkcheck/schemas/`) record of the verdict, numbers, nulls, wrong-place control, saturation warning
@@ -38,7 +43,7 @@ The distribution name is **`vesuvius-inkcheck`** (the import and the command sta
   small label areas). Read its caveats: this is agreement with labels, not a held-out test.
 * **Reference set v0** ([refset/REFSET_v0.md](refset/REFSET_v0.md)): 192 fixed, hashed 0.5 mm tiles (96 ink, 96 no-ink) drawn from the public
   labels on 12 segments of 3 scrolls (coordinates and hashes only, no pixels), with coverage statistics and limitations.
-* **PyPI-ready**: `python -m build` and `twine check` pass; the release workflow stays inert until a PyPI trusted publisher is set up.
+* **On PyPI**: `pip install vesuvius-inkcheck`; releases are published from the release workflow via a PyPI trusted publisher.
 
 ## The protocol
 
