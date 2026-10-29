@@ -9,7 +9,7 @@ Every `inkcheck` run writes `PREFIX.card.json`, a per-segment **ink card** that 
 | `schema_version`, `kind`, `created_utc` | `"1.x"`, `"inkcheck.ink-card"`, UTC timestamp |
 | `segment` | `scroll`, `segment_id`, optional `label`, `region` |
 | `verdict` | `final` (PASS / WEAK / FAIL / INVALID), `node_A`, `node_N` (NO_CONTROL_PASSES / CONTROL_PASSED / null), `summary` |
-| `metrics` | `r_bandpass`, `r_bandpass_p`, null mean / sd / max, `n_shift_nulls`, `r_raw`, `auc_raw`, `breakeven_f1`, `stroke_recall` (+ `stroke_recall_chance`), `stroke_precision`, `n_ref_strokes`, `overlap_cm2`, `analysis_um`, `shift_um`, `r_bandpass_ci95` |
+| `metrics` | `r_bandpass`, `r_bandpass_p`, null mean / sd / max, `n_shift_nulls` (usable) and `n_shift_nulls_requested`, `r_raw`, `auc_raw`, `breakeven_f1`, `stroke_recall` (+ `stroke_recall_chance`), `stroke_precision`, `n_ref_strokes`, `overlap_cm2`, `analysis_um`, `shift_um`, `r_bandpass_ci95` |
 | `thresholds` | `alpha_r`, `min_r_bp`, `min_stroke_recall` used |
 | `controls` | list of `{name, kind, expected, verdict, r_bandpass}` |
 | `saturation` | `checked` (false if the map is not 8-bit), `saturated`, `median`, `frac_high`, `threshold`, `n`, `rule` |

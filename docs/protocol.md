@@ -30,6 +30,10 @@ fail as they must?).
 4. **Search-matched nulls**: move the reference to `n_shift_nulls` (default 192) random places at least
    `min_shift_mm` away (plus rotations), re-run the *same* registration search each time and record the best `r`.
    `p` is the rank of the real `r_bp` among the nulls.
+   A null that moves the reference mask off the valid prediction cannot be scored and is dropped:
+   `n_shift_nulls` in the output is the number of *usable* nulls (`n_shift_nulls_requested` were drawn), and a
+   warning says when too few remain for `p` to reach `alpha_r`. With a small or patchy reference mask, crop both
+   maps to the mask's bounding box first (the leaderboard does this).
 5. **Strokes**: connected components of the thresholded reference ≥ `min_stroke_mm2`; stroke recall = fraction
    of reference strokes the prediction covers, compared with its own null (`stroke_recall_chance`).
 6. **Verdict**: PASS if `p(r) ≤ 0.01`, `p(stroke recall) ≤ 0.05`, `r_bp ≥ 0.20` and stroke recall ≥ 0.50;

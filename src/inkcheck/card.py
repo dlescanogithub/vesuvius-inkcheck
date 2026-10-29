@@ -62,7 +62,7 @@ def _clean(o):
 
 
 METRIC_KEYS = ("r_bandpass", "r_bandpass_p", "r_bandpass_z", "r_bandpass_null_mean", "r_bandpass_null_sd",
-               "r_bandpass_null_max", "n_shift_nulls", "r_raw", "auc_raw", "breakeven_f1", "stroke_recall",
+               "r_bandpass_null_max", "n_shift_nulls", "n_shift_nulls_requested", "r_raw", "auc_raw", "breakeven_f1", "stroke_recall",
                "stroke_precision", "n_ref_strokes", "overlap_cm2", "analysis_um", "shift_um")
 
 

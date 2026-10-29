@@ -45,6 +45,7 @@
         "r_bandpass_null_sd": {"$ref": "#/$defs/num"},
         "r_bandpass_null_max": {"$ref": "#/$defs/num"},
         "n_shift_nulls": {"type": "integer", "minimum": 0},
+        "n_shift_nulls_requested": {"type": "integer", "minimum": 0, "description": "shift nulls drawn; n_shift_nulls counts those with enough valid overlap to score"},
         "r_raw": {"$ref": "#/$defs/num"},
         "auc_raw": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
         "breakeven_f1": {"type": ["number", "null"], "minimum": 0, "maximum": 1},

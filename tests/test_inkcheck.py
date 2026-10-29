@@ -104,3 +104,23 @@ class TestVerdicts(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestUnusableNulls(unittest.TestCase):
+    def test_unscorable_shift_nulls_are_counted_and_flagged(self):
+        """Shift nulls that land off the valid prediction give NaN; they must not count as nulls."""
+        rng = np.random.default_rng(3)
+        ref = strokes((800, 1600), 60, rng)
+        pred = ref[::2, ::2] + np.random.default_rng(4).normal(0, 20, (400, 800)).astype(np.float32)
+        pred = np.clip(pred, 1, None)
+        pred[:, 200:] = 0                      # the prediction covers only the left quarter
+        m = np.zeros(ref.shape, bool)
+        m[:, :400] = True
+        res = run_check(pred, ref, cfg(ref_origin=(0.0, 0.0)), None, m, **QUIET)
+        n = res.numbers
+        self.assertEqual(n["n_shift_nulls_requested"], 49)
+        self.assertLess(n["n_shift_nulls"], n["n_shift_nulls_requested"])
+        self.assertTrue(np.isfinite(n["r_bandpass_null_mean"]) and np.isfinite(n["r_bandpass_null_max"]))
+        self.assertTrue(any("had enough valid overlap" in w for w in res.warnings))
+        self.assertTrue(any("cannot reach significance" in w for w in res.warnings))
+        self.assertNotEqual(res.verdict, "PASS")

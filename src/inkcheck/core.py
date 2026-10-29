@@ -202,9 +202,15 @@ def run_check(pred: np.ndarray, ref: np.ndarray, cfg: CheckConfig, pred_mask: np
             log(f"[inkcheck]   nulls {i + 1}/{len(dih) + len(shifts)} ({time.time() - t0:.0f}s)")
 
     p_r, z_r = _pvalue(r_obs, null_r)
+    n_req = len(null_r)
+    null_r = [v for v in null_r if np.isfinite(v)]   # a shift null with too little valid overlap gives NaN
+    if n_req and len(null_r) < n_req:
+        warnings.append(f"only {len(null_r)} of {n_req} shift nulls had enough valid overlap to score (small or "
+                        f"fragmented reference mask); p is computed over those {len(null_r)}")
     if 1.0 / (1 + len(null_r)) > cfg.alpha_r:
-        warnings.append(f"only {len(null_r)} shift nulls: the smallest attainable p ({1 / (1 + len(null_r)):.3f}) "
-                        f"is above alpha={cfg.alpha_r}; increase --nulls")
+        warnings.append(f"only {len(null_r)} usable shift nulls: the smallest attainable p ({1 / (1 + len(null_r)):.3f}) "
+                        f"is above alpha={cfg.alpha_r}, so this check cannot reach significance; increase --nulls "
+                        f"or use a larger reference mask")
     for kname, v in null_r_dih.items():
         if v >= r_obs:
             warnings.append(f"reference transformed by {kname} correlates as well or better (r={v:+.3f}) "
@@ -232,7 +238,7 @@ def run_check(pred: np.ndarray, ref: np.ndarray, cfg: CheckConfig, pred_mask: np
         if boot.get("n_tiles", 0) < 20:
             warnings.append(f"bootstrap uses only {boot.get('n_tiles', 0)} tiles: intervals are rough")
 
-    nr = np.asarray(null_r)
+    nr = np.asarray(null_r if null_r else [np.nan])
     numbers = {
         "analysis_um": a_um, "stats_um": s_um, "overlap_cm2": float(mm.sum() * a_um ** 2 / 1e8),
         "ref_threshold": thr, "ref_ink_fraction": ink_frac,
@@ -240,7 +246,7 @@ def run_check(pred: np.ndarray, ref: np.ndarray, cfg: CheckConfig, pred_mask: np
         "r_bandpass": r_obs, "r_bandpass_zero_shift": r_zero, "r_raw": raw_r,
         "r_bandpass_null_mean": float(nr.mean()), "r_bandpass_null_sd": float(nr.std()),
         "r_bandpass_null_max": float(nr.max()), "r_bandpass_p": p_r, "r_bandpass_z": z_r,
-        "r_bandpass_dihedral": null_r_dih, "n_shift_nulls": int(nr.size),
+        "r_bandpass_dihedral": null_r_dih, "n_shift_nulls": len(null_r), "n_shift_nulls_requested": n_req,
         "n_metric_nulls": len(null_metrics),
         **{f"{k_}": v for k_, v in obs.items()},
         "metric_nulls": stats,
@@ -266,6 +272,6 @@ def run_check(pred: np.ndarray, ref: np.ndarray, cfg: CheckConfig, pred_mask: np
                    f"search-matched null)")
     log(f"[inkcheck] VERDICT {verdict}: {summary}")
     cfgd = asdict(cfg)
-    return CheckResult(verdict, summary, numbers, {"r_bandpass_shift_nulls": [float(x) for x in nr]}, cfgd,
+    return CheckResult(verdict, summary, numbers, {"r_bandpass_shift_nulls": [float(x) for x in null_r]}, cfgd,
                        warnings, {"pred": pa, "ref": ra_al, "mask": mm, "ref_bin": rbin_al, "pred_bp": pbp,
                                   "ref_bp": rbp_al})
