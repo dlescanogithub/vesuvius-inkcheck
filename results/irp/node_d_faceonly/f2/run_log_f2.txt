@@ -1,0 +1,73 @@
+2026-10-28 22:50:49 ART build OK: bundle 8.4M
+2026-10-28 22:50:58 ART build OK: bundle 8.4M
+2026-10-28 22:51:00 ART create NVIDIA GeForce RTX 4090 COMMUNITY failed: {"error":"create pod: There are no instances currently available","status":500}
+2026-10-28 22:51:01 ART create NVIDIA GeForce RTX 3090 COMMUNITY failed: {"error":"create pod: There are no instances currently available","status":500}
+2026-10-28 22:51:01 ART no acceptable GPU available now
+2026-10-28 22:52:07 ART build OK: bundle 8.4M
+2026-10-28 22:52:09 ART create NVIDIA GeForce RTX 4090 COMMUNITY failed: {"error":"create pod: There are no instances currently available","status":500}
+2026-10-28 22:52:10 ART create NVIDIA RTX A5000 COMMUNITY failed: {"error":"create pod: There are no instances currently available","status":500}
+2026-10-28 22:52:11 ART pod osjpzapgxmx5p9 created: NVIDIA RTX A4500 COMMUNITY $0.19/h; balance before $49.200328738; pod hard limit 220 min; box watchdog 4.0 h
+2026-10-28 22:54:13 ART pod up; uploading reader-v3 parts + bundle
+2026-10-28 22:54:23 ART uploads verified; pod running
+  pod: 2026-10-29T01:54:23Z pod_main start pod=osjpzapgxmx5p9 hard=220m cpus=32 mem=251G
+  pod: 2026-10-29T01:54:23Z setup start
+  pod: 2026-10-29T01:54:24Z host GPU ok
+  pod: 2026-10-29T01:54:25Z uv ok
+  pod: 2026-10-29T01:54:25Z venv ok
+  pod: 2026-10-29T01:54:28Z torch ok: 2.9.1+cu128
+  pod: 2026-10-29T01:54:37Z model deps ok
+  pod: 2026-10-29T01:54:39Z villa import ok
+  pod: 2026-10-29T01:54:43Z setup done
+  pod: 2026-10-29T01:54:43Z setup exit=0
+  pod: 2026-10-29T01:54:43Z reader-v3 ok
+  pod: 2026-10-29T01:54:52Z infer smoke OK (workers 4)
+  pod: 2026-10-29T01:55:00Z f2 fetched PHerc0009B__20250919133208|pos0 579 1.0
+  pod: 2026-10-29T01:55:06Z f2 fetched PHerc0009B__20250919133208|pos1 579 0.9998
+  pod: 2026-10-29T01:55:12Z f2 fetched PHerc0139__20260215000000|pos0 534 0.9956
+  pod: 2026-10-29T01:55:19Z f2 fetched PHerc0139__20260215000000|pos1 534 0.9997
+  pod: 2026-10-29T01:55:24Z f2 fetched PHerc0139__20260215000000|bla0 534 0.9981
+  pod: 2026-10-29T01:55:28Z f2 fetched PHerc0139__20260215000000|bla1 534 0.9287
+  pod: 2026-10-29T01:55:36Z f2 fetched PHerc0172__20250926150345|pos0 632 1.0
+  pod: 2026-10-29T01:55:44Z f2 fetched PHerc0172__20250926150345|pos1 632 1.0
+  pod: 2026-10-29T01:55:50Z f2 fetched PHerc0500P2__20250716055232|pos0 534 0.943
+  pod: 2026-10-29T01:55:56Z f2 fetched PHerc0500P2__20250716055232|pos1 534 0.9883
+  pod: 2026-10-29T01:56:03Z f2 fetched PHerc0841__20260221022814|pos0 534 0.9985
+  pod: 2026-10-29T01:56:07Z f2 fetched PHerc0841__20260221022814|pos1 534 0.8289
+  pod: 2026-10-29T01:56:15Z f2 fetched PHerc0009B__20250919140325|pos0 579 0.9999
+  pod: 2026-10-29T01:56:20Z f2 fetched PHerc0009B__20250919140325|pos1 579 0.7623
+  pod: 2026-10-29T01:56:27Z f2 fetched PHerc0139__20260220000000|pos0 534 0.9968
+  pod: 2026-10-29T01:56:33Z f2 fetched PHerc0139__20260220000000|pos1 534 1.0
+  pod: 2026-10-29T01:56:39Z f2 fetched PHerc0139__20260220000000|bla0 534 0.9998
+  pod: 2026-10-29T01:56:44Z f2 fetched PHerc0139__20260220000000|bla1 534 0.9998
+  pod: 2026-10-29T01:56:52Z f2 fetched PHerc0172__20250926153406|pos0 632 1.0
+  pod: 2026-10-29T01:57:00Z f2 fetched PHerc0172__20250926153406|pos1 632 1.0
+  pod: 2026-10-29T01:57:07Z f2 fetched PHerc0500P2__20250716055233|pos0 534 0.9771
+  pod: 2026-10-29T01:57:13Z f2 fetched PHerc0500P2__20250716055233|pos1 534 0.9998
+  pod: 2026-10-29T01:57:21Z f2 fetched PHerc0814__20250929040153|pos0 534 0.9996
+  pod: 2026-10-29T01:57:27Z f2 fetched PHerc0814__20250929040153|pos1 534 0.9973
+  pod: 2026-10-29T01:57:36Z f2 fetched PHerc0139__20260306000000|pos0 534 0.9953
+  pod: 2026-10-29T01:57:43Z f2 fetched PHerc0139__20260306000000|pos1 534 0.9999
+  pod: 2026-10-29T01:57:47Z f2 fetched PHerc0139__20260306000000|bla0 534 0.8176
+  pod: 2026-10-29T01:57:52Z f2 fetched PHerc0139__20260306000000|bla1 534 0.9996
+  pod: 2026-10-29T01:58:00Z f2 fetched PHerc0172__20251106133152|pos0 632 1.0
+  pod: 2026-10-29T01:58:07Z f2 fetched PHerc0172__20251106133152|pos1 632 1.0
+  pod: 2026-10-29T01:58:11Z f2 fetched PHerc0500P2__20250716055234|pos0 534 0.8056
+  pod: 2026-10-29T01:58:18Z f2 fetched PHerc0500P2__20250716055234|pos1 534 0.9541
+  pod: 2026-10-29T01:58:25Z f2 fetched PHerc0814__20250930083742|pos0 534 0.9412
+  pod: 2026-10-29T01:58:32Z f2 fetched PHerc0814__20250930083742|pos1 534 0.9993
+  pod: 2026-10-29T01:58:40Z f2 fetched PHerc0139__20260306000001|pos0 534 0.9902
+  pod: 2026-10-29T01:58:47Z f2 fetched PHerc0139__20260306000001|pos1 534 0.9962
+  pod: 2026-10-29T01:58:53Z f2 fetched PHerc0139__20260306000001|bla0 534 0.9664
+  pod: 2026-10-29T01:58:58Z f2 fetched PHerc0139__20260306000001|bla1 534 0.9996
+  pod: 2026-10-29T01:58:59Z f2 mosaic 13404 5404
+  pod: 2026-10-29T02:00:38Z f2 infer rv3 exit 0 99
+  pod: 2026-10-29T02:02:40Z f2 infer dn exit 0 122
+  pod: 2026-10-29T02:02:42Z f2 job_f2 done 7.8 min
+  pod: 2026-10-29T02:02:42Z job_f2 exit=0
+  pod: 2026-10-29T02:02:43Z packed 20M
+  pod: 2026-10-29T02:02:43Z results READY (1 parts)
+2026-10-28 23:03:36 ART results in /workspace/vesuvius/prize_oct/node_d_f2_gpu/results_20261029_0203
+2026-10-28 23:03:52 ART pod osjpzapgxmx5p9 DELETED (API GET -> 404)
+2026-10-28 23:03:52 ART pod wall time 0.19 h at $0.19/h
+2026-10-28 23:04:52 ART balance before 49.200328738, after 49.1619368214 (spent $0.04)
+2026-10-28 23:04:52 ART pod results in /workspace/vesuvius/prize_oct/node_d_f2_gpu/pod_results
