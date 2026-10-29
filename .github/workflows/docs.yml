@@ -1,11 +1,10 @@
 # Build the documentation site (mkdocs --strict) and deploy it to GitHub Pages.
-# Runs only by hand (workflow_dispatch) or on a version tag; never on ordinary pushes or pull requests.
+# Runs only by hand (workflow_dispatch); never on pushes, tags or pull requests. The tag trigger was removed because
+# the github-pages environment protection rule blocks deployments from tags, so tag runs failed (v0.3.0, 2026-10-29).
 # Inert until GitHub Pages is enabled for the repository with "Source: GitHub Actions".
 name: docs
 on:
   workflow_dispatch:
-  push:
-    tags: ["v*"]
 permissions:
   contents: read
 concurrency:
