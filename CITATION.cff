@@ -7,6 +7,14 @@ authors:
     given-names: Diego
 version: 0.3.0
 date-released: "2026-10-29"
+doi: 10.5281/zenodo.23769415
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23769415
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: 10.5281/zenodo.23769416
+    description: "Version 0.3.0"
 license: MIT
 repository-code: "https://github.com/dlescanogithub/vesuvius-inkcheck"
 url: "https://dlescanogithub.github.io/vesuvius-inkcheck/"

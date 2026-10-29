@@ -1,6 +1,7 @@
 # Ink Recoverability Protocol (IRP): is the ink missing, or just not recovered yet?
 
 [![tests](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23769415.svg)](https://doi.org/10.5281/zenodo.23769415)
 
 **IRP is a CPU-only, pre-registered decision tree for Herculaneum ink maps, built on `inkcheck`. For any segment it answers three things: does a model read the ink? If not, is the scan to blame, the scroll, or is there simply nothing to find? And what should be done next?**
 
