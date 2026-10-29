@@ -1,10 +1,24 @@
 # Ink Recoverability Protocol (IRP): is the ink missing, or just not recovered yet?
 
+[![tests](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/dlescanogithub/vesuvius-inkcheck/actions/workflows/ci.yml)
+
 **IRP is a CPU-only, pre-registered decision tree for Herculaneum ink maps, built on `inkcheck`. For any segment it answers three things: does a model read the ink? If not, is the scan to blame, the scroll, or is there simply nothing to find? And what should be done next?**
 
 The [2026 open problems](https://scrollprize.org/2026_open_problems) ask for better diagnostics and scan-quality metrics, and for a way to tell "no ink" from "no ink recovered yet". IRP is a small, testable answer. You run one command per segment, `inkcheck report case.json`, and it writes a one-page **readability card** (Markdown + PNG + JSON). The card gives the verdict at each node of the tree and the recommended next step.
 
 ![343P readability card](cards/343P.png)
+
+## Install and first run
+
+```bash
+pip install git+https://github.com/dlescanogithub/vesuvius-inkcheck     # Python >= 3.10, CPU only; add "[zarr]" for compressed surface volumes
+inkcheck --help
+inkcheck quick                      # ~2 min: public PHerc0343P map vs infrared-traced letters -> PASS, wrong-place control -> FAIL
+```
+
+**5-minute tutorial:** [docs/TUTORIAL.md](docs/TUTORIAL.md) / [notebooks/tutorial_5min.ipynb](notebooks/tutorial_5min.ipynb) goes from an
+**official open-data ink map** (read directly from the Vesuvius Challenge bucket with `inkcheck.opendata`: ds8 `.jpg/.png` previews,
+full `.tif` maps, `layers-zarr` surface volumes) to a verdict, with one PASS-like case and one saturation WARN. Changes: [CHANGELOG.md](CHANGELOG.md).
 
 ## The protocol
 
@@ -101,8 +115,8 @@ inkcheck examples/data/paris4_dn_pred_9.6um.png examples/data/paris4_ref_crop_19
 - Other ways to run it:
   - Notebook: `notebooks/quickstart.ipynb`.
   - Docker: `Dockerfile`.
-  - CI: `.github/workflows/ci.yml` runs the tests plus this example.
-- Tests: `cd tests && python -m pytest -q`, or `python -m unittest discover -s tests` with `src` on PYTHONPATH.
+  - CI: `.github/workflows/ci.yml` runs the tests (CPU, offline: `-m "not network"`) plus this example.
+- Tests: `cd tests && python -m pytest -q -m "not network"`, or `python -m unittest discover -s tests` with `src` on PYTHONPATH.
 
 ## Calibration: are the PASS thresholds right? (`calibration/`)
 
@@ -254,7 +268,7 @@ We re-rendered his region on CPU and ran the node D rule unchanged, written down
 
 Node D v2 (`results/irp/node_d_v2/`, prereg sha256 `1bc3423e…`) added a spatial null and an off-winding control (surface moved ±P/2) on 12 known-ink and 4 blank regions from 6 held-out open-data segments. **It was REJECTED: 1 of 12 positives.** The ±P/2 surface is not ink-free on these segments (two-model agreement there is about as high as on the surface). The face-asymmetry statistic from [villa #2318](https://github.com/ScrollPrize/villa/pull/2318) (`face_check`, ketchupbyheinz), tracked as a descriptive column, flagged 9 of 12 positives in 5 of 6 segments and 0 of 4 blanks (only one blank had CT data), but also 2 of 24 synthetic controls (`results_v2_rescored.json`).
 
-Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the default). Its rule is pre-registered in `results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md` (sha256 `ba553d03…`, credit #2318). **Validation on fresh data (set F1): REJECTED.** On 6 independent open-data segments picked mechanically from the bucket listing (one per scroll; listing, tiles, scorer committed before inference), face-only flagged 4 of 12 known-ink tiles in 3 of 6 segments (the prereg needs 8 and 4); 0 of 24 synthetic controls; 1 of 2 blanks (too few blanks to test specificity). v1 stays the default. Numbers: `results/irp/node_d_faceonly/f1/RESULTS.md`.
+Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the default). Its rule is pre-registered in `results/irp/node_d_faceonly/PREREG_NODE_D_FACEONLY.md` (sha256 `ba553d03…`, credit #2318). **Validation on fresh data (set F1): REJECTED.** On 6 independent open-data segments picked mechanically from the bucket listing (one per scroll; listing, tiles, scorer committed before inference), face-only flagged 4 of 12 known-ink tiles in 3 of 6 segments (the prereg needs 8 and 4); 0 of 24 synthetic controls; 1 of 2 blanks (too few blanks to test specificity). v1 stays the default. Numbers: `results/irp/node_d_faceonly/f1/RESULTS.md`. **Specificity set F2: SPECIFICITY_FAILED.** A second pre-registered set (prereg `f2/PREREG_F2.md`, sha256 `a92e1169…`; 8 blanks = tiles ≥ 1 mm from reference ink, 30 known-ink tiles, 15 segments) flagged 3 of 8 blanks (allowed 1), 10 of 30 known-ink tiles and 2 + 2 of 60 controls. So a face-only FLAG is not evidence of ink on public segments; it stays a research option. Caveat: all 8 blanks are on PHerc0139 and "blank" means "no ink in the reference map". Numbers: `results/irp/node_d_faceonly/f2/RESULTS.md`.
 
 `docs/CPU_INFERENCE.md` gives about 35 measured CPU timings (≈ 40–75 s per cm² per checkpoint on a shared 8-vCPU box) and the OMP oversubscription trap.
 
