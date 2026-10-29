@@ -1,0 +1,17 @@
+VISIT 1 PHerc0009B__20250919133208 tiles 70 pos [(4, 2, 0.449, 12, 1.0), (10, 2, 0.447, 5, 0.9998)] blank [] visited 1 cum_blank 0
+VISIT 2 PHerc0139__20260215000000 tiles 124 pos [(6, 6, 0.709, 4, 0.9956), (4, 9, 0.577, 6, 0.9997)] blank [(12, 4, 18.147, 0.9981), (12, 3, 17.716, 0.9287)] visited 2 cum_blank 2
+VISIT 3 PHerc0172__20250926150345 tiles 241 pos [(12, 5, 0.497, 16, 1.0), (3, 1, 0.401, 12, 1.0)] blank [] visited 0 cum_blank 2
+VISIT 4 PHerc0500P2__20250716055232 tiles 27 pos [(5, 4, 0.303, 14, 0.943), (1, 2, 0.209, 10, 0.9883)] blank [] visited 0 cum_blank 2
+VISIT 5 PHerc0814__20250928235954 tiles 0 pos [] blank [] visited 0 cum_blank 2
+VISIT 6 PHerc0841__20260221022814 tiles 44 pos [(2, 5, 0.312, 6, 0.9985), (0, 7, 0.295, 6, 0.8289)] blank [] visited 0 cum_blank 2
+VISIT 7 PHerc0009B__20250919140325 tiles 74 pos [(9, 2, 0.589, 5, 0.9999), (11, 2, 0.376, 7, 0.7623)] blank [] visited 0 cum_blank 2
+VISIT 8 PHerc0139__20260220000000 tiles 214 pos [(5, 3, 0.235, 6, 0.9968), (7, 12, 0.212, 8, 1.0)] blank [(12, 7, 18.314, 0.9998), (12, 6, 17.876, 0.9998)] visited 2 cum_blank 4
+VISIT 9 PHerc0172__20250926153406 tiles 261 pos [(14, 14, 0.548, 9, 1.0), (13, 13, 0.516, 5, 1.0)] blank [] visited 0 cum_blank 4
+VISIT 10 PHerc0500P2__20250716055233 tiles 26 pos [(4, 2, 0.136, 13, 0.9771), (4, 4, 0.13, 14, 0.9998)] blank [] visited 0 cum_blank 4
+VISIT 11 PHerc0814__20250929040153 tiles 30 pos [(4, 11, 0.521, 8, 0.9996), (3, 12, 0.47, 10, 0.9973)] blank [] visited 0 cum_blank 4
+VISIT 12 PHerc0139__20260306000000 tiles 121 pos [(5, 5, 0.402, 14, 0.9953), (5, 10, 0.277, 13, 0.9999)] blank [(10, 0, 18.512, 0.8176), (10, 1, 17.9, 0.9996)] visited 2 cum_blank 6
+VISIT 13 PHerc0172__20251106133152 tiles 303 pos [(7, 6, 0.552, 4, 1.0), (1, 15, 0.506, 7, 1.0)] blank [] visited 0 cum_blank 6
+VISIT 14 PHerc0500P2__20250716055234 tiles 18 pos [(6, 3, 0.271, 6, 0.8056), (5, 2, 0.192, 9, 0.9541)] blank [] visited 0 cum_blank 6
+VISIT 15 PHerc0814__20250930083742 tiles 73 pos [(4, 26, 0.606, 4, 0.9412), (4, 4, 0.576, 7, 0.9993)] blank [] visited 0 cum_blank 6
+VISIT 16 PHerc0139__20260306000001 tiles 207 pos [(5, 3, 0.192, 6, 0.9902), (7, 3, 0.163, 17, 0.9962)] blank [(13, 8, 21.121, 0.9664), (13, 9, 21.121, 0.9996)] visited 2 cum_blank 8
+STOP attempts=16 visits=16 blanks=8 positives=30

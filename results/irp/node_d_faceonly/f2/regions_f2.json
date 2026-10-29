@@ -1,0 +1,965 @@
+{
+ "PHerc0009B__20250919133208": {
+  "scroll": "PHerc0009B",
+  "segment": "20250919133208-auto_grown_20250919063208154_inp_hr",
+  "sv": "PHerc0009B/segments/20250919133208-auto_grown_20250919063208154_inp_hr/surface-volumes/8.64um-1.2m-116keV-volume-20250521125136.zarr/",
+  "ink_map": "PHerc0009B/segments/20250919133208-auto_grown_20250919063208154_inp_hr/ink-detection/PHerc0009B-20250919133208-2.401um-0.35m-77keV-volume-20250820154339-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0009B/segments/20250919133208-auto_grown_20250919063208154_inp_hr/mesh/20250919133208-on-20250521125136-8.64um.tifxyz/",
+  "um": 8.64,
+  "canvas": [
+   6820,
+   5020
+  ],
+  "depth": 31,
+  "window": [
+   7,
+   24
+  ],
+  "tile_px": 579,
+  "otsu": 114.0,
+  "n_tiles": 70,
+  "n_eligible_pos": 62,
+  "n_eligible_blank": 1,
+  "blank_visited": [
+   [
+    7,
+    7,
+    0.7206
+   ]
+  ],
+  "positive": [
+   {
+    "row": 4,
+    "col": 2,
+    "y0": 2316,
+    "x0": 1158,
+    "size": 579,
+    "valid_frac": 1.0,
+    "ink_frac": 0.4486384421953162,
+    "strokes": 12,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   },
+   {
+    "row": 10,
+    "col": 2,
+    "y0": 5790,
+    "x0": 1158,
+    "size": 579,
+    "valid_frac": 1.0,
+    "ink_frac": 0.44728717549464414,
+    "strokes": 5,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9998
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0139__20260215000000": {
+  "scroll": "PHerc0139",
+  "segment": "20260215000000-w024_2026021572",
+  "sv": "PHerc0139/segments/20260215000000-w024_2026021572/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr/",
+  "ink_map": "PHerc0139/segments/20260215000000-w024_2026021572/ink-detection/PHerc0139-20260215000000-1.129um-0.22m-59keV-volume-20260413113053-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0139/segments/20260215000000-w024_2026021572/mesh/20260215000000-on-20250728140407-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   7100,
+   6620
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 105.0,
+  "n_tiles": 124,
+  "n_eligible_pos": 53,
+  "n_eligible_blank": 63,
+  "blank_visited": [
+   [
+    12,
+    4,
+    0.9981
+   ],
+   [
+    12,
+    3,
+    0.9287
+   ]
+  ],
+  "positive": [
+   {
+    "row": 6,
+    "col": 6,
+    "y0": 3204,
+    "x0": 3204,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.7087278542271599,
+    "strokes": 4,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9956
+   },
+   {
+    "row": 4,
+    "col": 9,
+    "y0": 2136,
+    "x0": 4806,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5765966698929709,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9997
+   }
+  ],
+  "blank": [
+   {
+    "row": 12,
+    "col": 4,
+    "y0": 6408,
+    "x0": 2136,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 18.147,
+    "ct_valid_frac": 0.9981
+   },
+   {
+    "row": 12,
+    "col": 3,
+    "y0": 6408,
+    "x0": 1602,
+    "size": 534,
+    "valid_frac": 0.9617,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 17.716,
+    "ct_valid_frac": 0.9287
+   }
+  ]
+ },
+ "PHerc0172__20250926150345": {
+  "scroll": "PHerc0172",
+  "segment": "20250926150345-w086_20250926150345176_flatboi",
+  "sv": "PHerc0172/segments/20250926150345-w086_20250926150345176_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr/",
+  "ink_map": "PHerc0172/segments/20250926150345-w086_20250926150345176_flatboi/ink-detection/PHerc0172-20250926150345-7.91um-53keV-volume-20241024131838-20251222202946-timesformer_scroll5_november19-tile64-stride16.tif",
+  "mesh": "PHerc0172/segments/20250926150345-w086_20250926150345176_flatboi/mesh/20250926150345-on-20241024131838-7.91um.tifxyz/",
+  "um": 7.91,
+  "canvas": [
+   12460,
+   9700
+  ],
+  "depth": 33,
+  "window": [
+   8,
+   25
+  ],
+  "tile_px": 632,
+  "otsu": 108.0,
+  "n_tiles": 241,
+  "n_eligible_pos": 241,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 12,
+    "col": 5,
+    "y0": 7584,
+    "x0": 3160,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.49705325668963307,
+    "strokes": 16,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   },
+   {
+    "row": 3,
+    "col": 1,
+    "y0": 1896,
+    "x0": 632,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.4010024435186669,
+    "strokes": 12,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0500P2__20250716055232": {
+  "scroll": "PHerc0500P2",
+  "segment": "20250716055232-z_dbg_gen_00505_inp_hr",
+  "sv": "PHerc0500P2/segments/20250716055232-z_dbg_gen_00505_inp_hr/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr/",
+  "ink_map": "PHerc0500P2/segments/20250716055232-z_dbg_gen_00505_inp_hr/ink-detection/PHerc0500P2-20250716055232-2.215um-0.4m-111keV-volume-20250526151718-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0500P2/segments/20250716055232-z_dbg_gen_00505_inp_hr/mesh/20250716055232-on-20250820143440-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   5020,
+   3480
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 112.0,
+  "n_tiles": 27,
+  "n_eligible_pos": 27,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 5,
+    "col": 4,
+    "y0": 2670,
+    "x0": 2136,
+    "size": 534,
+    "valid_frac": 0.9842,
+    "ink_frac": 0.3032573684510575,
+    "strokes": 14,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.943
+   },
+   {
+    "row": 1,
+    "col": 2,
+    "y0": 534,
+    "x0": 1068,
+    "size": 534,
+    "valid_frac": 0.9985,
+    "ink_frac": 0.20867812135601793,
+    "strokes": 10,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9883
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0814__20250928235954": {
+  "scroll": "PHerc0814",
+  "segment": "20250928235954-auto_grown_20250928235953722_copy",
+  "sv": "PHerc0814/segments/20250928235954-auto_grown_20250928235953722_copy/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr/",
+  "ink_map": "PHerc0814/segments/20250928235954-auto_grown_20250928235953722_copy/ink-detection/PHerc0814-20250928235954-1.129um-0.22m-59keV-volume-20260521123630-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0814/segments/20250928235954-auto_grown_20250928235953722_copy/mesh/20250928235954-on-20250804134230-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   600,
+   900
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 104.0,
+  "n_tiles": 0,
+  "n_eligible_pos": 0,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [],
+  "blank": []
+ },
+ "PHerc0841__20260221022814": {
+  "scroll": "PHerc0841",
+  "segment": "20260221022814-auto_grown_20260220174252405",
+  "sv": "PHerc0841/segments/20260221022814-auto_grown_20260220174252405/surface-volumes/9.366um-1.2m-113keV-volume-20250821151531.zarr/",
+  "ink_map": "PHerc0841/segments/20260221022814-auto_grown_20260220174252405/ink-detection/PHerc0841-20260221022814-2.403um-0.22m-77keV-volume-20260319124803-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0841/segments/20260221022814-auto_grown_20260220174252405/mesh/20260221022814-on-20250821151531-9.366um.tifxyz/",
+  "um": 9.366,
+  "canvas": [
+   3760,
+   4900
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 121.0,
+  "n_tiles": 44,
+  "n_eligible_pos": 42,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 2,
+    "col": 5,
+    "y0": 1068,
+    "x0": 2670,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.31157331425605633,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9985
+   },
+   {
+    "row": 0,
+    "col": 7,
+    "y0": 0,
+    "x0": 3738,
+    "size": 534,
+    "valid_frac": 0.8651,
+    "ink_frac": 0.2952780165074835,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.8289
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0009B__20250919140325": {
+  "scroll": "PHerc0009B",
+  "segment": "20250919140325-auto_grown_20250919070325767_inp_hr",
+  "sv": "PHerc0009B/segments/20250919140325-auto_grown_20250919070325767_inp_hr/surface-volumes/8.64um-1.2m-116keV-volume-20250521125136.zarr/",
+  "ink_map": "PHerc0009B/segments/20250919140325-auto_grown_20250919070325767_inp_hr/ink-detection/PHerc0009B-20250919140325-2.401um-0.35m-77keV-volume-20250820154339-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0009B/segments/20250919140325-auto_grown_20250919070325767_inp_hr/mesh/20250919140325-on-20250521125136-8.64um.tifxyz/",
+  "um": 8.64,
+  "canvas": [
+   7140,
+   4720
+  ],
+  "depth": 31,
+  "window": [
+   7,
+   24
+  ],
+  "tile_px": 579,
+  "otsu": 114.0,
+  "n_tiles": 74,
+  "n_eligible_pos": 72,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 9,
+    "col": 2,
+    "y0": 5211,
+    "x0": 1158,
+    "size": 579,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5894088133611343,
+    "strokes": 5,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9999
+   },
+   {
+    "row": 11,
+    "col": 2,
+    "y0": 6369,
+    "x0": 1158,
+    "size": 579,
+    "valid_frac": 1.0,
+    "ink_frac": 0.37564021107203477,
+    "strokes": 7,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.7623
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0139__20260220000000": {
+  "scroll": "PHerc0139",
+  "segment": "20260220000000-w053_2026022021",
+  "sv": "PHerc0139/segments/20260220000000-w053_2026022021/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr/",
+  "ink_map": "PHerc0139/segments/20260220000000-w053_2026022021/ink-detection/PHerc0139-20260220000000-1.129um-0.22m-59keV-volume-20260413113053-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0139/segments/20260220000000-w053_2026022021/mesh/20260220000000-on-20250728140407-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   7440,
+   10360
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 93.0,
+  "n_tiles": 214,
+  "n_eligible_pos": 63,
+  "n_eligible_blank": 108,
+  "blank_visited": [
+   [
+    12,
+    7,
+    0.9998
+   ],
+   [
+    12,
+    6,
+    0.9998
+   ]
+  ],
+  "positive": [
+   {
+    "row": 5,
+    "col": 3,
+    "y0": 2670,
+    "x0": 1602,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.234825849710334,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9968
+   },
+   {
+    "row": 7,
+    "col": 12,
+    "y0": 3738,
+    "x0": 6408,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.21196818583512184,
+    "strokes": 8,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   }
+  ],
+  "blank": [
+   {
+    "row": 12,
+    "col": 7,
+    "y0": 6408,
+    "x0": 3738,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 18.314,
+    "ct_valid_frac": 0.9998
+   },
+   {
+    "row": 12,
+    "col": 6,
+    "y0": 6408,
+    "x0": 3204,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 17.876,
+    "ct_valid_frac": 0.9998
+   }
+  ]
+ },
+ "PHerc0172__20250926153406": {
+  "scroll": "PHerc0172",
+  "segment": "20250926153406-w088_20250926153406704_flatboi",
+  "sv": "PHerc0172/segments/20250926153406-w088_20250926153406704_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr/",
+  "ink_map": "PHerc0172/segments/20250926153406-w088_20250926153406704_flatboi/ink-detection/PHerc0172-20250926153406-7.91um-53keV-volume-20241024131838-20251222202946-timesformer_scroll5_november19-tile64-stride16.tif",
+  "mesh": "PHerc0172/segments/20250926153406-w088_20250926153406704_flatboi/mesh/20250926153406-on-20241024131838-7.91um.tifxyz/",
+  "um": 7.91,
+  "canvas": [
+   14560,
+   12500
+  ],
+  "depth": 33,
+  "window": [
+   8,
+   25
+  ],
+  "tile_px": 632,
+  "otsu": 115.0,
+  "n_tiles": 261,
+  "n_eligible_pos": 259,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 14,
+    "col": 14,
+    "y0": 8848,
+    "x0": 8848,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5482144287774395,
+    "strokes": 9,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   },
+   {
+    "row": 13,
+    "col": 13,
+    "y0": 8216,
+    "x0": 8216,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5157752163114886,
+    "strokes": 5,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0500P2__20250716055233": {
+  "scroll": "PHerc0500P2",
+  "segment": "20250716055233-z_dbg_gen_00565_inp_hr",
+  "sv": "PHerc0500P2/segments/20250716055233-z_dbg_gen_00565_inp_hr/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr/",
+  "ink_map": "PHerc0500P2/segments/20250716055233-z_dbg_gen_00565_inp_hr/ink-detection/PHerc0500P2-20250716055233-2.215um-0.4m-111keV-volume-20250526151718-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0500P2/segments/20250716055233-z_dbg_gen_00565_inp_hr/mesh/20250716055233-on-20250820143440-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   4440,
+   3680
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 99.0,
+  "n_tiles": 26,
+  "n_eligible_pos": 25,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 4,
+    "col": 2,
+    "y0": 2136,
+    "x0": 1068,
+    "size": 534,
+    "valid_frac": 0.9962,
+    "ink_frac": 0.13637547698503216,
+    "strokes": 13,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9771
+   },
+   {
+    "row": 4,
+    "col": 4,
+    "y0": 2136,
+    "x0": 2136,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.12991836047637084,
+    "strokes": 14,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9998
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0814__20250929040153": {
+  "scroll": "PHerc0814",
+  "segment": "20250929040153-auto_grown_20250929040153260",
+  "sv": "PHerc0814/segments/20250929040153-auto_grown_20250929040153260/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr/",
+  "ink_map": "PHerc0814/segments/20250929040153-auto_grown_20250929040153260/ink-detection/PHerc0814-20250929040153-1.129um-0.22m-59keV-volume-20260521123630-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0814/segments/20250929040153-auto_grown_20250929040153260/mesh/20250929040153-on-20250804134230-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   3360,
+   11240
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 117.0,
+  "n_tiles": 30,
+  "n_eligible_pos": 30,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 4,
+    "col": 11,
+    "y0": 2136,
+    "x0": 5874,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5214373886574366,
+    "strokes": 8,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9996
+   },
+   {
+    "row": 3,
+    "col": 12,
+    "y0": 1602,
+    "x0": 6408,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.4695815623728766,
+    "strokes": 10,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9973
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0139__20260306000000": {
+  "scroll": "PHerc0139",
+  "segment": "20260306000000-w038_2026030608",
+  "sv": "PHerc0139/segments/20260306000000-w038_2026030608/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr/",
+  "ink_map": "PHerc0139/segments/20260306000000-w038_2026030608/ink-detection/PHerc0139-20260306000000-1.129um-0.22m-59keV-volume-20260413113053-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0139/segments/20260306000000-w038_2026030608/mesh/20260306000000-on-20250728140407-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   6200,
+   7440
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 102.0,
+  "n_tiles": 121,
+  "n_eligible_pos": 62,
+  "n_eligible_blank": 46,
+  "blank_visited": [
+   [
+    10,
+    0,
+    0.8176
+   ],
+   [
+    10,
+    1,
+    0.9996
+   ]
+  ],
+  "positive": [
+   {
+    "row": 5,
+    "col": 5,
+    "y0": 2670,
+    "x0": 2670,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.4017029275203748,
+    "strokes": 14,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9953
+   },
+   {
+    "row": 5,
+    "col": 10,
+    "y0": 2670,
+    "x0": 5340,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.2766625987178948,
+    "strokes": 13,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9999
+   }
+  ],
+  "blank": [
+   {
+    "row": 10,
+    "col": 0,
+    "y0": 5340,
+    "x0": 0,
+    "size": 534,
+    "valid_frac": 0.8357,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 18.512,
+    "ct_valid_frac": 0.8176
+   },
+   {
+    "row": 10,
+    "col": 1,
+    "y0": 5340,
+    "x0": 534,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 17.9,
+    "ct_valid_frac": 0.9996
+   }
+  ]
+ },
+ "PHerc0172__20251106133152": {
+  "scroll": "PHerc0172",
+  "segment": "20251106133152-w077_20251106133152767_flatboi",
+  "sv": "PHerc0172/segments/20251106133152-w077_20251106133152767_flatboi/surface-volumes/7.91um-53keV-volume-20241024131838.zarr/",
+  "ink_map": "PHerc0172/segments/20251106133152-w077_20251106133152767_flatboi/ink-detection/PHerc0172-20251106133152-7.91um-53keV-volume-20241024131838-20251222202946-timesformer_scroll5_november19-tile64-stride16.tif",
+  "mesh": "PHerc0172/segments/20251106133152-w077_20251106133152767_flatboi/mesh/20251106133152-on-20241024131838-7.91um.tifxyz/",
+  "um": 7.91,
+  "canvas": [
+   15940,
+   11800
+  ],
+  "depth": 33,
+  "window": [
+   8,
+   25
+  ],
+  "tile_px": 632,
+  "otsu": 107.0,
+  "n_tiles": 303,
+  "n_eligible_pos": 301,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 7,
+    "col": 6,
+    "y0": 4424,
+    "x0": 3792,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5518721959621855,
+    "strokes": 4,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   },
+   {
+    "row": 1,
+    "col": 15,
+    "y0": 632,
+    "x0": 9480,
+    "size": 632,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5057007090209902,
+    "strokes": 7,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 1.0
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0500P2__20250716055234": {
+  "scroll": "PHerc0500P2",
+  "segment": "20250716055234-z_dbg_gen_00709_inp_hr",
+  "sv": "PHerc0500P2/segments/20250716055234-z_dbg_gen_00709_inp_hr/surface-volumes/9.362um-1.2m-113keV-volume-20250820143440.zarr/",
+  "ink_map": "PHerc0500P2/segments/20250716055234-z_dbg_gen_00709_inp_hr/ink-detection/PHerc0500P2-20250716055234-2.215um-0.4m-111keV-volume-20250526151718-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+  "mesh": "PHerc0500P2/segments/20250716055234-z_dbg_gen_00709_inp_hr/mesh/20250716055234-on-20250820143440-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   3740,
+   2280
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 116.0,
+  "n_tiles": 18,
+  "n_eligible_pos": 18,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 6,
+    "col": 3,
+    "y0": 3204,
+    "x0": 1602,
+    "size": 534,
+    "valid_frac": 0.9043,
+    "ink_frac": 0.2711855862004778,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.8056
+   },
+   {
+    "row": 5,
+    "col": 2,
+    "y0": 2670,
+    "x0": 1068,
+    "size": 534,
+    "valid_frac": 0.9861,
+    "ink_frac": 0.19221112675855986,
+    "strokes": 9,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9541
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0814__20250930083742": {
+  "scroll": "PHerc0814",
+  "segment": "20250930083742-auto_grown_20250930083742882",
+  "sv": "PHerc0814/segments/20250930083742-auto_grown_20250930083742882/surface-volumes/9.362um-1.2m-113keV-volume-20250804134230.zarr/",
+  "ink_map": "PHerc0814/segments/20250930083742-auto_grown_20250930083742882/ink-detection/PHerc0814-20250930083742-1.129um-0.22m-59keV-volume-20260521123630-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0814/segments/20250930083742-auto_grown_20250930083742882/mesh/20250930083742-on-20250804134230-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   5060,
+   20540
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 119.0,
+  "n_tiles": 73,
+  "n_eligible_pos": 71,
+  "n_eligible_blank": 0,
+  "blank_visited": [],
+  "positive": [
+   {
+    "row": 4,
+    "col": 26,
+    "y0": 2136,
+    "x0": 13884,
+    "size": 534,
+    "valid_frac": 0.961,
+    "ink_frac": 0.6062415157132639,
+    "strokes": 4,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9412
+   },
+   {
+    "row": 4,
+    "col": 4,
+    "y0": 2136,
+    "x0": 2136,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.5762670257683513,
+    "strokes": 7,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9993
+   }
+  ],
+  "blank": []
+ },
+ "PHerc0139__20260306000001": {
+  "scroll": "PHerc0139",
+  "segment": "20260306000001-w051_2026030600",
+  "sv": "PHerc0139/segments/20260306000001-w051_2026030600/surface-volumes/9.362um-1.2m-113keV-volume-20250728140407.zarr/",
+  "ink_map": "PHerc0139/segments/20260306000001-w051_2026030600/ink-detection/PHerc0139-20260306000001-1.129um-0.22m-59keV-volume-20260413113053-L1-20260709123958-mrg20736-1um-s1z2-tile256-stride128.tif",
+  "mesh": "PHerc0139/segments/20260306000001-w051_2026030600/mesh/20260306000001-on-20250728140407-9.362um.tifxyz/",
+  "um": 9.362,
+  "canvas": [
+   7580,
+   9600
+  ],
+  "depth": 28,
+  "window": [
+   5,
+   22
+  ],
+  "tile_px": 534,
+  "otsu": 100.0,
+  "n_tiles": 207,
+  "n_eligible_pos": 61,
+  "n_eligible_blank": 111,
+  "blank_visited": [
+   [
+    13,
+    8,
+    0.9664
+   ],
+   [
+    13,
+    9,
+    0.9996
+   ]
+  ],
+  "positive": [
+   {
+    "row": 5,
+    "col": 3,
+    "y0": 2670,
+    "x0": 1602,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.1921369355721079,
+    "strokes": 6,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9902
+   },
+   {
+    "row": 7,
+    "col": 3,
+    "y0": 3738,
+    "x0": 1602,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.16278808792380312,
+    "strokes": 17,
+    "ink_within_1mm": true,
+    "dist_to_ink_mm": 0.0,
+    "ct_valid_frac": 0.9962
+   }
+  ],
+  "blank": [
+   {
+    "row": 13,
+    "col": 8,
+    "y0": 6942,
+    "x0": 4272,
+    "size": 534,
+    "valid_frac": 0.9895,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 21.121,
+    "ct_valid_frac": 0.9664
+   },
+   {
+    "row": 13,
+    "col": 9,
+    "y0": 6942,
+    "x0": 4806,
+    "size": 534,
+    "valid_frac": 1.0,
+    "ink_frac": 0.0,
+    "strokes": 0,
+    "ink_within_1mm": false,
+    "dist_to_ink_mm": 21.121,
+    "ct_valid_frac": 0.9996
+   }
+  ]
+ }
+}
