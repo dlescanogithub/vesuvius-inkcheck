@@ -197,3 +197,25 @@ def face_only_from_maps(A: dict, B: dict, valid, rule=None) -> tuple[str, list[s
     _, p, _ = shift_null_p(A[best], B[best], valid, r["top_q"], r["n_shift_nulls"], r["min_shift_px"], r["seed"]) \
         if valid.any() else (0.0, 1.0, None)
     return face_only_rule(ious["fwd"], ious["rev"], float(valid.mean()) if valid.size else 0.0, p, rule)
+
+
+# --- Diagnostic only (post hoc, results/irp/node_d_faceonly/f1/DIAG_0172.md). Never changes a verdict. ---------------
+SATURATION_WARN = dict(max_frac_high=0.50, high_level=128, tie_band=3, top_q=0.03)
+
+
+def saturation_check(a, valid, warn=None) -> dict:
+    """Warn when an 8-bit (0-255) prediction map looks saturated, so that a top-q agreement test on it is unreliable.
+
+    Returns median, share of valid pixels above `high_level`, and the share of valid pixels within +-`tie_band` of the
+    top-q threshold (a plateau there makes the top-q set arbitrary). `saturated` is True when the share above
+    `high_level` is >= `max_frac_high`. In F1, Reader V3 on the PHerc0172 53 keV scan gave 0.56-0.67 for that share,
+    against 0.00-0.26 on the ten other positive tiles. All values are plain Python types (JSON safe).
+    """
+    w = dict(SATURATION_WARN, **(warn or {}))
+    v = np.asarray(a, dtype=np.float64)[np.asarray(valid, dtype=bool)]
+    if v.size == 0:
+        return dict(median=None, frac_high=None, tie_frac=None, threshold=None, saturated=False, n=0)
+    thr = float(np.quantile(v, 1 - w["top_q"]))
+    frac_high = float((v > w["high_level"]).mean())
+    return dict(median=float(np.median(v)), frac_high=frac_high, tie_frac=float((np.abs(v - thr) <= w["tie_band"]).mean()),
+                threshold=thr, saturated=bool(frac_high >= w["max_frac_high"]), n=int(v.size))
