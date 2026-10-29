@@ -1,0 +1,45 @@
+{
+ "inkcheck_version": "0.3.0",
+ "n_rows": 12,
+ "models": {
+  "new_canon_autoresearch_recipe": {
+   "n": 12,
+   "PASS": 2,
+   "WEAK": 4,
+   "FAIL": 6,
+   "INVALID": 0,
+   "median_r_bp": 0.5788173079490662,
+   "median_auc": 0.8993055551275849,
+   "median_stroke_recall": 1.0,
+   "controls_failed_as_expected": 12,
+   "saturated": 0,
+   "null_limited": 1,
+   "dihedral_warning": 1,
+   "median_usable_nulls": 192.0,
+   "median_overlap_cm2": 0.5870120853568,
+   "by_scroll": {
+    "PHerc0139": [
+     "WEAK",
+     "FAIL",
+     "PASS",
+     "FAIL",
+     "PASS",
+     "FAIL",
+     "FAIL",
+     "FAIL",
+     "FAIL"
+    ],
+    "PHerc0814": [
+     "WEAK"
+    ],
+    "PHerc1667": [
+     "WEAK",
+     "WEAK"
+    ]
+   }
+  }
+ },
+ "best_r_bp_per_segment": {
+  "new_canon_autoresearch_recipe": 12
+ }
+}

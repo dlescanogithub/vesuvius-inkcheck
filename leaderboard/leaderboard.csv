@@ -1,0 +1,13 @@
+segment,scroll,model,scan_um,scan_kev,map_um,verdict,node_A,r_bp,p,null_max,auc,breakeven_f1,stroke_recall,stroke_chance,n_strokes,control,saturated,overlap_cm2,n_nulls,n_nulls_requested,null_limited,dihedral_warning,online_validation_case
+pherc0139-w016,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,WEAK,WEAK,0.3499,0.0052,0.2604,0.8637,0.5276,0.3333,0.1553,6,FAIL,False,0.4383,192,192,False,False,True
+pherc0139-w017,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.5435,0.0104,0.5997,0.8899,0.7128,1.0000,0.3986,6,FAIL,False,0.6817,192,192,False,False,False
+pherc0139-w028,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,PASS,PASS,0.7008,0.0052,0.2648,0.9546,0.7923,1.0000,0.2164,10,FAIL,False,1.6104,192,192,False,False,False
+pherc0139-w029,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.5169,0.2075,0.9984,0.8973,0.6645,0.7500,0.4091,4,FAIL,False,0.4344,105,192,False,False,False
+pherc0139-w035,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,PASS,PASS,0.5555,0.0052,0.5432,0.9024,0.5926,0.9000,0.2971,10,FAIL,False,0.9270,192,192,False,False,False
+pherc0139-w039,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.5437,0.0674,0.9582,0.9013,0.6708,1.0000,0.5139,6,FAIL,False,0.4923,192,192,False,False,False
+pherc0139-w040,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.6021,0.0833,0.9356,0.8776,0.7067,1.0000,0.7033,17,FAIL,False,1.4155,191,192,False,True,False
+pherc0139-w041,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.5454,0.1846,0.9944,0.8876,0.6550,1.0000,1.0000,4,FAIL,False,0.4826,64,192,True,False,False
+pherc0139-w043,PHerc0139,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,FAIL,FAIL,0.6186,0.1210,0.9454,0.8865,0.7639,1.0000,0.7253,6,FAIL,False,0.3959,123,192,False,False,False
+pherc0814-46527,PHerc0814,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,WEAK,WEAK,0.7566,0.0052,0.7338,0.9734,0.8501,1.0000,0.3075,4,FAIL,False,0.3909,192,192,False,False,True
+pherc1667-w013,PHerc1667,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,WEAK,WEAK,0.8082,0.0052,0.6457,0.9703,0.8741,1.0000,0.1981,18,FAIL,False,3.0412,192,192,False,False,False
+pherc1667-w018,PHerc1667,new_canon_autoresearch_recipe,2.3990,78.0000,19.1920,WEAK,WEAK,0.6707,0.0052,0.4297,0.9273,0.7387,0.9608,0.1447,51,FAIL,False,12.7524,192,192,False,False,False

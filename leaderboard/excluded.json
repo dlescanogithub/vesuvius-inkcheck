@@ -1,0 +1,98 @@
+{
+ "pherc0139-w016__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w016",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w017__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w017",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w028__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w028",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w029__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w029",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w035__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w035",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w039__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w039",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w040__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w040",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w041__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w041",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0139-w043__mrg20736-1um-s1z2": {
+  "case": "pherc0139-w043",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260413113053; labels are on 2.399um-0.22m-78keV volume 20260102150214",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0139",
+  "volume": "20260413113053"
+ },
+ "pherc0814-46527__mrg20736-1um-s1z2": {
+  "case": "pherc0814-46527",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260521123630; labels are on 2.399um-0.22m-78keV volume 20260309142202",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc0814",
+  "volume": "20260521123630"
+ },
+ "pherc1667-w013__mrg20736-1um-s1z2": {
+  "case": "pherc1667-w013",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260323082859; labels are on 2.399um-0.22m-78keV volume 20251217075048",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc1667",
+  "volume": "20260323082859"
+ },
+ "pherc1667-w018__mrg20736-1um-s1z2": {
+  "case": "pherc1667-w018",
+  "model": "mrg20736-1um-s1z2",
+  "reason": "map from scan 1.129um-0.22m-59keV volume 20260323082859; labels are on 2.399um-0.22m-78keV volume 20251217075048",
+  "scan": "1.129um-0.22m-59keV",
+  "scroll": "PHerc1667",
+  "volume": "20260323082859"
+ }
+}

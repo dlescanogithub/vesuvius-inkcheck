@@ -1,0 +1,142 @@
+{
+ "$schema": "https://raw.githubusercontent.com/dlescanogithub/vesuvius-inkcheck/main/schemas/inkcheck-report-v1.json",
+ "schema_version": "1.0",
+ "kind": "inkcheck.ink-card",
+ "created_utc": "2026-10-29T03:50:28Z",
+ "segment": {
+  "scroll": "PHerc1667",
+  "segment_id": "20240304141531-w013_20240304141531_flatboi",
+  "label": "pherc1667-w013"
+ },
+ "verdict": {
+  "final": "WEAK",
+  "node_A": "WEAK",
+  "node_N": "NO_CONTROL_PASSES",
+  "summary": "model sees known ink at 19.192 um: NO at letter level - statistically detectable but weak agreement (band-pass r=0.81, p=0.00518; stroke recall 100% vs 20% chance)"
+ },
+ "metrics": {
+  "r_bandpass": 0.8081982135772705,
+  "r_bandpass_p": 0.0051813471502590676,
+  "r_bandpass_z": 6.195853205736452,
+  "r_bandpass_null_mean": 0.17022897212276197,
+  "r_bandpass_null_sd": 0.10296713305987341,
+  "r_bandpass_null_max": 0.645741879940033,
+  "n_shift_nulls": 192,
+  "n_shift_nulls_requested": 192,
+  "r_raw": 0.8508498088072873,
+  "auc_raw": 0.9702948733060204,
+  "breakeven_f1": 0.8741480877998339,
+  "stroke_recall": 1.0,
+  "stroke_precision": 0.5434782608695652,
+  "n_ref_strokes": 18,
+  "overlap_cm2": 3.0411513416019202,
+  "analysis_um": 19.192,
+  "shift_um": [
+   38.384,
+   38.384
+  ],
+  "stroke_recall_chance": 0.1981065759637188,
+  "r_bandpass_ci95": [
+   0.7797665899947552,
+   0.8152850997484651
+  ]
+ },
+ "thresholds": {
+  "alpha_r": 0.01,
+  "min_r_bp": 0.2,
+  "min_stroke_recall": 0.5
+ },
+ "controls": [
+  {
+   "name": "wrong_place",
+   "kind": "wrong_place",
+   "expected": "FAIL",
+   "verdict": "FAIL",
+   "r_bandpass": 0.049480583518743515
+  }
+ ],
+ "saturation": {
+  "checked": true,
+  "rule": "8-bit map: saturated if >= 50% of valid pixels are above 128 (node_d_v2.saturation_check)",
+  "saturated": false,
+  "median": 33.0,
+  "frac_high": 0.15320631496123274,
+  "threshold": 240.0,
+  "n": 7811101
+ },
+ "warnings": [],
+ "provenance": {
+  "inkcheck_version": "0.3.0",
+  "prereg_sha256": null,
+  "model": {
+   "name": "new_canon_autoresearch_recipe",
+   "run": "20260417190342",
+   "tile": 256,
+   "stride": 128
+  },
+  "scan": {
+   "volume": "20251217075048",
+   "pixel_um": 2.399,
+   "energy_kev": 78.0
+  },
+  "prediction": {
+   "source": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHerc1667/segments/20240304141531-w013_20240304141531_flatboi/ink-detection/downsampled/PHerc1667-20240304141531-2.399um-0.22m-78keV-volume-20251217075048-20260417190342-new_canon_autoresearch_recipe-tile256-stride128-ds8.jpg",
+   "map_pixel_um": 19.192,
+   "ds": 8,
+   "shape": [
+    5200,
+    9950
+   ],
+   "crop_px": [
+    282,
+    205,
+    3732,
+    2480
+   ]
+  },
+  "reference": {
+   "source": "https://huggingface.co/buckets/scrollprize/datasets/tree/main/ink_9um/labels/aligned-scrollprizeorg-21slices/pherc1667-w013",
+   "kind": "public ink labels (scrollprize ink_9um, aligned 21-slice, plane 10; label value > 0 = ink), supervision mask > 0 as validity",
+   "pixel_um": 9.596,
+   "crop_px": [
+    564,
+    410,
+    7464,
+    4960
+   ],
+   "crop_note": "both maps cropped to the supervision bounding box + 1.0 mm; shift nulls wrap within it"
+  },
+  "config": {
+   "pred_um": 19.192,
+   "ref_um": 9.596,
+   "ref_origin": [
+    0.0,
+    0.0
+   ],
+   "analysis_um": 19.192,
+   "pred_scale": "raw",
+   "pred_zero_invalid": true,
+   "ref_threshold": 127.0,
+   "bp_fine_um": 0.0,
+   "bp_coarse_um": 500.0,
+   "search_mm": 0.5,
+   "max_stat_px": 2500000,
+   "n_shift_nulls": 192,
+   "min_shift_mm": 3.0,
+   "n_metric_nulls": 32,
+   "min_stroke_mm2": 0.02,
+   "stroke_cover": 0.5,
+   "alpha_r": 0.01,
+   "alpha_stroke": 0.05,
+   "min_r_bp": 0.2,
+   "min_stroke_recall": 0.5,
+   "seed": 0,
+   "workers": 4,
+   "boot_tile_mm": 2.0,
+   "n_boot": 1000
+  }
+ },
+ "extra": {
+  "online_validation_case": false
+ }
+}

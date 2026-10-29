@@ -43,3 +43,5 @@ dist/
 build/
 site/
 leaderboard/plan.json
+leaderboard/__pycache__/
+refset/__pycache__/
