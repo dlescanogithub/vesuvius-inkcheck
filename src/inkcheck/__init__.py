@@ -6,4 +6,4 @@ band-pass correlation, pixel/stroke metrics and search-matched null tests.
 """
 from .core import CheckConfig, run_check  # noqa: F401
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

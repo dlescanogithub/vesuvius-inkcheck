@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "inkcheck"
-version = "0.1.0"
+version = "0.2.0"
 description = "Does an ink model see KNOWN ink at this resolution? Cross-resolution validation of Herculaneum ink predictions against a published reference, with search-matched null tests."
 readme = "README.md"
 license = {text = "MIT"}
@@ -12,7 +12,12 @@ requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "scipy>=1.10", "pillow>=10", "tifffile>=2023.1", "imagecodecs>=2023.1"]
 
 [project.optional-dependencies]
-test = ["pytest>=7", "scikit-learn>=1.2"]
+test = ["pytest>=7", "scikit-learn>=1.2", "numcodecs>=0.11"]
+zarr = ["numcodecs>=0.11"]
+notebook = ["nbformat>=5", "nbclient>=0.7", "ipykernel>=6"]
+
+[project.urls]
+Homepage = "https://github.com/dlescanogithub/vesuvius-inkcheck"
 
 [project.scripts]
 inkcheck = "inkcheck.cli:main"

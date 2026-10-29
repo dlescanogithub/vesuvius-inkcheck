@@ -1,5 +1,5 @@
 name: tests
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -14,8 +14,8 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: pip install -e ".[test]"
-      - name: unit tests
-        run: cd tests && python -m pytest -q
+      - name: unit tests (CPU, offline; network-marked tests are deselected)
+        run: cd tests && python -m pytest -q -m "not network"
       - name: synthetic quickstart must PASS (exit 0) and its negative must FAIL (exit 2)
         run: |
           python examples/make_synthetic_example.py
