@@ -219,6 +219,25 @@ def run(argv=None, log=print) -> int:
                    n_strokes=n.get("n_ref_strokes"), auc=n.get("auc_raw"), overlap_cm2=n.get("overlap_cm2"),
                    expect=spec.get("expect"), seconds_total=round(time.time() - t0, 1), seconds_download=round(t_dl, 1))
     (Path(str(out) + ".summary.json")).write_text(json.dumps(summary, indent=1))
+    from .card import build_card, saturation_block, write_card
+    meta = {}
+    try:
+        from .opendata import parse_prediction_name
+        meta = parse_prediction_name(str(spec["pred"][0]))
+    except Exception:
+        pass
+    controls = [] if ctrl is None else [dict(name="wrong_place", kind="wrong_place", expected="FAIL", verdict=ctrl.verdict,
+                                             r_bandpass=ctrl.numbers.get("r_bandpass"))]
+    valid = (pred > 0) if mask is None or mask.shape != pred.shape else ((pred > 0) & (mask > 0))
+    card = build_card(json.loads(Path(str(out) + ".json").read_text()), controls=controls,
+                      saturation=saturation_block(pred, valid),
+                      segment=dict(scroll=meta.get("scroll"), segment_id=meta.get("segment"), label=spec["name"]),
+                      model=dict(name=meta.get("model"), run=meta.get("run")),
+                      scan=dict(volume=(f"{meta['scan']}-volume-{meta['volume']}" if meta.get("volume") else None), pixel_um=meta.get("pixel_um"), energy_kev=meta.get("energy_kev")),
+                      prediction=dict(source=str(spec["pred"][0]), map_pixel_um=spec["pred_um"]),
+                      reference=dict(source=str(spec["ref"][0]), pixel_um=spec["ref_um"]),
+                      extra={"example": spec["name"], "expect": spec.get("expect")})
+    card_files = write_card(card, out)
     print("")
     print(f"{final}  {spec['title']}")
     print(f"  node A (known ink?)      {res.verdict}: r_bp {n['r_bandpass']:.3f} (null mean {n['r_bandpass_null_mean']:.3f}, "
@@ -232,7 +251,7 @@ def run(argv=None, log=print) -> int:
     if spec.get("expect"):
         print(f"  - Expected for this example: {spec['expect']} -> {'reproduced' if res.verdict == spec['expect'] else 'NOT reproduced'}.")
     print(f"  - Data: {spec['note']}")
-    print(f"\nwrote {out}.json, {out}.png, {out}.summary.json  ({summary['seconds_total']:.0f} s total, "
+    print(f"\nwrote {out}.json, {out}.png, {out}.summary.json, {', '.join(Path(f).name for f in card_files)}  ({summary['seconds_total']:.0f} s total, "
           f"{summary['seconds_download']:.0f} s download)")
     if a.json:
         print(json.dumps(summary, indent=1))

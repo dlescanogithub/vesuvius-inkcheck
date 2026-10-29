@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/dlescanogithub/vesuvius-inkcheck/main/schemas/inkcheck-report-v1.json",
+  "title": "inkcheck ink card (report v1)",
+  "description": "Per-segment result of the inkcheck falsification check: verdict, metrics, negative controls, saturation warning and provenance. One card = one prediction map scored against one reference on one segment. Version 1.x is additive-only: new optional fields may appear, existing fields keep their meaning.",
+  "type": "object",
+  "required": ["schema_version", "kind", "created_utc", "segment", "verdict", "metrics", "controls", "saturation", "warnings", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"type": "string", "pattern": "^1\\.[0-9]+$", "description": "1.MINOR; consumers must accept any 1.x."},
+    "kind": {"const": "inkcheck.ink-card"},
+    "created_utc": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "segment": {
+      "type": "object",
+      "required": ["scroll", "segment_id"],
+      "additionalProperties": true,
+      "properties": {
+        "scroll": {"type": ["string", "null"], "description": "Scroll / sample id as on the open-data server, e.g. PHerc0139."},
+        "segment_id": {"type": ["string", "null"], "description": "Segment folder or id."},
+        "label": {"type": ["string", "null"]},
+        "region": {"type": ["string", "null"], "description": "Optional crop / region description."}
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": ["final", "node_A", "node_N", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "final": {"enum": ["PASS", "WEAK", "FAIL", "INVALID"], "description": "node_A unless a negative control PASSED, in which case INVALID."},
+        "node_A": {"enum": ["PASS", "WEAK", "FAIL"], "description": "Labelled check: does the prediction reproduce known ink beyond search-matched nulls?"},
+        "node_N": {"enum": ["NO_CONTROL_PASSES", "CONTROL_PASSED", null], "description": "Negative controls; null if none were run."},
+        "summary": {"type": "string"}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["r_bandpass", "r_bandpass_p", "r_bandpass_null_mean", "r_bandpass_null_max", "n_shift_nulls", "auc_raw", "stroke_recall", "analysis_um"],
+      "additionalProperties": true,
+      "properties": {
+        "r_bandpass": {"$ref": "#/$defs/num"},
+        "r_bandpass_p": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "r_bandpass_z": {"$ref": "#/$defs/num"},
+        "r_bandpass_null_mean": {"$ref": "#/$defs/num"},
+        "r_bandpass_null_sd": {"$ref": "#/$defs/num"},
+        "r_bandpass_null_max": {"$ref": "#/$defs/num"},
+        "n_shift_nulls": {"type": "integer", "minimum": 0},
+        "r_raw": {"$ref": "#/$defs/num"},
+        "auc_raw": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "breakeven_f1": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "stroke_recall": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "stroke_recall_chance": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "stroke_precision": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "n_ref_strokes": {"type": ["integer", "null"], "minimum": 0},
+        "overlap_cm2": {"$ref": "#/$defs/num"},
+        "analysis_um": {"type": "number", "exclusiveMinimum": 0},
+        "shift_um": {"type": ["array", "null"], "items": {"type": "number"}},
+        "r_bandpass_ci95": {"type": ["array", "null"], "items": {"type": "number"}, "description": "Tile bootstrap CI, conditional on the registration."}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "alpha_r": {"type": "number"},
+        "min_r_bp": {"type": "number"},
+        "min_stroke_recall": {"type": "number"}
+      }
+    },
+    "controls": {
+      "type": "array",
+      "description": "Negative controls (expected to FAIL). Empty if none were run.",
+      "items": {
+        "type": "object",
+        "required": ["name", "expected", "verdict"],
+        "additionalProperties": true,
+        "properties": {
+          "name": {"type": "string"},
+          "kind": {"type": "string", "description": "e.g. wrong_place, blank, shuffled"},
+          "expected": {"enum": ["FAIL", "PASS"]},
+          "verdict": {"enum": ["PASS", "WEAK", "FAIL"]},
+          "r_bandpass": {"$ref": "#/$defs/num"}
+        }
+      }
+    },
+    "saturation": {
+      "type": "object",
+      "required": ["checked"],
+      "additionalProperties": true,
+      "properties": {
+        "checked": {"type": "boolean", "description": "false when the map is not 8-bit (rule undefined)."},
+        "saturated": {"type": ["boolean", "null"], "description": "True = map looks saturated (>=50% of valid pixels above 128 on 8-bit): r/AUC can still pass while the map is uninformative."},
+        "median": {"$ref": "#/$defs/num"},
+        "frac_high": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "threshold": {"$ref": "#/$defs/num"},
+        "n": {"type": ["integer", "null"]},
+        "rule": {"type": "string"}
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "provenance": {
+      "type": "object",
+      "required": ["inkcheck_version", "prereg_sha256", "model", "scan"],
+      "additionalProperties": true,
+      "properties": {
+        "inkcheck_version": {"type": "string"},
+        "prereg_sha256": {"anyOf": [{"type": "string", "pattern": "^[0-9a-f]{64}$"}, {"type": "null"}], "description": "sha256 of the pre-registration the thresholds came from; null = not pre-registered."},
+        "model": {
+          "type": "object", "required": ["name"], "additionalProperties": true,
+          "properties": {"name": {"type": ["string", "null"]}, "run": {"type": ["string", "null"]}, "checkpoint_sha256": {"type": ["string", "null"]}}
+        },
+        "scan": {
+          "type": "object", "additionalProperties": true,
+          "properties": {"volume": {"type": ["string", "null"]}, "pixel_um": {"$ref": "#/$defs/num"}, "energy_kev": {"$ref": "#/$defs/num"}}
+        },
+        "prediction": {
+          "type": "object", "additionalProperties": true,
+          "properties": {"source": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"]}, "map_pixel_um": {"$ref": "#/$defs/num"}}
+        },
+        "reference": {
+          "type": "object", "additionalProperties": true,
+          "properties": {"source": {"type": ["string", "null"]}, "kind": {"type": ["string", "null"]}, "pixel_um": {"$ref": "#/$defs/num"}}
+        },
+        "config": {"type": "object", "description": "Full CheckConfig used (reproducibility)."}
+      }
+    },
+    "extra": {"type": "object", "description": "Free-form, producer-specific."}
+  },
+  "$defs": {
+    "num": {"type": ["number", "null"]}
+  }
+}

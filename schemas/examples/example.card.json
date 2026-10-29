@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dlescanogithub/vesuvius-inkcheck/main/schemas/inkcheck-report-v1.json",
+  "schema_version": "1.0",
+  "kind": "inkcheck.ink-card",
+  "created_utc": "2026-10-29T00:00:00Z",
+  "segment": {
+    "scroll": "PHercXXXX",
+    "segment_id": "example-segment",
+    "label": "synthetic example"
+  },
+  "verdict": {
+    "final": "PASS",
+    "node_A": "PASS",
+    "node_N": "NO_CONTROL_PASSES",
+    "summary": "known ink reproduced"
+  },
+  "metrics": {
+    "r_bandpass": 0.41,
+    "r_bandpass_p": 0.005,
+    "r_bandpass_z": 9.1,
+    "r_bandpass_null_mean": 0.01,
+    "r_bandpass_null_sd": 0.04,
+    "r_bandpass_null_max": 0.12,
+    "n_shift_nulls": 192,
+    "r_raw": 0.3,
+    "auc_raw": 0.81,
+    "breakeven_f1": 0.42,
+    "stroke_recall": 0.71,
+    "stroke_precision": 0.5,
+    "n_ref_strokes": 40,
+    "overlap_cm2": 3.2,
+    "analysis_um": 19.2,
+    "shift_um": [
+      0.0,
+      19.2
+    ],
+    "stroke_recall_chance": 0.2,
+    "r_bandpass_ci95": [
+      0.3,
+      0.5
+    ]
+  },
+  "thresholds": {
+    "alpha_r": 0.01,
+    "min_r_bp": 0.2,
+    "min_stroke_recall": 0.5
+  },
+  "controls": [
+    {
+      "name": "wrong_place",
+      "kind": "wrong_place",
+      "verdict": "FAIL",
+      "r_bandpass": 0.012,
+      "expected": "FAIL"
+    }
+  ],
+  "saturation": {
+    "checked": true,
+    "rule": "8-bit map: saturated if >= 50% of valid pixels are above 128 (node_d_v2.saturation_check)",
+    "saturated": false,
+    "median": 41.0,
+    "frac_high": 0.07,
+    "threshold": 128.0,
+    "n": 123456
+  },
+  "warnings": [],
+  "provenance": {
+    "inkcheck_version": "0.2.0",
+    "prereg_sha256": null,
+    "model": {
+      "name": "example-model",
+      "run": "20260101000000"
+    },
+    "scan": {
+      "volume": "2.399um-0.22m-78keV-volume-EXAMPLE",
+      "pixel_um": 2.399,
+      "energy_kev": 78
+    },
+    "prediction": {
+      "source": "example_pred.tif",
+      "map_pixel_um": 9.6
+    },
+    "reference": {
+      "source": "example_ref.png",
+      "kind": "published reference ink map",
+      "pixel_um": 19.2
+    },
+    "config": {
+      "alpha_r": 0.01,
+      "min_r_bp": 0.2,
+      "min_stroke_recall": 0.5,
+      "pred_um": 9.6,
+      "ref_um": 19.2
+    }
+  },
+  "extra": {
+    "note": "illustrative numbers, not a real result"
+  }
+}

@@ -2,6 +2,9 @@
 
   inkcheck PRED REF --pred-um .. --ref-um .. [options]   one falsification check (node A of the protocol)
   inkcheck report CASE.json [CASE2.json ...] --out DIR    Ink Recoverability Protocol readability card(s)
+  inkcheck report --validate CARD.json [...]              validate ink cards against schemas/inkcheck-report-v1.json
+  inkcheck report --render CARD.json [...]                print ink card(s) as Markdown
+  inkcheck card CHECK.json [--out PREFIX] [provenance]    turn an existing check JSON into a v1 ink card
   inkcheck inkbench RESULTS [--benchmark B] [--case-out CASE.json ...]   read inkbench outputs (ranking table / IRP case)
   inkcheck quick [EXAMPLE | PRED REF ...]                 5-minute quickstart: fetch, check, control, plain-English verdict
 """
@@ -53,7 +56,40 @@ def build_parser():
     ap.add_argument("--workers", type=int, default=int(os.environ.get("OMP_NUM_THREADS", "2")))
     ap.add_argument("--out", default="inkcheck_out", help="output prefix (writes PREFIX.json, PREFIX.png)")
     ap.add_argument("--title", default="")
+    add_provenance_args(ap)
+    ap.add_argument("--no-card", action="store_true", help="do not write PREFIX.card.json / PREFIX.card.md")
     return ap
+
+
+def add_provenance_args(ap):
+    g = ap.add_argument_group("ink card provenance (written to PREFIX.card.json, schema inkcheck-report-v1)")
+    g.add_argument("--scroll", help="scroll / sample id, e.g. PHerc0139")
+    g.add_argument("--segment", help="segment id or folder")
+    g.add_argument("--model", help="model name (default: parsed from an official map file name, if it is one)")
+    g.add_argument("--model-run", help="model run / checkpoint id")
+    g.add_argument("--scan", help="scan / volume id (default: parsed from an official map file name)")
+    g.add_argument("--prereg", help="pre-registration file; its sha256 goes into the card")
+    g.add_argument("--prereg-sha256", help="sha256 of the pre-registration (if the file is not at hand)")
+
+
+def provenance_kwargs(a, pred_src=None, ref_src=None, pred_um=None, ref_um=None):
+    """build_card keyword arguments from the provenance options (+ what an official file name tells us)."""
+    from .card import sha256_file
+    meta = {}
+    if pred_src:
+        try:
+            from .opendata import parse_prediction_name
+            meta = parse_prediction_name(str(pred_src))
+        except Exception:
+            meta = {}
+    pre = a.prereg_sha256.lower() if a.prereg_sha256 else (sha256_file(a.prereg) if a.prereg else None)
+    return dict(
+        segment=dict(scroll=a.scroll or meta.get("scroll"), segment_id=a.segment or meta.get("segment")),
+        model=dict(name=a.model or meta.get("model"), run=a.model_run or meta.get("run")),
+        scan=dict(volume=a.scan or (f"{meta['scan']}-volume-{meta['volume']}" if meta.get("volume") else None), pixel_um=meta.get("pixel_um"), energy_kev=meta.get("energy_kev")),
+        prediction=dict(source=str(pred_src) if pred_src else None, map_pixel_um=pred_um),
+        reference=dict(source=str(ref_src) if ref_src else None, pixel_um=ref_um),
+        prereg_sha256=pre)
 
 
 def build_report_parser():
@@ -62,14 +98,31 @@ def build_report_parser():
         description="Ink Recoverability Protocol: run the per-segment decision tree (A labelled check, B scan tolerance, "
                     "C scan vs scroll, D pre-registered unlabelled rule) on a case file and write a one-page "
                     "readability card (Markdown + PNG + JSON).")
-    ap.add_argument("cases", nargs="+", help="case JSON file(s); see examples/irp/*.case.json")
+    ap.add_argument("cases", nargs="*", help="case JSON file(s); see examples/irp/*.case.json")
     ap.add_argument("--out", default="cards", help="output directory (one NAME.md/.png/.json per case)")
+    ap.add_argument("--validate", nargs="+", metavar="CARD", help="validate ink card JSON(s) against the v1 schema; "
+                    "exit 1 if any is invalid")
+    ap.add_argument("--render", nargs="+", metavar="CARD", help="print ink card(s) as Markdown")
+    ap.add_argument("--builtin-validator", action="store_true", help="ignore jsonschema even if installed")
     return ap
 
 
 def report_main(argv):
+    import json as _json
     from .irp import write_card
     a = build_report_parser().parse_args(argv)
+    if a.validate or a.render:
+        from .card import render_markdown, validation_errors
+        bad = 0
+        for f in a.validate or []:
+            errs = validation_errors(_json.loads(Path(f).read_text()), False if a.builtin_validator else None)
+            bad += bool(errs)
+            print(f"{'OK' if not errs else 'INVALID'}\t{f}" + "".join("\n  " + e for e in errs))
+        for f in a.render or []:
+            print(render_markdown(_json.loads(Path(f).read_text())))
+        return 1 if bad else 0
+    if not a.cases:
+        build_report_parser().error("give case file(s), or --validate / --render card file(s)")
     for c in a.cases:
         name = Path(c).name.replace(".case.json", "").replace(".json", "")
         res = write_card(c, str(Path(a.out) / name))
@@ -123,8 +176,42 @@ def inkbench_main(argv):
     return 0
 
 
+def build_card_parser():
+    ap = argparse.ArgumentParser(prog="inkcheck card",
+                                 description="Turn an inkcheck check JSON (PREFIX.json) into a v1 ink card "
+                                             "(PREFIX.card.json + PREFIX.card.md), validated against the schema.")
+    ap.add_argument("check", help="check JSON written by `inkcheck PRED REF ...`")
+    ap.add_argument("--out", help="output prefix (default: the check JSON path without .json)")
+    ap.add_argument("--control", action="append", default=[], metavar="CHECK.json",
+                    help="check JSON of a negative control (expected FAIL); repeatable")
+    add_provenance_args(ap)
+    return ap
+
+
+def card_main(argv):
+    import json as _json
+    from .card import build_card, write_card
+    a = build_card_parser().parse_args(argv)
+    d = _json.loads(Path(a.check).read_text())
+    inp = d.get("inputs") or {}
+    kw = provenance_kwargs(a, inp.get("pred"), inp.get("ref"), (d.get("config") or {}).get("pred_um"),
+                           (d.get("config") or {}).get("ref_um"))
+    ctrls = []
+    for c in a.control:
+        cd = _json.loads(Path(c).read_text())
+        ctrls.append(dict(name=Path(c).stem, kind="user", expected="FAIL", verdict=cd["verdict"],
+                          r_bandpass=(cd.get("numbers") or {}).get("r_bandpass")))
+    card = build_card(d, controls=ctrls, **kw)
+    out = a.out or str(Path(a.check)).removesuffix(".json")
+    files = write_card(card, out)
+    print(f"{card['verdict']['final']}\twrote " + ", ".join(files))
+    return 0
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "card":
+        return card_main(argv[1:])
     if argv and argv[0] == "report":
         return report_main(argv[1:])
     if argv and argv[0] == "inkbench":
@@ -150,6 +237,14 @@ def main(argv=None):
     write_json(res, str(out) + ".json", {"pred": a.pred, "ref": a.ref, "mask": a.mask,
                                          "pred_shape": list(pred.shape), "ref_shape": list(ref.shape)})
     write_png(res, str(out) + ".png", a.title or f"{Path(a.pred).name} vs {Path(a.ref).name}")
+    card_files = []
+    if not a.no_card:
+        import json as _json
+        from .card import build_card, saturation_block, write_card
+        check = _json.loads(Path(str(out) + ".json").read_text())
+        valid = (pred > 0) if pm is None or pm.shape != pred.shape else ((pred > 0) & (pm > 0))
+        card = build_card(check, saturation=saturation_block(pred, valid), **provenance_kwargs(a, a.pred, a.ref, a.pred_um, a.ref_um))
+        card_files = write_card(card, out)
     for w in res.warnings:
         print("[inkcheck] WARNING:", w)
     b = res.numbers.get("bootstrap") or {}
@@ -159,7 +254,7 @@ def main(argv=None):
               + (f"; stroke recall - chance {b['recall_minus_chance']:+.2f} [{b['recall_minus_chance_ci'][0]:+.2f}, "
                  f"{b['recall_minus_chance_ci'][1]:+.2f}]" if b.get("recall_minus_chance_ci") else ""))
     print(f"{res.verdict}\t{res.summary}")
-    print(f"wrote {out}.json and {out}.png")
+    print(f"wrote {out}.json and {out}.png" + (" and " + ", ".join(card_files) if card_files else ""))
     return 0 if res.verdict == "PASS" else (1 if res.verdict == "WEAK" else 2)
 
 
