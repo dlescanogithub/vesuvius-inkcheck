@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use inkcheck / the Ink Recoverability Protocol, please cite it as below."
+title: "vesuvius-inkcheck: the Ink Recoverability Protocol (IRP) for Herculaneum ink maps"
+type: software
+authors:
+  - family-names: Lescano
+    given-names: Diego
+version: 0.3.0
+date-released: "2026-10-29"
+license: MIT
+repository-code: "https://github.com/dlescanogithub/vesuvius-inkcheck"
+url: "https://dlescanogithub.github.io/vesuvius-inkcheck/"
+abstract: >-
+  CPU-only validation of Vesuvius Challenge ink-detection maps: registers a predicted ink map to a published reference
+  of the same segment (possibly at a different resolution) and tests band-pass correlation, AUC and stroke recall
+  against search-matched shift nulls, with negative controls, a saturation warning and a versioned per-segment
+  report schema (ink card v1). Part of a pre-registered decision tree for deciding whether a segment's ink is
+  missing or not yet recovered.
+keywords:
+  - Vesuvius Challenge
+  - Herculaneum papyri
+  - ink detection
+  - validation
+  - X-ray CT

@@ -1,0 +1,16 @@
+include README.md README_PYPI.md CHANGELOG.md LICENSE CITATION.cff pytest.ini
+include schemas/*.json schemas/examples/*.json schemas/examples/*.md
+include src/inkcheck/schemas/*.json
+prune tests
+prune results
+prune cards
+prune figures
+prune calibration
+prune leaderboard
+prune refset
+prune notebooks
+prune study
+prune triage
+prune bench
+prune examples
+prune docs

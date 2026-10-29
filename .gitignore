@@ -39,3 +39,7 @@ results/tolerance/*
 !results/tolerance/tolerance_verdicts.json
 figures/dose_response.png
 calibration/calibration_public_only.*
+dist/
+build/
+site/
+leaderboard/plan.json

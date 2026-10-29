@@ -1,0 +1,50 @@
+# Build and publish to PyPI with trusted publishing (OIDC, no API token stored in the repo).
+# Inert until a maintainer (1) creates the PyPI project / pending publisher for "vesuvius-inkcheck" with
+#   owner dlescanogithub, repository vesuvius-inkcheck, workflow release.yml, environment pypi
+# and (2) creates the "pypi" environment in the GitHub repo settings. Runs only when a v* tag is pushed.
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: build sdist + wheel
+        run: |
+          python -m pip install --upgrade build twine
+          python -m build
+          python -m twine check --strict dist/*
+      - name: tag must match the package version
+        run: |
+          v=$(python -c "import re;print(re.search(r'__version__ = \"(.+?)\"', open('src/inkcheck/__init__.py').read()).group(1))")
+          test "refs/tags/v$v" = "$GITHUB_REF" || { echo "tag $GITHUB_REF != v$v"; exit 1; }
+      - name: smoke-test the wheel in a clean venv
+        run: |
+          python -m venv /tmp/v && /tmp/v/bin/pip install dist/*.whl
+          /tmp/v/bin/inkcheck --help > /dev/null
+          /tmp/v/bin/python -c "import inkcheck.card as c; c.load_schema()"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/vesuvius-inkcheck
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
