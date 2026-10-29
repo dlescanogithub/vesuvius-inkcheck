@@ -20,6 +20,25 @@ inkcheck quick                      # ~2 min: public PHerc0343P map vs infrared-
 **official open-data ink map** (read directly from the Vesuvius Challenge bucket with `inkcheck.opendata`: ds8 `.jpg/.png` previews,
 full `.tif` maps, `layers-zarr` surface volumes) to a verdict, with one PASS-like case and one saturation WARN. Changes: [CHANGELOG.md](CHANGELOG.md).
 
+The distribution name is **`vesuvius-inkcheck`** (the import and the command stay `inkcheck`). It is not on PyPI yet; once it is,
+`pip install "vesuvius-inkcheck[zarr]"` replaces the git URL above.
+
+### New in 0.3.0 (unreleased)
+
+* **Ink card** ([docs/schema.md](docs/schema.md)): every `inkcheck PRED REF` run also writes `<out>.card.json` / `.card.md`, a versioned
+  (`ink-card/v1`, JSON Schema in `src/inkcheck/schemas/`) record of the verdict, numbers, nulls, wrong-place control, saturation warning
+  and provenance. `inkcheck card CHECK.json --control CONTROL.json` builds one from existing outputs; `inkcheck report --validate CARD.json` checks it.
+* **Docs site** (`mkdocs.yml`, `docs/`): getting started, tutorial, protocol, card schema, CI, leaderboard, reference set, API, FAQ.
+  `mkdocs build --strict` builds it; `.github/workflows/docs.yml` deploys to GitHub Pages on manual dispatch or a `v*` tag.
+* **GitHub Action** (`action.yml`, [docs/ci.md](docs/ci.md), example [examples/ci/model-pr.yml](examples/ci/model-pr.yml)): run inkcheck plus a
+  wrong-place control on a model PR, upload the card, fail the job on FAIL (or WEAK) or on an INVALID control.
+* **Public-label leaderboard** ([leaderboard/LEADERBOARD.md](leaderboard/LEADERBOARD.md)): official ds8 open-data maps scored against the public
+  `ink_9um` labels, numbers only. v0 covers one official model family on 12 segments from 3 scrolls (2 PASS, 4 WEAK, 6 FAIL; mostly
+  small label areas). Read its caveats: this is agreement with labels, not a held-out test.
+* **Reference set v0** ([refset/REFSET_v0.md](refset/REFSET_v0.md)): 192 fixed, hashed 0.5 mm tiles (96 ink, 96 no-ink) drawn from the public
+  labels on 12 segments of 3 scrolls (coordinates and hashes only, no pixels), with coverage statistics and limitations.
+* **PyPI-ready**: `python -m build` and `twine check` pass; the release workflow stays inert until a PyPI trusted publisher is set up.
+
 ## The protocol
 
 ```
@@ -90,7 +109,7 @@ Paris 4 scores are withheld while the PHercParis4 publication reservation applie
 
 The side-by-side panels (prediction, registered reference, overlay, null histogram) are not shipped because they show scroll ink maps (see [Data and licensing](#data-and-licensing)). `inkcheck` draws the same panels in `out/<name>.png` when you run it on fetched data.
 
-> **Scope.** These are diagnostics, not a leaderboard. For ranking many readers across benchmarks, use [inkbench](https://github.com/inksweep/inkbench). See [Related work](#related-work).
+> **Scope.** These cards are diagnostics, not a ranking. The small [public-label leaderboard](leaderboard/LEADERBOARD.md) only reports how official maps agree with the public labels; for ranking many readers across benchmarks, use [inkbench](https://github.com/inksweep/inkbench). See [Related work](#related-work).
 
 ## Quickstart (5 minutes, CPU): see [QUICKSTART.md](QUICKSTART.md)
 
@@ -300,7 +319,11 @@ Face-only is now available as `rule_type: "face_only"` in node D (v1 stays the d
 | `examples/scrollgt/` | ScrollGT flagship fetch, run and AP-prevalence-lift scripts |
 | `calibration/` | `calibrate.py`, `calibration.json`, `calibration.png`: threshold calibration and sensitivity |
 | `triage/` | proxy measurement and tier table for public segments (`TRIAGE.md`, `triage.csv`) |
-| `notebooks/quickstart.ipynb`, `Dockerfile`, `.github/workflows/ci.yml` | other ways to run the quickstart (Docker not built here; CI not yet run on GitHub) |
+| `leaderboard/` | `build_leaderboard.py` (fetch / score / write), `LEADERBOARD.md`, `leaderboard.csv`, per-pair ink cards (numbers only) |
+| `refset/` | `build_refset.py`, `REFSET_v0.md`, `refset_v0.json` (tile coordinates + label hashes, no pixels), `coverage_v0.json` |
+| `action.yml`, `scripts/inkcheck_ci.sh`, `examples/ci/` | composite GitHub Action for model PRs and an example workflow |
+| `mkdocs.yml`, `docs/`, `.github/workflows/docs.yml` | documentation site and its Pages deploy (manual or tag only) |
+| `notebooks/quickstart.ipynb`, `Dockerfile`, `.github/workflows/ci.yml` | other ways to run the quickstart (Docker not built here; CI runs on GitHub Actions, Python 3.10 and 3.12) |
 | `cards/` | generated readability cards (`.md`, `.png`, `.json`) |
 | `PREREG_TEMPLATE.md` | pre-registration template for node D (and for any null-protocol hunt) |
 | `tests/` | synthetic tests: brute-force NCC equivalence, registration recovery, noise → FAIL, trend-only → not PASS; `test_irp.py` covers every node, the prereg ordering, the `report` CLI and every shipped card; `test_bootstrap.py`, `test_inkbench.py`, `test_scrollgt.py` cover the CIs and the two adapters |

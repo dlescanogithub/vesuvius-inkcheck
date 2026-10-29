@@ -2,6 +2,50 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
+## [0.3.0] - unreleased (local branch `v0.3`, not pushed)
+
+### Added
+- **Ink card v1**: every `inkcheck PRED REF` run (and `inkcheck quick`) writes `PREFIX.card.json` + `PREFIX.card.md`,
+  a per-segment report following the versioned JSON Schema `schemas/inkcheck-report-v1.json` (draft 2020-12, also
+  shipped in the package): segment, verdict (final / node A / node N), metrics, thresholds, controls, saturation,
+  warnings and provenance (inkcheck version, model, scan, prediction, reference, config, pre-registration sha256).
+  `inkcheck.card` (`build_card`, `validate`, `render_markdown`, `write_card`); `inkcheck report --validate` /
+  `--render`; `inkcheck card CHECK.json [--control ...]`; provenance options `--scroll --segment --model --model-run
+  --scan --prereg --prereg-sha256`; `--no-card`. Validation uses `jsonschema` when installed (`[schema]` extra) and a
+  built-in validator otherwise. Synthetic example card in `schemas/examples/`.
+- **PyPI-ready packaging** as `vesuvius-inkcheck` (import name and command stay `inkcheck`): single-sourced version,
+  SPDX license metadata, `README_PYPI.md`, `MANIFEST.in`, `CITATION.cff`, `.zenodo.json`, and a tag-only release
+  workflow (`.github/workflows/release.yml`) using PyPI trusted publishing. It stays inert until a PyPI pending
+  publisher and a GitHub `pypi` environment exist.
+- **Documentation site** (`mkdocs.yml`, mkdocs-material + mkdocstrings): getting started, tutorial, protocol, ink-card
+  schema, CI, leaderboard, reference set, API reference and FAQ. `mkdocs build --strict` passes; `[docs]` extra;
+  `.github/workflows/docs.yml` deploys to GitHub Pages on `workflow_dispatch` or a version tag only.
+- **GitHub Action** (`action.yml`, composite) for model pull requests: runs the check and a wrong-place control,
+  validates the ink card, writes it to the job summary, exposes `verdict`/`card` outputs and fails on FAIL/INVALID
+  (configurable). It wraps `scripts/inkcheck_ci.sh`, which runs the same steps locally. Example workflow:
+  `examples/ci/model-pr.yml`. CI exercises the wrapper on the synthetic pair.
+- **Public leaderboard** (`leaderboard/`): official open-data ink maps scored against the public `ink_9um` labels
+  with the inkcheck protocol; numbers only (CSV, summary JSON, one ink card per pair), with method and caveats.
+  v0: one official model family (`new_canon_autoresearch_recipe`) on 12 labelled segments from 3 scrolls
+  (2 PASS, 4 WEAK, 6 FAIL; wrong-place control FAIL 12/12). The 12 pairs whose map is on another scan's canvas are
+  listed as excluded, not force-registered. It measures agreement with the public labels, not a held-out test.
+- **Reference set v0** (`refset/`): deterministic list of ink and no-ink regions (coordinates, fractions, label
+  hashes) from the public `ink_9um` labels, with coverage statistics and limitations. v0: 192 tiles of 0.5 mm
+  (96 ink, 96 no-ink) on 12 segments from 3 scrolls (PHerc0139, PHerc0814, PHerc1667); PHercParis4 excluded.
+
+### Changed
+- Distribution renamed `inkcheck` -> `vesuvius-inkcheck` (pip extras are now `vesuvius-inkcheck[zarr]` etc.).
+- `inkcheck report`: case files are optional when `--validate` / `--render` is given.
+- Version 0.2.0 -> 0.3.0.
+
+### Fixed
+
+- Shift nulls that cannot be scored (too little valid overlap after the shift, e.g. a small or fragmented
+  reference mask) are no longer counted. `n_shift_nulls` is now the number of usable nulls
+  (`n_shift_nulls_requested` is the number drawn), the null mean / sd / max ignore unusable nulls (they were NaN),
+  and the "smallest attainable p is above alpha" warning uses the usable count. Verdicts on full-overlap inputs
+  are unchanged (p was already computed over usable nulls only); the change makes null-limited checks visible.
+
 ## [0.2.0] - 2026-10-29
 
 ### Added
