@@ -1,10 +1,10 @@
 # Tutorial: from an official open-data ink map to a verdict (5 minutes, CPU)
 
-Notebook: [`notebooks/tutorial_5min.ipynb`](../notebooks/tutorial_5min.ipynb) (ships without outputs; run it top to bottom).
+Notebook: [`notebooks/tutorial_5min.ipynb`](https://github.com/dlescanogithub/vesuvius-inkcheck/blob/main/notebooks/tutorial_5min.ipynb) (ships without outputs; run it top to bottom).
 Everything is fetched at run time from public sources (~15 MB, cached in `$INKCHECK_CACHE` or `~/.cache/inkcheck`).
 
 ```bash
-pip install "inkcheck[notebook] @ git+https://github.com/dlescanogithub/vesuvius-inkcheck"
+pip install "vesuvius-inkcheck[notebook] @ git+https://github.com/dlescanogithub/vesuvius-inkcheck"
 jupyter execute notebooks/tutorial_5min.ipynb      # or open it in Jupyter / VS Code
 ```
 
@@ -35,7 +35,7 @@ keys = od.list_predictions("PHerc0172", "20250917143559-w062_20250917143559205_f
 m, meta = od.load_prediction(keys[0])            # float32 array, metadata from the file name
 meta["map_pixel_um"]                             # 63.28 = 7.91 um scan x ds8
 
-# surface volumes (zarr v2, `layers-zarr`): group or array dir; uncompressed or numcodecs (pip install "inkcheck[zarr]")
+# surface volumes (zarr v2, `layers-zarr`): group or array dir; uncompressed or numcodecs (pip install "vesuvius-inkcheck[zarr]")
 sv = od.open_surface_volume("s3://vesuvius-challenge-open-data/PHerc0172/segments/<seg>/surface-volumes/<scan>-volume-<ts>.zarr/")
 block = sv.read(sv.centred_window(17), slice(0, 512), slice(0, 512))     # (17, 512, 512) uint8, chunk-wise reads only
 od.ct_saturation_level(od.ct_intensity_stats(block))                    # HIGH / MEDIUM / LOW

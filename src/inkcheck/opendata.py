@@ -8,7 +8,7 @@ Supported (layout of s3://vesuvius-challenge-open-data, mirrored at https://vesu
                          shape (layers, H, W), chunks (layers, 128, 128); uncompressed or any numcodecs compressor)
 
 Only the standard library, numpy, Pillow and tifffile are needed; compressed zarr chunks additionally need `numcodecs`
-(`pip install "inkcheck[zarr]"`). Nothing is written except the download cache of `inkcheck.quick.fetch`.
+(`pip install "vesuvius-inkcheck[zarr]"`). Nothing is written except the download cache of `inkcheck.quick.fetch`.
 Data licence: scroll data are CC BY-NC 4.0 (Vesuvius Challenge); this module only reads them.
 """
 from __future__ import annotations
@@ -123,7 +123,7 @@ class SurfaceVolume:
             try:
                 import numcodecs
             except ImportError as e:  # pragma: no cover - depends on the environment
-                raise ImportError('this surface volume is compressed; pip install "inkcheck[zarr]" (numcodecs)') from e
+                raise ImportError('this surface volume is compressed; pip install "vesuvius-inkcheck[zarr]" (numcodecs)') from e
             if self.compressor is not None:
                 raw = numcodecs.get_codec(self.compressor).decode(raw)
             for f in reversed(self.filters or []):

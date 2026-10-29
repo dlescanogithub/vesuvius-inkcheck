@@ -26,3 +26,13 @@ jobs:
           test "$rc" -eq 2
       - name: IRP cards build from the shipped case files
         run: inkcheck report examples/irp/*.case.json --out out/cards
+      - name: CI wrapper used by action.yml (synthetic PASS exits 0, negative exits 1)
+        run: |
+          INKCHECK_PRED=examples/data/synthetic_pred_9.6um.png INKCHECK_REF=examples/data/synthetic_ref_19.2um.png \
+            INKCHECK_PRED_UM=9.6 INKCHECK_REF_UM=19.2 INKCHECK_ARGS="--ref-origin 128,128 --workers 2" \
+            INKCHECK_OUT=out/ci/pos bash scripts/inkcheck_ci.sh
+          set +e
+          INKCHECK_PRED=examples/data/synthetic_negative_pred_9.6um.png INKCHECK_REF=examples/data/synthetic_ref_19.2um.png \
+            INKCHECK_PRED_UM=9.6 INKCHECK_REF_UM=19.2 INKCHECK_ARGS="--ref-origin 128,128 --workers 2" \
+            INKCHECK_OUT=out/ci/neg bash scripts/inkcheck_ci.sh; rc=$?; set -e
+          test "$rc" -eq 1

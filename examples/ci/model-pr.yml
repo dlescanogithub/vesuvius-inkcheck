@@ -1,0 +1,39 @@
+# Example: put this in YOUR model repository as .github/workflows/inkcheck.yml.
+# On every pull request that touches the model, regenerate the segment's ink map (your own step, CPU or a
+# self-hosted GPU runner), then let inkcheck decide whether it still sees the known ink. The ink card is
+# added to the job summary and uploaded as an artifact; the job fails on FAIL or INVALID.
+name: inkcheck
+on:
+  pull_request:
+    paths: ["model/**", "configs/**"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # --- your step: produce predictions/seg.png for a labelled segment (not provided by inkcheck) ---
+      - name: predict
+        run: python scripts/predict.py --segment 20250108000005-w030 --out predictions/seg.png
+      # reference ink map of the same segment, e.g. a published label you are allowed to use in CI
+      - name: fetch reference
+        run: python scripts/fetch_reference.py --out reference/seg_ref.png
+      - id: ink
+        uses: dlescanogithub/vesuvius-inkcheck@v0.3.0
+        with:
+          prediction: predictions/seg.png
+          reference: reference/seg_ref.png
+          pred-um: "9.6"
+          ref-um: "19.2"
+          args: "--workers 2"
+          card-args: "--scroll PHerc0139 --segment 20250108000005-w030 --model ${{ github.event.repository.name }} --model-run ${{ github.sha }}"
+          fail-on: FAIL
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ink-card
+          path: inkcheck-out/
+      - if: always()
+        run: echo "inkcheck verdict ${{ steps.ink.outputs.verdict }} (card ${{ steps.ink.outputs.card }})"
