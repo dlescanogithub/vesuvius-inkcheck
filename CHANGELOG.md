@@ -2,7 +2,7 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
-## [Unreleased]
+## [0.3.1] - 2026-10-30
 
 ### Fixed
 - **Exit codes**: a crash or a bad input no longer looks like a verdict. Uncaught exceptions, unreadable inputs,
@@ -17,7 +17,7 @@ All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](h
   paired with the 2560 x 2560 prediction crop at (512, 1536); a full-canvas w00 render against the full map uses
   `0,0` (#1).
 
-## [0.3.0] - unreleased (local branch `v0.3`, not pushed)
+## [0.3.0] - 2026-10-29
 
 ### Added
 - **Ink card v1**: every `inkcheck PRED REF` run (and `inkcheck quick`) writes `PREFIX.card.json` + `PREFIX.card.md`,
