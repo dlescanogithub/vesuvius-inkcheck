@@ -134,7 +134,10 @@ inkcheck examples/data/paris4_dn_pred_9.6um.png examples/data/paris4_ref_crop_19
   --pred-um 9.6 --ref-um 19.2 --ref-origin 256,256 --workers 2 --out out/paris4    # PASS (scores stay on your machine)
 ```
 
-- Exit code: 0 = PASS, 1 = WEAK, 2 = FAIL.
+- Exit codes: 0 = PASS, 1 = WEAK, 2 = FAIL, 3 = INVALID (`inkcheck quick` only: the wrong-place control passed),
+  4 = ERROR (unreadable input, bad arguments or any crash; the message goes to stderr). Usage errors from argparse
+  also exit 4, not argparse's usual 2, so a script can always tell a verdict from a failure to run.
+  `inkcheck report --validate` exits 1 if a card is invalid.
 - `PRED` is your model's 2D ink map; `REF` is a published ink map of the **same segment**. They may be at different pixel sizes.
 - If the prediction is a crop, use `--ref-origin y,x` (in reference pixels).
 - Other ways to run it:

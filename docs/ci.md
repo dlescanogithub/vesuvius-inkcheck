@@ -37,7 +37,8 @@ INKCHECK_PRED=pred.png INKCHECK_REF=ref.png INKCHECK_PRED_UM=9.6 INKCHECK_REF_UM
 INKCHECK_ARGS="--workers 4" INKCHECK_CARD_ARGS="--model my-model" bash scripts/inkcheck_ci.sh; echo $?
 ```
 
-Exit 0 means the gate passed, 1 means it failed, and > 1 means a crash.
+Exit 0 means the gate passed, 1 means it failed, and > 1 means a crash (inkcheck itself exits 4 on any error,
+which the script passes through).
 
 !!! warning "Data in CI"
     Do not commit scroll data or reference maps to a public repository; fetch them at run time from their

@@ -32,7 +32,7 @@ PASS  Team 2.2 um model map vs infrared-traced letters (PHerc0343P)
   ...
 ```
 
-Exit code 0 = PASS, 1 = WEAK, 2 = FAIL (3 = INVALID: the control passed). `out/quick.json`, `out/quick.png` and
+Exit code 0 = PASS, 1 = WEAK, 2 = FAIL (3 = INVALID: the control passed; 4 = ERROR: bad input or a crash). `out/quick.json`, `out/quick.png` and
 `out/quick.summary.json` are written locally.
 
 Other uses:
@@ -76,7 +76,7 @@ python examples/make_synthetic_example.py
 inkcheck examples/data/synthetic_pred_9.6um.png examples/data/synthetic_ref_19.2um.png \
   --pred-um 9.6 --ref-um 19.2 --ref-origin 128,128 --workers 2 --out out/synthetic
 # -> PASS  model sees known ink at 9.6 um: YES (band-pass r=0.67, p=0.00518; 73% of reference strokes recovered vs 5% by chance)
-#    exit code 0 = PASS, 1 = WEAK, 2 = FAIL; writes out/synthetic.json and out/synthetic.png
+#    exit code 0 = PASS, 1 = WEAK, 2 = FAIL, 4 = ERROR; writes out/synthetic.json and out/synthetic.png
 inkcheck examples/data/synthetic_negative_pred_9.6um.png examples/data/synthetic_ref_19.2um.png \
   --pred-um 9.6 --ref-um 19.2 --ref-origin 128,128 --workers 2 --out out/synthetic_neg
 # -> FAIL  (band-pass r=0.05, p=0.389): unrelated strokes

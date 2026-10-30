@@ -255,10 +255,12 @@ def run(argv=None, log=print) -> int:
           f"{summary['seconds_download']:.0f} s download)")
     if a.json:
         print(json.dumps(summary, indent=1))
-    return {"PASS": 0, "WEAK": 1, "FAIL": 2}.get(final, 3)
+    from .cli import verdict_exit_code
+    return verdict_exit_code(final)
 
 
 main = run
 
 if __name__ == "__main__":
-    sys.exit(run())
+    from .cli import main as _cli_main
+    sys.exit(_cli_main(["quick", *sys.argv[1:]]))

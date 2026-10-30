@@ -2,6 +2,21 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
+## [Unreleased]
+
+### Fixed
+- **Exit codes**: a crash or a bad input no longer looks like a verdict. Uncaught exceptions, unreadable inputs,
+  `SystemExit("message")` and argparse usage errors now exit **4** (ERROR) from every subcommand, with the message on
+  stderr; before, a traceback exited 1 (= WEAK) and a usage error 2 (= FAIL). Verdict codes are unchanged: 0 PASS,
+  1 WEAK, 2 FAIL, 3 INVALID (`inkcheck quick`). Reported in #1 by @LynnHenry.
+  `inkcheck.cli.verdict_exit_code` and `EXIT_*` constants; tests in `tests/test_exit_codes.py`.
+
+### Docs
+- `results/rescore/rescore_0841.sh`: comment explaining that `--ref-origin 333.04,333.13` belongs to the cropped
+  reference `results/newcases/refs/0841-w00__map.png` (cut by `results/newcases/prep_refs.py` with a 0.8 mm margin)
+  paired with the 2560 x 2560 prediction crop at (512, 1536); a full-canvas w00 render against the full map uses
+  `0,0` (#1).
+
 ## [0.3.0] - unreleased (local branch `v0.3`, not pushed)
 
 ### Added

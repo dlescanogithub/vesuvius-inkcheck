@@ -7,6 +7,11 @@
   inkcheck card CHECK.json [--out PREFIX] [provenance]    turn an existing check JSON into a v1 ink card
   inkcheck inkbench RESULTS [--benchmark B] [--case-out CASE.json ...]   read inkbench outputs (ranking table / IRP case)
   inkcheck quick [EXAMPLE | PRED REF ...]                 5-minute quickstart: fetch, check, control, plain-English verdict
+
+Exit codes (all subcommands): 0 PASS, 1 WEAK, 2 FAIL, 3 INVALID (`inkcheck quick` only: the wrong-place control
+passed), 4 ERROR (bad arguments, unreadable input, any uncaught exception). `inkcheck report --validate` exits 1 if
+a card is invalid. Python's own default (1 for a traceback, 2 for an argparse usage error) would collide with WEAK
+and FAIL, so `main` maps both to 4.
 """
 from __future__ import annotations
 
@@ -18,6 +23,14 @@ from pathlib import Path
 from .core import CheckConfig, run_check
 from .io import load_map, load_mask
 from .report import write_json, write_png
+
+EXIT_PASS, EXIT_WEAK, EXIT_FAIL, EXIT_INVALID, EXIT_ERROR = 0, 1, 2, 3, 4
+EXIT_CODES = {"PASS": EXIT_PASS, "WEAK": EXIT_WEAK, "FAIL": EXIT_FAIL, "INVALID": EXIT_INVALID}
+
+
+def verdict_exit_code(verdict):
+    """Exit code for a verdict string; anything unknown is an error."""
+    return EXIT_CODES.get(verdict, EXIT_ERROR)
 
 
 def _pair(s):
@@ -209,7 +222,29 @@ def card_main(argv):
 
 
 def main(argv=None):
+    """Entry point of the `inkcheck` command. Returns the exit code (see the module docstring)."""
     argv = list(sys.argv[1:] if argv is None else argv)
+    try:
+        return _dispatch(argv)
+    except SystemExit as e:
+        # argparse --help / --version exit 0; argparse usage errors exit 2 (= FAIL) and SystemExit("message")
+        # exits 1 (= WEAK): both are errors here
+        if e.code is None or e.code == 0:
+            return 0
+        if isinstance(e.code, str):
+            print(f"inkcheck: error: {e.code}", file=sys.stderr)
+        return EXIT_ERROR
+    except KeyboardInterrupt:
+        print("inkcheck: interrupted", file=sys.stderr)
+        return 130
+    except Exception as e:  # noqa: BLE001 - any crash must not look like a verdict
+        import traceback
+        traceback.print_exc()
+        print(f"inkcheck: error: {type(e).__name__}: {e} (exit {EXIT_ERROR})", file=sys.stderr)
+        return EXIT_ERROR
+
+
+def _dispatch(argv):
     if argv and argv[0] == "card":
         return card_main(argv[1:])
     if argv and argv[0] == "report":
@@ -255,7 +290,7 @@ def main(argv=None):
                  f"{b['recall_minus_chance_ci'][1]:+.2f}]" if b.get("recall_minus_chance_ci") else ""))
     print(f"{res.verdict}\t{res.summary}")
     print(f"wrote {out}.json and {out}.png" + (" and " + ", ".join(card_files) if card_files else ""))
-    return 0 if res.verdict == "PASS" else (1 if res.verdict == "WEAK" else 2)
+    return verdict_exit_code(res.verdict)
 
 
 if __name__ == "__main__":

@@ -34,7 +34,9 @@ inkcheck PRED.tif REF.png --pred-um 9.6 --ref-um 19.2 --out out/seg \
 * `--pred-um` / `--ref-um` are their pixel sizes in µm; the comparison runs on the coarser grid unless `--analysis-um`.
 * If the prediction is a crop of the reference canvas, give its origin with `--ref-origin y,x` (reference pixels).
 * `--mask` / `--ref-mask` restrict the comparison to valid pixels.
-* Exit code: 0 PASS, 1 WEAK, 2 FAIL.
+* Exit codes: 0 PASS, 1 WEAK, 2 FAIL, 3 INVALID (`inkcheck quick` only: the wrong-place control passed),
+  4 ERROR (unreadable input, bad arguments, any crash; message on stderr). Usage errors exit 4 as well, not
+  argparse's usual 2, so 2 always means a FAIL verdict.
 * Provenance options (`--scroll --segment --model --model-run --scan --prereg/--prereg-sha256`) go into the ink card.
   For official open-data map file names, model, run and scan are parsed automatically.
 
