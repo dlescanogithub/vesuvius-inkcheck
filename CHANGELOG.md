@@ -2,6 +2,24 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
+## [0.3.3] - 2026-10-31
+
+### Changed
+- **Training-overlap registry now follows @jo-tud's full model × labelled-set table** (ScrollPrize/villa#2349) for
+  the public PHerc0139 segments with ink labels plus PHerc0343P. All nine labelled 0139 segments (public w029, w030,
+  w035, w039, w040, w041, w043, w044, w045) are in-sample for `ink_9um` s42/s43 and `ink9um-dense-native`; `ink_9um`
+  has no held-out labelled 0139 segment, so 0343P is its clean check; w033 stays unknown for `ink_9um`.
+  `ink9um-dense-native` is also in-sample on w033 and on its config's native-scan entries w032, w034, w046, w049,
+  w050 (read as public numbers; flagged with confidence `per config, unverified mapping`). `ink-8um-v8in`'s training
+  segments are confirmed as public w033/w035/w041/w044 (canvas-size match of its patch packs; the dual-naming
+  fallback is gone); it is held out on w029, w030, w039, w040, w043 and w045. 0343P stays held out for all three.
+  Label case renames from `.zattrs`: `pherc0139-w016` = public w029, `pherc0139-w028` = public w044 (new), besides
+  `pherc0139-w017` = w030 and `pherc0139-w029` = w045.
+
+### Added
+- `lookup()` results and `provenance.training_overlap` carry an optional `confidence` (how the pair is known);
+  additive in the schema. Tests in `tests/test_training_overlap.py` check every cell of the table.
+
 ## [0.3.2] - 2026-10-31
 
 ### Added

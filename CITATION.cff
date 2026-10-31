@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Lescano
     given-names: Diego
-version: 0.3.2
+version: 0.3.3
 date-released: "2026-10-31"
 doi: 10.5281/zenodo.23769415
 identifiers:

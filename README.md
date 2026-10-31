@@ -100,13 +100,27 @@ Held-out status is recorded per check (`held_out`). Checks on training segments 
 
 **In-sample flags on ink cards.** `inkcheck` and `inkcheck card` look up the model and segment in a small registry of
 known training overlap (`inkcheck.training_overlap`) and record it in `provenance.training_overlap`; an in-sample pair
-also gets the warning `in-sample (training overlap)`. Scores, verdicts and exit codes are unchanged. Built in, from
-[jo-tud on villa #2349](https://github.com/ScrollPrize/villa/pull/2349) (the `source_surface_volume` in each `ink_9um`
-label case's `.zattrs`): label case `pherc0139-w017` is public PHerc0139 w030 (20250108000005) and `pherc0139-w029` is
-public w045 (20260126000000); both are training cases of `ink_9um` seed 42 / 43 and Nieuwlaar's `ink9um-dense-native`,
-so their scores there are in-sample. For YoussefMoNader's `ink-8um-v8in` (trained on 0139 w033/w035/w041/w044 as
-stated; naming not yet confirmed) w030 and w045 are held out. PHerc0343P (`ir-truth-9um`) is held out for all three (`ink_9um`, dense-native, v8-in).
-Unknown models or unlisted segments get no flag (unknown is not held out). Add your own pairs with
+also gets the warning `in-sample (training overlap)`. Scores, verdicts and exit codes are unchanged. The built-in
+table is [jo-tud's on villa #2349](https://github.com/ScrollPrize/villa/pull/2349) for the public PHerc0139 segments
+with ink labels plus PHerc0343P (`ir-truth-9um`). The `ink_9um` label case names do not follow the public w-numbers;
+from the `source_surface_volume` in each case's `.zattrs`, `pherc0139-w016` is public w029, `pherc0139-w017` is w030,
+`pherc0139-w028` is w044 and `pherc0139-w029` is w045 (w035, w039, w040, w041 and w043 keep their numbers; w033 has no
+label case). Segments are matched by public id, public w-number or label case name.
+
+| PHerc0139 public segment | `ink_9um` s42/s43 | `ink9um-dense-native` | `ink-8um-v8in` |
+|---|---|---|---|
+| w029, w030, w039, w040, w043, w045 | in-sample | in-sample | held out |
+| w035, w041, w044 | in-sample | in-sample | in-sample |
+| w033 | unknown | in-sample | in-sample |
+| PHerc0343P (all) | held out | held out | held out |
+
+All nine labelled 0139 cases are `ink_9um` training cases, so `ink_9um` has no held-out labelled 0139 segment; 0343P is
+its clean check (part of w029 is also its online-validation region). Nieuwlaar's dense-native config also lists
+native-scan entries w032, w034, w046, w049 and w050, read as public w-numbers but not verified the same way: they are
+flagged in-sample with confidence `per config, unverified mapping`. v8-in's training segments are matched by canvas
+size of its patch packs (`0139_w033v5`, `0139_w035v8`, `0139_w041v8`, `0139_w044v8`) to the public segments, not
+byte-checked. Each lookup carries a `confidence` field saying how the pair is known. Unknown models or unlisted
+segments get no flag (unknown is not held out). Add your own pairs with
 `--training-overlap my_overlap.json` (a list of entries like `inkcheck.training_overlap.BUILTIN`).
 
 A one-page summary of all of this is in [`docs/IRP_onepager.pdf`](docs/IRP_onepager.pdf) (regenerate with `python docs/make_onepager.py`; every number is read from `cards/*.json`, `calibration/calibration.json` and `triage/triage_summary.json`).

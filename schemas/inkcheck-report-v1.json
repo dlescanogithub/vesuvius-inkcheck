@@ -132,7 +132,8 @@
             "model": {"type": ["string", "null"]},
             "matched": {"type": ["string", "null"]},
             "source": {"type": ["string", "null"]},
-            "note": {"type": ["string", "null"]}
+            "note": {"type": ["string", "null"]},
+            "confidence": {"type": ["string", "null"], "description": "How the pair is known (e.g. label .zattrs, canvas-size match, per config). Added in inkcheck 0.3.3."}
           }
         }
       }

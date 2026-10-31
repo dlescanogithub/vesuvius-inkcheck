@@ -4,7 +4,8 @@ A score on a segment the model was trained on measures fit, not generalisation. 
 model/segment pairs whose training status has been stated publicly, and answers
 
   is_in_sample(model, scroll, segment) -> True (in-sample: training overlap), False (stated held out), None (unknown)
-  lookup(model, scroll, segment)       -> the same as a dict for reports (status, model, matched id, source, note)
+  lookup(model, scroll, segment)       -> the same as a dict for reports (status, model, matched id, source, note,
+                                          confidence)
 
 It never changes a score, a verdict or an exit code: reports only carry the flag. Unknown models and unlisted
 segments give None (no flag); "not listed" is not evidence of held out.
@@ -25,41 +26,79 @@ import json
 import re
 from pathlib import Path
 
-JO_TUD_2349 = ("jo-tud on ScrollPrize/villa PR #2349 (https://github.com/ScrollPrize/villa/pull/2349), from "
-               "source_surface_volume in each ink_9um label case's .zattrs")
+JO_TUD_2349 = ("jo-tud on ScrollPrize/villa PR #2349 (https://github.com/ScrollPrize/villa/pull/2349): "
+               "model x labelled-set table; ink_9um case name -> public segment from source_surface_volume in each "
+               "label case's .zattrs")
 
-_INK9_0139_TRAIN = [
-    # label case pherc0139-w017 sits on public w030; pherc0139-w029 sits on public w045 (.zattrs source_surface_volume)
-    {"scroll": "PHerc0139", "segment_id": "20250108000005", "public_w": "w030", "label_case": "pherc0139-w017"},
-    {"scroll": "PHerc0139", "segment_id": "20260126000000", "public_w": "w045", "label_case": "pherc0139-w029"},
-]
-_HELD_OUT_0343P = [{"scroll": "PHerc0343P", "segment_id": "*", "note": "0343P (ir-truth-9um)"}]
+# PHerc0139: public w-number -> (public segment id, ink_9um label case name or None). Case -> segment from the label
+# .zattrs (source_surface_volume), per jo-tud's table. Note the label case numbers do NOT follow the public ones:
+# label pherc0139-w016 is public w029, label pherc0139-w029 is public w045, label pherc0139-w028 is public w044.
+_P0139 = {
+    "w029": ("20250108000004", "pherc0139-w016"),
+    "w030": ("20250108000005", "pherc0139-w017"),
+    "w033": ("20260219000000", None),
+    "w035": ("20260317000000", "pherc0139-w035"),
+    "w039": ("20260302000000", "pherc0139-w039"),
+    "w040": ("20250831000000", "pherc0139-w040"),
+    "w041": ("20260108000000", "pherc0139-w041"),
+    "w043": ("20260112000000", "pherc0139-w043"),
+    "w044": ("20260115000000", "pherc0139-w028"),
+    "w045": ("20260126000000", "pherc0139-w029"),
+}
+
+
+def _seg(w, **extra):
+    sid, case = _P0139[w]
+    spec = {"scroll": "PHerc0139", "segment_id": sid, "public_w": w}
+    if case:
+        spec["label_case"] = case
+    return {**spec, **extra}
+
+
+# the nine ink_9um label cases on PHerc0139 (all in the ink_9um training config)
+_INK9_CASES = ["w029", "w030", "w035", "w039", "w040", "w041", "w043", "w044", "w045"]
+_ZATTRS = "verified (label .zattrs source_surface_volume)"
+_INK9_0139_TRAIN = [_seg(w, confidence=_ZATTRS) for w in _INK9_CASES]
+_INK9_0139_TRAIN[0]["note"] = "in-sample; part of public w029 is the ink_9um online-validation region"
+_HELD_OUT_0343P = [{"scroll": "PHerc0343P", "segment_id": "*", "note": "0343P (ir-truth-9um)",
+                    "confidence": "stated (jo-tud)"}]
+
+# dense-native: the nine label cases, w033, and native-scan config entries read as public w-numbers. Only the w-number
+# is known for the extra config entries (no segment id), so they match on the public w-number alone.
+_DENSE_CONFIG_ONLY = ["w032", "w034", "w046", "w049", "w050"]
+_DENSE_TRAIN = ([_seg(w, confidence=_ZATTRS) for w in _INK9_CASES]
+                + [_seg("w033", confidence="T in jo-tud's table (native-scan config entry read as public w033)")]
+                + [{"scroll": "PHerc0139", "public_w": w, "confidence": "per config, unverified mapping",
+                    "note": f"native-scan config entry read as public {w}"} for w in _DENSE_CONFIG_ONLY])
+# (dense-native's config also lists w030, w035, w039-w041, w043, w044 as native-scan entries; those are already in the
+# nine label cases above.)
+
+# v8-in: patch packs 0139_w033v5 / w035v8 / w041v8 / w044v8 match the canvas size of these public 9.362 um segments
+_CANVAS = "canvas-size match of the patch pack to the public segment (not a byte check)"
+_V8IN_TRAIN = [_seg(w, confidence=_CANVAS) for w in ("w033", "w035", "w041", "w044")]
+_V8IN_HELD = [_seg(w, confidence="stated in jo-tud's table") for w in ("w029", "w030", "w039", "w040", "w043", "w045")] + _HELD_OUT_0343P
 
 # Each entry: model (display name), match (regex on the model name, lower-cased with non-alphanumerics removed),
 # in_sample / held_out (lists of segment specs), source, note.
 # A segment spec has a scroll and any of: segment_id (public 14-digit id, or "*" = every segment of that scroll),
-# public_w (public w-number), label_case (ink_9um label case name), w (a w-number whose naming scheme is not confirmed:
-# matched against both public w-numbers and label case w-numbers, i.e. conservatively).
+# public_w (public w-number), label_case (ink_9um label case name), w (a w-number whose naming scheme is not known:
+# matched against both public and label case w-numbers, conservatively; not used by the built-in entries), plus
+# optional note and confidence.
+# Not listed = unknown (None): e.g. ink_9um on public w033 ("?" in jo-tud's table: the ink_9um card mentions 5 native
+# 9.362 um 0139 segments not pinned to w-numbers).
+_INK9_NOTE = ("all nine 0139 label cases are ink_9um training cases, so ink_9um has no held-out labelled 0139 "
+              "segment; 0343P is its clean check")
 BUILTIN = [
     {"model": "scrollprize ink_9um seed 42", "match": r"ink9um(seed|s)42",
-     "in_sample": _INK9_0139_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349,
-     "note": "both 0139 cases are ink_9um training cases"},
+     "in_sample": _INK9_0139_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349, "note": _INK9_NOTE},
     {"model": "scrollprize ink_9um seed 43", "match": r"ink9um(seed|s)43",
-     "in_sample": _INK9_0139_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349,
-     "note": "both 0139 cases are ink_9um training cases"},
+     "in_sample": _INK9_0139_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349, "note": _INK9_NOTE},
     {"model": "Nieuwlaar/ink9um-dense-native", "match": r"densenative",
-     "in_sample": _INK9_0139_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349,
-     "note": "dense-native trains on both 0139 cases"},
+     "in_sample": _DENSE_TRAIN, "held_out": _HELD_OUT_0343P, "source": JO_TUD_2349,
+     "note": "dense-native trains on the same nine 0139 label cases plus native-scan 0139 entries"},
     {"model": "YoussefMoNader/ink-8um-v8in", "match": r"v8in",
-     # Recorded exactly as stated ("trained on 0139 w033/w035/w041/w044"). TODO confirm whether these are public
-     # w-numbers or ink_9um label case numbers; until then they are matched in both namings (conservative).
-     "in_sample": [{"scroll": "PHerc0139", "w": w} for w in ("w033", "w035", "w041", "w044")],
-     "held_out": [{"scroll": "PHerc0139", "segment_id": "20250108000005", "public_w": "w030",
-                   "label_case": "pherc0139-w017"},
-                  {"scroll": "PHerc0139", "segment_id": "20260126000000", "public_w": "w045",
-                   "label_case": "pherc0139-w029"}] + _HELD_OUT_0343P,
-     "source": JO_TUD_2349,
-     "note": "v8-in training cases w033/w035/w041/w044 as stated; their naming scheme is not confirmed"},
+     "in_sample": _V8IN_TRAIN, "held_out": _V8IN_HELD, "source": JO_TUD_2349,
+     "note": "v8-in trains on public 0139 w033/w035/w041/w044; clean 0139 segments: w029, w030, w039, w040, w043, w045"},
 ]
 
 LABEL = {True: "in-sample (training overlap)", False: "held out (stated)", None: "unknown"}
@@ -132,7 +171,7 @@ def lookup(model, scroll=None, segment=None, label=None, registry=None) -> dict:
     (e.g. the ink_9um label case name next to the public folder); either may match."""
     reg = BUILTIN if registry is None else registry
     nm = _norm_model(model)
-    base = dict(status=None, flag=LABEL[None], model=None, matched=None, source=None, note=None)
+    base = dict(status=None, flag=LABEL[None], model=None, matched=None, source=None, note=None, confidence=None)
     if not nm:
         return base
     names = [ids for ids in (segment_ids(segment, scroll), segment_ids(label, scroll) if label else None) if ids]
@@ -145,7 +184,8 @@ def lookup(model, scroll=None, segment=None, label=None, registry=None) -> dict:
                     hit = _spec_matches(spec, ids)
                     if hit:
                         return dict(status=status, flag=LABEL[status], model=e.get("model"), matched=hit,
-                                    source=e.get("source"), note=spec.get("note") or e.get("note"))
+                                    source=e.get("source"), note=spec.get("note") or e.get("note"),
+                                    confidence=spec.get("confidence"))
         return {**base, "model": e.get("model"), "source": e.get("source"),
                 "note": "model known, segment not listed: training status unknown"}
     return base
