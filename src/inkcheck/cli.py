@@ -83,6 +83,8 @@ def add_provenance_args(ap):
     g.add_argument("--scan", help="scan / volume id (default: parsed from an official map file name)")
     g.add_argument("--prereg", help="pre-registration file; its sha256 goes into the card")
     g.add_argument("--prereg-sha256", help="sha256 of the pre-registration (if the file is not at hand)")
+    g.add_argument("--training-overlap", metavar="JSON", help="extra known model/segment training pairs (list of "
+                   "entries as in inkcheck.training_overlap.BUILTIN); the card flags in-sample pairs, scores unchanged")
 
 
 def provenance_kwargs(a, pred_src=None, ref_src=None, pred_um=None, ref_um=None):
@@ -95,14 +97,17 @@ def provenance_kwargs(a, pred_src=None, ref_src=None, pred_um=None, ref_um=None)
             meta = parse_prediction_name(str(pred_src))
         except Exception:
             meta = {}
+    from .training_overlap import load_registry, lookup
     pre = a.prereg_sha256.lower() if a.prereg_sha256 else (sha256_file(a.prereg) if a.prereg else None)
+    scroll, segment, model = a.scroll or meta.get("scroll"), a.segment or meta.get("segment"), a.model or meta.get("model")
+    overlap = lookup(model, scroll, segment, registry=load_registry(getattr(a, "training_overlap", None)))
     return dict(
-        segment=dict(scroll=a.scroll or meta.get("scroll"), segment_id=a.segment or meta.get("segment")),
-        model=dict(name=a.model or meta.get("model"), run=a.model_run or meta.get("run")),
+        segment=dict(scroll=scroll, segment_id=segment),
+        model=dict(name=model, run=a.model_run or meta.get("run")),
         scan=dict(volume=a.scan or (f"{meta['scan']}-volume-{meta['volume']}" if meta.get("volume") else None), pixel_um=meta.get("pixel_um"), energy_kev=meta.get("energy_kev")),
         prediction=dict(source=str(pred_src) if pred_src else None, map_pixel_um=pred_um),
         reference=dict(source=str(ref_src) if ref_src else None, pixel_um=ref_um),
-        prereg_sha256=pre)
+        prereg_sha256=pre, training_overlap=overlap)
 
 
 def build_report_parser():

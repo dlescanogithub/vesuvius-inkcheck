@@ -60,7 +60,7 @@ Null-limited checks: 1/12. Checks where a rotated or flipped reference correlate
 
 ## Caveats
 
-1. **Agreement, not held-out.** The public labels may have been drawn from, or used to train, the same model family. A PASS shows the map agrees with the labels. It does not show the model generalises.
+1. **Agreement, not held-out.** The public labels may have been drawn from, or used to train, the same model family. A PASS shows the map agrees with the labels. It does not show the model generalises. `leaderboard.csv` has an `in_sample` column from `inkcheck.training_overlap` (true = the model trained on that segment, false = stated held out, empty = unknown); it is empty on every row here because `new_canon_autoresearch_recipe`'s training set is not in the registry. Labels pherc0139-w017 (public w030) and pherc0139-w029 (public w045) are training cases of `ink_9um` s42/s43 and `ink9um-dense-native` (jo-tud, villa #2349), so scores of those models on them would be flagged.
 2. **One model.** Only one official map family shares the labels' canvas, so this table compares segments, not models. Adding a model means publishing its map on the label canvas, or a transform to it.
 3. **Small label areas.** Medians: 0.59 cm² scored and 6 strokes per segment. This is the main reason for FAIL/WEAK here; the CSV keeps r, AUC and the null maxima so readers can see it.
 4. **3 scrolls only** (PHerc0139, PHerc0814, PHerc1667), and 9 of 12 rows come from PHerc0139.

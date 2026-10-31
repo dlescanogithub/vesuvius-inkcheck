@@ -98,6 +98,17 @@ inkcheck report examples/irp/*.case.json --out cards     # regenerates all ten c
 
 Held-out status is recorded per check (`held_out`). Checks on training segments are shown on the card but never decide the verdict; if no check is held out, the card says NO_HELD_OUT. The `ink_9um` labels cover PHerc0139, 1667, Paris 4 and 0814 only, so dense_native and seed42 are held out on 0009B, 0841, 0172 and 0500P2. Reader V3's training list is in `triage/reader_v3_train_segments.json`.
 
+**In-sample flags on ink cards.** `inkcheck` and `inkcheck card` look up the model and segment in a small registry of
+known training overlap (`inkcheck.training_overlap`) and record it in `provenance.training_overlap`; an in-sample pair
+also gets the warning `in-sample (training overlap)`. Scores, verdicts and exit codes are unchanged. Built in, from
+[jo-tud on villa #2349](https://github.com/ScrollPrize/villa/pull/2349) (the `source_surface_volume` in each `ink_9um`
+label case's `.zattrs`): label case `pherc0139-w017` is public PHerc0139 w030 (20250108000005) and `pherc0139-w029` is
+public w045 (20260126000000); both are training cases of `ink_9um` seed 42 / 43 and Nieuwlaar's `ink9um-dense-native`,
+so their scores there are in-sample. For YoussefMoNader's `ink-8um-v8in` (trained on 0139 w033/w035/w041/w044 as
+stated; naming not yet confirmed) w030 and w045 are held out. PHerc0343P (`ir-truth-9um`) is held out for all three (`ink_9um`, dense-native, v8-in).
+Unknown models or unlisted segments get no flag (unknown is not held out). Add your own pairs with
+`--training-overlap my_overlap.json` (a list of entries like `inkcheck.training_overlap.BUILTIN`).
+
 A one-page summary of all of this is in [`docs/IRP_onepager.pdf`](docs/IRP_onepager.pdf) (regenerate with `python docs/make_onepager.py`; every number is read from `cards/*.json`, `calibration/calibration.json` and `triage/triage_summary.json`).
 
 ![IRP headline](figures/headline.png)

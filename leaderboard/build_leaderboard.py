@@ -295,6 +295,7 @@ def stage_score(only=None):
 
 def stage_write():
     from inkcheck.card import validate
+    from inkcheck.training_overlap import is_in_sample
     cards = []
     for p in sorted((HERE / "cards").glob("*.json")):
         c = json.loads(p.read_text())
@@ -313,7 +314,10 @@ def stage_write():
             overlap_cm2=m.get("overlap_cm2"), n_nulls=m["n_shift_nulls"], n_nulls_requested=m.get("n_shift_nulls_requested"),
             null_limited=1.0 / (1 + m["n_shift_nulls"]) > c["thresholds"]["alpha_r"],
             dihedral_warning=any("transformed by" in w for w in c.get("warnings", [])),
-            online_validation_case=c.get("extra", {}).get("online_validation_case")))
+            online_validation_case=c.get("extra", {}).get("online_validation_case"),
+            # True = in-sample (training overlap), False = stated held out, empty = unknown (inkcheck.training_overlap)
+            in_sample=is_in_sample(pv["model"]["name"], c["segment"]["scroll"], c["segment"]["segment_id"],
+                                   c["segment"].get("label"))))
     rows.sort(key=lambda r: (r["scroll"], r["segment"], r["model"]))
     with open(HERE / "leaderboard.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))

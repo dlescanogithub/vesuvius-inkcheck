@@ -2,6 +2,19 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
+## [Unreleased]
+
+### Added
+- **In-sample flags (known training overlap)**: new `inkcheck.training_overlap` (`is_in_sample(model, scroll, segment)`
+  -> True / False / None, `lookup()`, `load_registry()`). Ink cards from `inkcheck` and `inkcheck card` record
+  `provenance.training_overlap` (optional, additive to schema 1.x) and warn `in-sample (training overlap)` when the
+  model trained on the segment; `leaderboard.csv` gains an `in_sample` column. Scores, verdicts and exit codes are
+  unchanged; unknown models or segments get no flag. Built-in pairs from @jo-tud on ScrollPrize/villa#2349 (label
+  `.zattrs` `source_surface_volume`): PHerc0139 public w030 (= label pherc0139-w017) and w045 (= pherc0139-w029) are
+  in-sample for `ink_9um` s42/s43 and `ink9um-dense-native` and held out for `ink-8um-v8in`; v8-in's training cases
+  w033/w035/w041/w044 are recorded as stated (naming to be confirmed); PHerc0343P is held out for all three (`ink_9um`, dense-native, v8-in).
+  `--training-overlap FILE` adds user pairs. Tests in `tests/test_training_overlap.py`.
+
 ## [0.3.1] - 2026-10-30
 
 ### Fixed

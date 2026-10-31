@@ -14,7 +14,7 @@ Every `inkcheck` run writes `PREFIX.card.json`, a per-segment **ink card** that 
 | `controls` | list of `{name, kind, expected, verdict, r_bandpass}` |
 | `saturation` | `checked` (false if the map is not 8-bit), `saturated`, `median`, `frac_high`, `threshold`, `n`, `rule` |
 | `warnings` | free-text warnings (low power, saturation, ...) |
-| `provenance` | `inkcheck_version`, `prereg_sha256` (64-hex or null), `model`, `scan`, `prediction`, `reference`, full `config` |
+| `provenance` | `inkcheck_version`, `prereg_sha256` (64-hex or null), `model`, `scan`, `prediction`, `reference`, full `config`, optional `training_overlap` (`status`: true = in-sample, false = stated held out, null = unknown; `flag`, `model`, `matched`, `source`, `note`) |
 | `extra` | producer-specific, free-form |
 
 Rules beyond the schema (checked by `inkcheck report --validate`): `final` equals `node_A` unless a control passed,

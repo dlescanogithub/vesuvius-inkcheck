@@ -87,9 +87,11 @@ def saturation_block(pred=None, valid=None, sat: dict | None = None) -> dict:
 def build_card(check: dict, *, segment: dict | None = None, model: dict | None = None, scan: dict | None = None,
                prediction: dict | None = None, reference: dict | None = None, controls: list | None = None,
                saturation: dict | None = None, prereg_sha256: str | None = None, extra: dict | None = None,
-               created_utc: str | None = None) -> dict:
+               created_utc: str | None = None, training_overlap: dict | None = None) -> dict:
     """Assemble a v1 ink card from an inkcheck check JSON (dict) plus provenance. `saturation` may be a
-    saturation_check() dict or an already-built block ({"checked": ...})."""
+    saturation_check() dict or an already-built block ({"checked": ...}). `training_overlap` is a
+    training_overlap.lookup() dict; it goes to provenance.training_overlap and, if in-sample, adds a warning. It never
+    changes the verdict."""
     n = check.get("numbers", {}) or {}
     cfg = check.get("config", {}) or {}
     node_a = check["verdict"]
@@ -122,6 +124,10 @@ def build_card(check: dict, *, segment: dict | None = None, model: dict | None =
     if sat_block.get("saturated"):
         warnings.append("prediction map looks saturated (most valid pixels are high): correlation/AUC can pass on an "
                         "uninformative map; inspect it before trusting a PASS")
+    if training_overlap and training_overlap.get("status") is True:
+        warnings.append(f"in-sample (training overlap): {training_overlap.get('model')} was trained on this segment "
+                        f"({training_overlap.get('matched')}; source: {training_overlap.get('source')}). The score "
+                        "measures fit to training data, not a held-out test")
     card = {
         "$schema": SCHEMA_ID,
         "schema_version": SCHEMA_VERSION,
@@ -144,6 +150,8 @@ def build_card(check: dict, *, segment: dict | None = None, model: dict | None =
             "config": cfg,
         },
     }
+    if training_overlap is not None:
+        card["provenance"]["training_overlap"] = dict(training_overlap)
     if extra:
         card["extra"] = dict(extra)
     return _clean(card)
@@ -261,6 +269,14 @@ def _f(x, fmt="{:.3f}"):
     return str(x)
 
 
+def _overlap_text(t) -> str:
+    if not t:
+        return "not checked"
+    if t.get("status") is None:
+        return "unknown (no known training overlap for this model/segment; not evidence of held out)"
+    return f"**{t['flag']}**" + (f" ({t['matched']}; {t.get('source')})" if t.get("matched") else "")
+
+
 def render_markdown(card: dict) -> str:
     """One-page Markdown ink card."""
     v, m, pv, seg, sat = card["verdict"], card["metrics"], card["provenance"], card["segment"], card["saturation"]
@@ -306,6 +322,7 @@ def render_markdown(card: dict) -> str:
           f"| scan | {sc.get('volume') or '–'}{' · ' + _f(sc.get('pixel_um'), '{:g}') + ' µm' if sc.get('pixel_um') else ''}"
           f"{' · ' + _f(sc.get('energy_kev'), '{:g}') + ' keV' if sc.get('energy_kev') else ''} |",
           f"| prediction | {pr.get('source') or '–'} |", f"| reference | {rf.get('source') or '–'} |",
+          f"| training overlap | {_overlap_text(pv.get('training_overlap'))} |",
           f"| pre-registration sha256 | {pv.get('prereg_sha256') or 'none (not pre-registered)'} |",
           f"| inkcheck | {pv.get('inkcheck_version')} · card schema {card['schema_version']} · {card['created_utc']} |", ""]
     return "\n".join(L)

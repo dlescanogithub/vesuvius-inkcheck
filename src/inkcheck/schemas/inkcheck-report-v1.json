@@ -122,7 +122,19 @@
           "type": "object", "additionalProperties": true,
           "properties": {"source": {"type": ["string", "null"]}, "kind": {"type": ["string", "null"]}, "pixel_um": {"$ref": "#/$defs/num"}}
         },
-        "config": {"type": "object", "description": "Full CheckConfig used (reproducibility)."}
+        "config": {"type": "object", "description": "Full CheckConfig used (reproducibility)."},
+        "training_overlap": {
+          "type": "object", "additionalProperties": true,
+          "description": "Optional (added in 1.0, additive). Known training overlap of this model with this segment (inkcheck.training_overlap.lookup). status true = in-sample (the model trained on this segment; the score is not a held-out test), false = stated held out, null = unknown. Never changes the verdict.",
+          "properties": {
+            "status": {"type": ["boolean", "null"]},
+            "flag": {"type": "string"},
+            "model": {"type": ["string", "null"]},
+            "matched": {"type": ["string", "null"]},
+            "source": {"type": ["string", "null"]},
+            "note": {"type": ["string", "null"]}
+          }
+        }
       }
     },
     "extra": {"type": "object", "description": "Free-form, producer-specific."}
