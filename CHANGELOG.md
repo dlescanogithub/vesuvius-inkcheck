@@ -2,7 +2,7 @@
 
 All notable changes to `inkcheck` / IRP. Versions follow [semantic versioning](https://semver.org/) (0.x: the API may still change).
 
-## [Unreleased]
+## [0.3.2] - 2026-10-31
 
 ### Added
 - **In-sample flags (known training overlap)**: new `inkcheck.training_overlap` (`is_in_sample(model, scroll, segment)`
